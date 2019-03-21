@@ -1,0 +1,18 @@
+@charset "ISO-8859-1";
+
+
+.colorGreen{
+	background-color: green;
+}
+
+.fontColor {
+	color: white !important;
+}
+
+.fontColor:hover{
+	color: #3498db !important;
+}
+
+.margin{
+	margin: 0 20px;
+}
