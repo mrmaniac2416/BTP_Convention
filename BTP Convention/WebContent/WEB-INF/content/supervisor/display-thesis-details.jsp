@@ -8,6 +8,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/acceptThesis.css">
+<script>
+function alertUser(){
+	window.alert("Thesis has been Accepted");
+}
+</script>
 </head>
 <body>
 
@@ -77,7 +82,7 @@
 	
 	<s:form action="accepted-thesis">
 	<s:hidden name="thesisId" value="%{thesis[0]}" />
-	 <input type="submit" class="btn btn-info" value="Accept">
+	 <input type="submit" onclick="alertUser()" class="btn btn-info" value="Accept">
 	</s:form>
 
 
