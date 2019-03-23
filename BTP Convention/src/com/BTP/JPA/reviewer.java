@@ -4,7 +4,10 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
+
 @Entity
+
 public class reviewer {
 	
 	@EmbeddedId
@@ -15,6 +18,8 @@ public class reviewer {
 	private String reviewer_type;
 	private String contact_no;
 	private String name;
+	
+	
 	public reviewerPK getReviewerId() {
 		return reviewerId;
 	}
