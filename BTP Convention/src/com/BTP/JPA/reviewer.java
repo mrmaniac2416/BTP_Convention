@@ -14,6 +14,7 @@ public class reviewer {
 	private String address;
 	private String reviewer_type;
 	private String contact_no;
+	private String name;
 	public reviewerPK getReviewerId() {
 		return reviewerId;
 	}
@@ -49,6 +50,12 @@ public class reviewer {
 	}
 	public void setContact_no(String contact_no) {
 		this.contact_no = contact_no;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

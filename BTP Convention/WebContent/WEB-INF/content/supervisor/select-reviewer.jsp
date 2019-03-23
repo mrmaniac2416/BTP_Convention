@@ -35,7 +35,10 @@
 	<s:else>
 		<sj:tabbedpanel id="localtabs" cssClass="tab">
 			<sj:tab id="tab1" target="tone" label="Select Reviewers" />
-			<sj:tab id="tab2" target="ttwo" label="Add/Edit Reviewer" />
+			
+			<s:url action="display-reviewers" var="displayReviewers_url" />
+			
+			<sj:tab id="tab2" href="%{displayReviewers_url}" target="ttwo" label="Add/Edit Reviewer" />
 
 			<div id="tone">
 				<div>
@@ -79,7 +82,11 @@
 					<div id="selectReviewerTable" class="marg"></div>
 				</div>
 			</div>
-			<div id="ttwo">Hello</div>
+			
+			
+			<div id="ttwo">
+			       
+			</div>
 		</sj:tabbedpanel>
 
 	</s:else>

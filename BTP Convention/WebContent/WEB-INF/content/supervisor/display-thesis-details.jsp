@@ -10,7 +10,7 @@
 	href="${pageContext.request.contextPath}/css/acceptThesis.css">
 <script>
 function alertUser(){
-	window.alert("Thesis has been Accepted");
+	window.alert("Thesis has been Accepted.Click on reviewing tab to add reviewers.");
 }
 </script>
 </head>
