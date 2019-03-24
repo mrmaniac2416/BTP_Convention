@@ -6,12 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <script>
-script type="text/javascript">
-    $(document).ready(function(){
-        $("#reviewer_form :input").prop("disabled", true);
-    });
+function makeEditable()
+{
+	var f = document.forms['reviewer_form'];
+	for(var i=0,fLen=f.length;i<fLen;i++){
+	f.elements[i].readOnly = false;
+	}
+	
+}
 </script>
 </head>
 <body>
@@ -25,10 +29,15 @@ script type="text/javascript">
 <s:textfield key="contact_no" label="Contact No" value="%{reviewer.contact_no}" />
 <s:textfield key="email_id" label="Email ID" value="%{reviewer.reviewerId.email_id}" />
 <s:textarea key="Address" label="Address" value="%{reviewer.address}" />
-
+<s:submit type="button" onclick="makeEditable(); return false" value="Edit"/>
 </s:form> 
 
-
+<script>
+var f = document.forms['reviewer_form'];
+for(var i=0,fLen=f.length;i<fLen;i++){
+f.elements[i].readOnly = true;
+}
+</script>
 
 </body>
 </html>

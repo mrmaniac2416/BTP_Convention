@@ -20,6 +20,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <sj:head jqueryui="true" />
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -35,10 +36,11 @@
 	<s:else>
 		<sj:tabbedpanel id="localtabs" cssClass="tab">
 			<sj:tab id="tab1" target="tone" label="Select Reviewers" />
-			
+
 			<s:url action="display-reviewers" var="displayReviewers_url" />
-			
-			<sj:tab id="tab2" href="%{displayReviewers_url}" target="ttwo" label="Add/Edit Reviewer" />
+
+			<sj:tab id="tab2" href="%{displayReviewers_url}" target="ttwo"
+				label="Add/Edit Reviewer" />
 
 			<div id="tone">
 				<div>
@@ -82,11 +84,9 @@
 					<div id="selectReviewerTable" class="marg"></div>
 				</div>
 			</div>
-			
-			
-			<div id="ttwo">
-			       
-			</div>
+
+
+			<div id="ttwo"></div>
 		</sj:tabbedpanel>
 
 	</s:else>
