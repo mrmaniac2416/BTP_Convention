@@ -15,11 +15,12 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <sj:head jqueryui="true" />
 
 
@@ -61,16 +62,16 @@
 
 							<tr>
 
-								<s:url action="displayThesisReviewer"
-									var="displayThesisReviewer_url" escapeAmp="false">
+								<s:url action="select-thesis-reviewer"
+									var="selectThesisReviewer_url" escapeAmp="false">
 									<s:param name="thesis" value="thesis" />
 
 								</s:url>
 								<s:iterator value="#thesis" var="thesis_element" begin="0"
 									end="3">
 
-									<td><sj:a href="%{displayThesisReviewer_url}"
-											targets="selectRevieweTable">
+									<td><sj:a href="%{selectThesisReviewer_url}"
+											targets="selectReviewerTable">
 											<s:property value="#thesis_element" />
 										</sj:a></td>
 								</s:iterator>
@@ -84,7 +85,7 @@
 
 					</table>
 
-					<div id="selectReviewerTable" class="marg"></div>
+					<div id="selectReviewerTable" class="maggi" style="margin-top: 20%"></div>
 				</div>
 			</div>
 
