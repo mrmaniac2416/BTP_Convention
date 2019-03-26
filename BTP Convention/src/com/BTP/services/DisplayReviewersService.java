@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
@@ -44,8 +45,37 @@ public class DisplayReviewersService {
 		Session session = sf.openSession();
 		Criteria cr = session.createCriteria(reviewer.class);
 		cr.add(Restrictions.eq("reviewerId",reviewerId));
+		reviewer result=(reviewer) cr.uniqueResult();
+		session.close();
+		sf.close();
+		return result;
 		
-		return (reviewer) cr.uniqueResult();
+	}
+	
+	
+	public void editReviewer(reviewer reviewer)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(reviewer.class);
+		SessionFactory sf = con.buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		session.update(reviewer);
+		tx.commit();
+	    session.close();
+		sf.close();
+	}
+	
+	public void addReviewer(reviewer reviewer)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(reviewer.class);
+		SessionFactory sf = con.buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		session.save(reviewer);
+		tx.commit();
+	    session.close();
+		sf.close();
+		
 		
 	}
 

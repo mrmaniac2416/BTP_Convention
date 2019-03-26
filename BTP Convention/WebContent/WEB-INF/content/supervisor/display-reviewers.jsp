@@ -25,11 +25,28 @@
 			<li><sj:a href="%{displayReviewerDetails_url}" targets="reviewerDetails" >
 					<s:property value="#reviewer.name" />
 				</sj:a></li>
+		  
 		</s:iterator>
 	</ol>
+	
+	
+	
+	<s:url action="add-reviewer-form"
+				var="addReviewerForm_url" escapeAmp="false" />
+				
+	<sj:a href="%{addReviewerForm_url}" targets="reviewerDetails" >
+	Add reviewer
+	</sj:a>
+	
+	<%-- asshole <s:form action="add-reviewer-form"> 
+	<sj:submit value="Add reviewer" targets="detail"/>
+	</s:form> --%>
+	
 
 
 	<div id="reviewerDetails"></div>
+	
+	
 
 
 </body>

@@ -26,6 +26,7 @@ public class DisplayReviewerDetailsAction extends ActionSupport{
 	private String reviewer_email_id;
 	private String reviewer_supervisor_id;
 	private reviewer reviewer;
+	
 	DisplayReviewersService displayReviewerService=new DisplayReviewersService();
 	public String execute()
 	{
@@ -52,6 +53,9 @@ public class DisplayReviewerDetailsAction extends ActionSupport{
 	public void setReviewer(reviewer reviewer) {
 		this.reviewer = reviewer;
 	}
+
+
+
 
 
 	
