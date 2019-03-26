@@ -53,38 +53,11 @@
 	</form>
 
 	<script>
-		/* $(document).ready(function(){
-		
-
-		$(function() {
-		$("#accordion").accordion({
-			collapsible : true,
-			active : false,
-		});
-
-		$("#addAccordion")
-				.click(
-						function() {
-							var content = '<div class = "new_panel"><label></label><br><br><label for="in" name="question">Edit Question:</label> <input type="text" name = "question" value = ""/><br><br>'
-									+ ' <label name="SQL">Edit SQL code here:</label><textarea name = "code"></textarea>';
-							$("#accordion").append(content);
-							$("#accordion").find("h3").not(":first").css({
-								"background" : "none"
-							})
-							$("#accordion").accordion("refresh");
-							counter++;
-							$(":button").click(edit);
-						});
-		})  */
 		var counter = 3;
 		$('document')
 				.ready(
 						function() {
 
-							/* $("#accordion").accordion({
-							collapsible : true,
-							active : false,
-							}); */
 							$("#addAccordion")
 									.click(
 											function() {
@@ -105,24 +78,22 @@
 
 						});
 
-		$('document')
-				.ready(
-						function() {
+		$('document').ready(function() {
 
-							/* $("#dropdown")
-									.change(
-											function() {
-												/* var comp = document
-														.getElementById("dropdown").value;
-												<s:iterator value="reviewerList" var="reviewerList">
-												if($('option:selected').text==<s:property value="#reviewerList.name" />){
-													 $("#name")
-															.val(document
-																	.getElementById("dropdown").value);/* 
-												}
-												</s:iterator>
-											}); */
-						});
+			/* $("#dropdown")
+					.change(
+							function() {
+								/* var comp = document
+										.getElementById("dropdown").value;
+								<s:iterator value="reviewerList" var="reviewerList">
+								if($('option:selected').text==<s:property value="#reviewerList.name" />){
+									 $("#name")
+											.val(document
+													.getElementById("dropdown").value);/* 
+								}
+								</s:iterator>
+							}); */
+		});
 	</script>
 
 </body>
