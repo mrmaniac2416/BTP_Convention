@@ -64,7 +64,9 @@
 
 								<s:url action="select-thesis-reviewer"
 									var="selectThesisReviewer_url" escapeAmp="false">
-									<s:param name="thesis" value="thesis" />
+									<s:param name="thesis_id">
+									<s:property value="#thesis[0]"/>
+									</s:param>
 
 								</s:url>
 								<s:iterator value="#thesis" var="thesis_element" begin="0"
