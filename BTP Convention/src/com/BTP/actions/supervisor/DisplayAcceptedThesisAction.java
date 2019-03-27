@@ -3,12 +3,13 @@ package com.BTP.actions.supervisor;
 import java.util.List;
 import java.util.Map;
 
+import com.BTP.services.AcceptThesisService;
+import com.BTP.services.SelectReviewerService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import com.BTP.services.SelectReviewerService;
-
-public class SelectReviewerAction extends ActionSupport{
+public class DisplayAcceptedThesisAction extends ActionSupport{
+	
 	
 	Map<String, Object> session = ActionContext.getContext().getSession();
 	private List<Object[]> acceptedThesis;
@@ -28,5 +29,7 @@ public class SelectReviewerAction extends ActionSupport{
 	public void setAcceptedThesis(List<Object[]> acceptedThesis) {
 		this.acceptedThesis = acceptedThesis;
 	}
+	
+	
 
 }

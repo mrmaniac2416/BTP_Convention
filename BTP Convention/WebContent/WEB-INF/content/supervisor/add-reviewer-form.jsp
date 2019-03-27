@@ -19,6 +19,7 @@ $.subscribe('refresh',function(event,data){
 	  
 	$('#localtabs').tabs();
 	$('#localtabs').tabs("load", "#tab2");
+	$('#localtabs').tabs("load", "#tab1");
 	alert("Reviewer added");
   
 });
