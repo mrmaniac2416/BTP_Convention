@@ -39,7 +39,17 @@
 						href="#collapseTwo"> Reviewer - 2 </a>
 				</div>
 				<div id="collapseTwo" class="collapse" data-parent="#accordion">
-					<div class="card-body">Lorem</div>
+					<div class="card-body">
+					<s:url var="remoteurl" action="get-reviewer-emails" />
+						<sj:select href="%{remoteurl}" list="reviewerEmails" id="r2"
+							emptyOption="true" headerKey="-1"
+							headerValue="Please Select a reviewer" />
+						<br />
+						<s:textfield id="r2Name" label="Name"></s:textfield>
+						<s:textfield id="r2Designation" label="Designation"></s:textfield>
+						<s:textfield id="r2Affiliation" label="Affiliation"></s:textfield>
+						<s:textfield id="r2ContactNo" label="Contact No"></s:textfield>
+					</div>
 				</div>
 			</div>
 			<div class="card">
@@ -48,7 +58,17 @@
 						href="#collapseThree"> Reviewer - 3 </a>
 				</div>
 				<div id="collapseThree" class="collapse" data-parent="#accordion">
-					<div class="card-body">Lorem</div>
+					<div class="card-body">
+					<s:url var="remoteurl" action="get-reviewer-emails" />
+						<sj:select href="%{remoteurl}" list="reviewerEmails" id="r3"
+							emptyOption="true" headerKey="-1"
+							headerValue="Please Select a reviewer" />
+						<br />
+						<s:textfield id="r3Name" label="Name"></s:textfield>
+						<s:textfield id="r3Designation" label="Designation"></s:textfield>
+						<s:textfield id="r3Affiliation" label="Affiliation"></s:textfield>
+						<s:textfield id="r3ContactNo" label="Contact No"></s:textfield>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -73,7 +93,6 @@
 															.remove();
 												}
 												$("#accordion").append(content);
-												document.getElementById('selectadd').innerHTML = "<sj:select href="%{remoteurl}" list="reviewerEmails" id="r1" emptyOption="true" headerKey="-1" headerValue="Please Select a reviewer" />";
 												$("#accordion").accordion(
 														"refresh");
 												
