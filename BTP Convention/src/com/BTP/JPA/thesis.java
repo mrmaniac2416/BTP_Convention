@@ -28,13 +28,13 @@ public class thesis {
 	private Date submitted_date;
 	private String status;
 	private byte[] thesis_data;
-	@Type(type = "com.BTP.util.GenericArrayUserType")
+	@Type(type = "com.BTP.util.StringArrayUserType")
 	private String[] abroad_reviewer_email_id;
-	@Type(type = "com.BTP.util.GenericArrayUserType")
+	@Type(type = "com.BTP.util.StringArrayUserType")
 	private String[] indian_reviewer_email_id;
-	@Type(type = "com.BTP.util.GenericArrayUserType")
+	@Type(type = "com.BTP.util.StringArrayUserType")
 	private String[] accepted_indian_reviewer_email_id;
-	@Type(type = "com.BTP.util.GenericArrayUserType")
+	@Type(type = "com.BTP.util.StringArrayUserType")
 	private String[] accepted_abroad_reviewer_email_id;
 	public int getThesis_id() {
 		return thesis_id;
