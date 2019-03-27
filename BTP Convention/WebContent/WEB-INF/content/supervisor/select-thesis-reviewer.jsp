@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<sj:head jqueryui="true" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -20,12 +21,10 @@
 				</div>
 				<div id="collapseOne" class="collapse show" data-parent="#accordion">
 					<div class="card-body">
-						<select id="dropdown">
-							<s:iterator value="reviewerList" var="reviewerList">
-								<option><s:property value="#reviewerList.name" />
-								</option>
-							</s:iterator>
-						</select> <input type="text" id="name" />
+					    <s:url var="remoteurl" action="get-reviewer-emails"/>
+						<sj:select href="%{remoteurl}" 
+							list="reviewerEmails" emptyOption="true" headerKey="-1"
+							headerValue="Please Select a reviewer" />
 					</div>
 				</div>
 			</div>

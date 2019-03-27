@@ -8,5 +8,7 @@
 <struts>
 
 	<constant name="struts.devMode" value="true" />
+	<package name="custom" extends="struts-default,json-default" namespace="/supervisor">
+    </package>
 	
 </struts>
