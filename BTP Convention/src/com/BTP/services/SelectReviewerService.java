@@ -34,5 +34,32 @@ public class SelectReviewerService {
 		sf.close();
 		return acceptedThesis;
 	}
+	
+	public void submitReviewers(int thesis_id,String []reviewersEmail)
+	{
+
+		Configuration con = new Configuration().configure().addAnnotatedClass(thesis.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+		
+		Transaction tx = session.beginTransaction();
+		
+	    Query q = session.createQuery("update thesis set indian_reviewer_email_id=:reviewersEmail where thesis_id=:thesis_id");
+        q.setParameter("reviewersEmail", reviewersEmail);
+        q.setParameter("thesis_id", thesis_id);
+        
+        System.out.println("upload mein gaya");
+        
+        q.executeUpdate();
+        
+        tx.commit();
+        session.close();
+        sf.close();
+				
+		
+		
+	}
 
 }

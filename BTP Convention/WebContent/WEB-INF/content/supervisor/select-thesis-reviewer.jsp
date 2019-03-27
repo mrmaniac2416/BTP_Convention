@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<form id="reviewer">
+	<form id="reviewer" action="submit-reviewers">
 		<div id="accordion">
 			<div class="card">
 				<div class="card-header">
@@ -111,6 +111,7 @@
 				</div>
 			</div>
 		</div>
+		<s:hidden name="thesis_id" value="%{thesis_id}" />
 		<input id="submitbutton" type="submit" value="Submit" />
 	</form>
 
