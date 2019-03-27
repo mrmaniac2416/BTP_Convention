@@ -23,6 +23,8 @@ public class SelectThesisReviewerAction extends ActionSupport{
 	private List<reviewer> reviewerList;
 	private List<String> reviewerEmails=new ArrayList<>();
 	private int thesis_id;
+	private reviewer reviewerFromEmail;
+	private String email;
 	DisplayReviewersService displayReviewer = new DisplayReviewersService();
 	String userId=(String)session.get("userId");
 	
@@ -47,6 +49,25 @@ public class SelectThesisReviewerAction extends ActionSupport{
 		}
 		return SUCCESS;
 	}
+	 
+	 @Actions( {
+		    @Action(value = "get-reviewer-from-email", results = {
+		      @Result(name = "success", type = "json")
+		    })
+		  })
+	 public String fetchReviewerFromEmail()
+	 {
+		 setReviewerList(this.displayReviewer.fetchReviewers(userId));
+		 for(reviewer  reviewer: reviewerList)
+			{
+				if(reviewer.getReviewerId().getEmail_id().equals(getEmail()))
+				{
+					this.setReviewerFromEmail(reviewer);
+					break;
+				}
+			}
+		  return SUCCESS;
+	 }
 
 	public List<String> getReviewerEmails() {
 		return reviewerEmails;
@@ -70,6 +91,22 @@ public class SelectThesisReviewerAction extends ActionSupport{
 
 	public void setThesis_id(int thesis_id) {
 		this.thesis_id = thesis_id;
+	}
+
+	public reviewer getReviewerFromEmail() {
+		return reviewerFromEmail;
+	}
+
+	public void setReviewerFromEmail(reviewer reviewerFromEmail) {
+		this.reviewerFromEmail = reviewerFromEmail;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
