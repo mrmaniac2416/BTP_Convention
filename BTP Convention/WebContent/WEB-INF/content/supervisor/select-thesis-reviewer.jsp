@@ -21,10 +21,15 @@
 				</div>
 				<div id="collapseOne" class="collapse show" data-parent="#accordion">
 					<div class="card-body">
-					    <s:url var="remoteurl" action="get-reviewer-emails"/>
-						<sj:select href="%{remoteurl}" 
-							list="reviewerEmails" emptyOption="true" headerKey="-1"
+						<s:url var="remoteurl" action="get-reviewer-emails" />
+						<sj:select href="%{remoteurl}" list="reviewerEmails" id="r1"
+							emptyOption="true" headerKey="-1"
 							headerValue="Please Select a reviewer" />
+						<br />
+						<s:textfield id="r1Name" label="Name"></s:textfield>
+						<s:textfield id="r1Designation" label="Designation"></s:textfield>
+						<s:textfield id="r1Affiliation" label="Affiliation"></s:textfield>
+						<s:textfield id="r1ContactNo" label="Contact No"></s:textfield>
 					</div>
 				</div>
 			</div>
@@ -61,17 +66,17 @@
 									.click(
 											function() {
 												counter = counter + 1;
-												var content = '<div class="card"><div class="card-header"><a class="card-link" data-toggle="collapse" href="#collapse'+counter+'">Reviewer - '
-														+ counter
-														+ '</a></div><div id="collapse'+counter+'" class="collapse show" data-parent="#accordion"><div class="card-body"><input type="button" id="delete" value="Delete Reviewer"></input></div></div> </div>';
+												var content = '<div class="card"><div class="card-header"><a class="card-link" data-toggle="collapse" href="#collapse'+counter+'">Reviewer - '+ counter	+ '</a></div><div id="collapse'+counter+'" class="collapse show" data-parent="#accordion"><div id="selectadd" class="card-body"><s:url var="remoteurl" action="get-reviewer-emails" /></div></div> </div>';
 												if (counter == 5) {
 													document.getElementById(
 															'addAccordion')
 															.remove();
 												}
 												$("#accordion").append(content);
+												document.getElementById('selectadd').innerHTML = "<sj:select href="%{remoteurl}" list="reviewerEmails" id="r1" emptyOption="true" headerKey="-1" headerValue="Please Select a reviewer" />";
 												$("#accordion").accordion(
 														"refresh");
+												
 
 											});
 
@@ -79,19 +84,15 @@
 
 		$('document').ready(function() {
 
-			/* $("#dropdown")
-					.change(
-							function() {
-								/* var comp = document
-										.getElementById("dropdown").value;
-								<s:iterator value="reviewerList" var="reviewerList">
-								if($('option:selected').text==<s:property value="#reviewerList.name" />){
-									 $("#name")
-											.val(document
-													.getElementById("dropdown").value);/* 
-								}
-								</s:iterator>
-							}); */
+			$('select').change(function() {
+				var dropdownId = $(this).attr('id');
+				var reviewerEmail = $(this).val();
+				$('#'+dropdownId+'Name').val("Hello");
+				$.ajax({
+					type: 'GET',
+					url: ''
+				});
+			});
 		});
 	</script>
 
