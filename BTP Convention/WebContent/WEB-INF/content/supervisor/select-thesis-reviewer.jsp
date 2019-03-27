@@ -73,24 +73,30 @@
 															.remove();
 												}
 												$("#accordion").append(content);
-												document.getElementById('selectadd').innerHTML = "<sj:select href="%{remoteurl}" list="reviewerEmails" id="r1" emptyOption="true" headerKey="-1" headerValue="Please Select a reviewer" />";
 												$("#accordion").accordion(
 														"refresh");
 												
 
 											});
 
-						});
+						}); 
 
 		$('document').ready(function() {
 
 			$('select').change(function() {
 				var dropdownId = $(this).attr('id');
 				var reviewerEmail = $(this).val();
-				$('#'+dropdownId+'Name').val("Hello");
 				$.ajax({
 					type: 'GET',
-					url: ''
+					url: '/BTP_Convention/supervisor/get-reviewer-from-email?email=' + reviewerEmail,
+					 success: function(data)
+				       {
+						 $('#'+dropdownId+'Name').val(data.reviewerFromEmail.name);
+						 $('#'+dropdownId+'Designation').val(data.reviewerFromEmail.designation);
+						 $('#'+dropdownId+'Affiliation').val(data.reviewerFromEmail.affiliation);
+						 $('#'+dropdownId+'ContactNo').val(data.reviewerFromEmail.contact_no);
+						 
+				       }
 				});
 			});
 		});

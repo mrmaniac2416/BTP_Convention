@@ -66,6 +66,8 @@ public class SelectThesisReviewerAction extends ActionSupport{
 					break;
 				}
 			}
+		 System.out.println(email);
+		 System.out.println(reviewerFromEmail.getName() + " " + reviewerFromEmail.getReviewerId().getEmail_id());
 		  return SUCCESS;
 	 }
 
