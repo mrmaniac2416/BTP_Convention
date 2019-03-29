@@ -25,9 +25,11 @@ public class EditReviewAction extends ActionSupport{
 	Map<String, Object> session = ActionContext.getContext().getSession();
 	DisplayReviewersService displayReviewersService=new DisplayReviewersService();
 	
+	
+	
 
 	@Action("edit-review")
-	public void method()
+	public void editReviewer()
 	{
 		
 		System.out.println("called edit review");

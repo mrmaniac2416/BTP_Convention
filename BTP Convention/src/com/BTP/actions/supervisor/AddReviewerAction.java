@@ -23,6 +23,21 @@ public class AddReviewerAction extends ActionSupport{
 	Map<String, Object> session = ActionContext.getContext().getSession();
 	DisplayReviewersService displayReviewersService=new DisplayReviewersService();
 	
+	
+	
+	
+	public void validate()
+	{
+		String email=reviewer.getReviewerId().getEmail();
+		String supervisorId=(String)session.get("userId");
+		reviewer matchedReviewer=this.displayReviewersService.fetchReviewer(supervisorId, email);
+		
+		if(matchedReviewer!=null)
+		{
+			addFieldError("reviewer.reviewerId.email","Reviewer with the email alreadys exists!");
+		}
+	}
+	
 	@Action("add-reviewer")
 	public void addReviewer()
 	{
