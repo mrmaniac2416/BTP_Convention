@@ -86,7 +86,7 @@ public class DisplayReviewersService {
 		Session session = sf.openSession();
 		Criteria cr = session.createCriteria(reviewer.class);
 		cr.add(Restrictions.eq("reviewerId.supervisor_id",userId));
-		cr.add(Restrictions.eq("reviewer_type","indian"));
+		cr.add(Restrictions.eq("reviewerType","indian"));
 		
 		List<reviewer> reviewers=cr.list();
 		
@@ -104,7 +104,7 @@ public class DisplayReviewersService {
 		Session session = sf.openSession();
 		Criteria cr = session.createCriteria(reviewer.class);
 		cr.add(Restrictions.eq("reviewerId.supervisor_id",userId));
-		cr.add(Restrictions.eq("reviewer_type","abroad"));
+		cr.add(Restrictions.eq("reviewerType","abroad"));
 		
 		List<reviewer> reviewers=cr.list();
 		
