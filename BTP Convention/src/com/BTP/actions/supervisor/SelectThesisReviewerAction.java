@@ -20,8 +20,18 @@ import com.BTP.services.DisplayReviewersService;
 public class SelectThesisReviewerAction extends ActionSupport{
 	
 	Map<String, Object> session = ActionContext.getContext().getSession();
-	private List<reviewer> reviewerList;
-	private List<String> reviewerEmails=new ArrayList<>();
+	private List<reviewer> reviewerIndianList;
+	private List<reviewer> reviewerAbroadList;
+	private List<String> reviewerIndianEmails=new ArrayList<>();
+	private List<String> reviewerAbroadEmails=new ArrayList<>();
+	public List<String> getReviewerIndianEmails() {
+		return reviewerIndianEmails;
+	}
+
+	public void setReviewerIndianEmails(List<String> reviewerIndianEmails) {
+		this.reviewerIndianEmails = reviewerIndianEmails;
+	}
+
 	private int thesis_id;
 	private reviewer reviewerFromEmail;
 	private String email;
@@ -31,7 +41,8 @@ public class SelectThesisReviewerAction extends ActionSupport{
 	public String execute()
 	{
 		
-		setReviewerList(this.displayReviewer.fetchReviewers(userId));
+		setreviewerIndianList(this.displayReviewer.fetchIndianReviewers(userId));
+		setReviewerAbroadList(this.displayReviewer.fetchAbroadReviewers(userId));
 		return SUCCESS;
 	}
 	
@@ -42,11 +53,16 @@ public class SelectThesisReviewerAction extends ActionSupport{
 		  })
 	public String fetchReviewerEmails()
 	{
-		 setReviewerList(this.displayReviewer.fetchReviewers(userId));
-		 for(reviewer  reviewer: reviewerList)
+		 setreviewerIndianList(this.displayReviewer.fetchIndianReviewers(userId));
+		 setReviewerAbroadList(this.displayReviewer.fetchAbroadReviewers(userId));
+		 for(reviewer  reviewer: reviewerIndianList)
 		{
-			reviewerEmails.add(reviewer.getReviewerId().getEmail_id());
+			reviewerIndianEmails.add(reviewer.getReviewerId().getEmail_id());
 		}
+		 for(reviewer  reviewer: reviewerAbroadList)
+			{
+				reviewerAbroadEmails.add(reviewer.getReviewerId().getEmail_id());
+			}
 		return SUCCESS;
 	}
 	 
@@ -57,8 +73,8 @@ public class SelectThesisReviewerAction extends ActionSupport{
 		  })
 	 public String fetchReviewerFromEmail()
 	 {
-		 setReviewerList(this.displayReviewer.fetchReviewers(userId));
-		 for(reviewer  reviewer: reviewerList)
+		 setreviewerIndianList(this.displayReviewer.fetchReviewers(userId));
+		 for(reviewer  reviewer: reviewerIndianList)
 			{
 				if(reviewer.getReviewerId().getEmail_id().equals(getEmail()))
 				{
@@ -70,20 +86,12 @@ public class SelectThesisReviewerAction extends ActionSupport{
 		  return SUCCESS;
 	 }
 
-	public List<String> getReviewerEmails() {
-		return reviewerEmails;
+	public List<reviewer> getreviewerIndianList() {
+		return reviewerIndianList;
 	}
 
-	public void setReviewerEmails(List<String> reviewerEmails) {
-		this.reviewerEmails = reviewerEmails;
-	}
-
-	public List<reviewer> getReviewerList() {
-		return reviewerList;
-	}
-
-	public void setReviewerList(List<reviewer> reviewerList) {
-		this.reviewerList = reviewerList;
+	public void setreviewerIndianList(List<reviewer> reviewerIndianList) {
+		this.reviewerIndianList = reviewerIndianList;
 	}
 
 	public int getThesis_id() {
@@ -108,6 +116,22 @@ public class SelectThesisReviewerAction extends ActionSupport{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<reviewer> getReviewerAbroadList() {
+		return reviewerAbroadList;
+	}
+
+	public void setReviewerAbroadList(List<reviewer> reviewerAbroadList) {
+		this.reviewerAbroadList = reviewerAbroadList;
+	}
+
+	public List<String> getReviewerAbroadEmails() {
+		return reviewerAbroadEmails;
+	}
+
+	public void setReviewerAbroadEmails(List<String> reviewerAbroadEmails) {
+		this.reviewerAbroadEmails = reviewerAbroadEmails;
 	}
 
 }

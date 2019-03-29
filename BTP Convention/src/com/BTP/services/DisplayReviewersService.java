@@ -78,5 +78,41 @@ public class DisplayReviewersService {
 		
 		
 	}
+	
+	public List<reviewer> fetchIndianReviewers(String userId)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(reviewer.class);
+		SessionFactory sf = con.buildSessionFactory();
+		Session session = sf.openSession();
+		Criteria cr = session.createCriteria(reviewer.class);
+		cr.add(Restrictions.eq("reviewerId.supervisor_id",userId));
+		cr.add(Restrictions.eq("reviewer_type","indian"));
+		
+		List<reviewer> reviewers=cr.list();
+		
+		session.close();
+		sf.close();
+		
+		
+		return reviewers;
+	}
+	
+	public List<reviewer> fetchAbroadReviewers(String userId)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(reviewer.class);
+		SessionFactory sf = con.buildSessionFactory();
+		Session session = sf.openSession();
+		Criteria cr = session.createCriteria(reviewer.class);
+		cr.add(Restrictions.eq("reviewerId.supervisor_id",userId));
+		cr.add(Restrictions.eq("reviewer_type","abroad"));
+		
+		List<reviewer> reviewers=cr.list();
+		
+		session.close();
+		sf.close();
+		
+		
+		return reviewers;
+	}
 
 }

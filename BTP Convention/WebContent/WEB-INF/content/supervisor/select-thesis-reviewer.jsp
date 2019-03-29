@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<form id="reviewer" action="submit-reviewers">
+	<s:form id="reviewer" action="submit-reviewers">
 		<div id="accordion">
 			<div class="card">
 				<div class="card-header">
@@ -22,8 +22,8 @@
 				<div id="collapseOne" class="collapse show" data-parent="#accordion">
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
-						<sj:select href="%{remoteurl}" list="reviewerEmails" id="r1"
-							emptyOption="true" headerKey="-1" name="reviewersEmail"
+						<sj:select href="%{remoteurl}" list="reviewerIndianEmails" id="r1"
+							emptyOption="true" headerKey="-1" name="reviewersIndianEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r1Name" label="Name"></s:textfield>
@@ -41,8 +41,8 @@
 				<div id="collapseTwo" class="collapse" data-parent="#accordion">
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
-						<sj:select href="%{remoteurl}" list="reviewerEmails" id="r2"
-							emptyOption="true" headerKey="-1" name="reviewersEmail"
+						<sj:select href="%{remoteurl}" list="reviewerIndianEmails" id="r2"
+							emptyOption="true" headerKey="-1" name="reviewersIndianEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r2Name" label="Name"></s:textfield>
@@ -60,8 +60,8 @@
 				<div id="collapseThree" class="collapse" data-parent="#accordion">
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
-						<sj:select href="%{remoteurl}" list="reviewerEmails" id="r3"
-							emptyOption="true" headerKey="-1" name="reviewersEmail"
+						<sj:select href="%{remoteurl}" list="reviewerIndianEmails" id="r3"
+							emptyOption="true" headerKey="-1" name="reviewersIndianEmail"
 							headerValue="Please Select a reviewer" />
 
 						<br />
@@ -80,8 +80,8 @@
 				<div id="collapseFour" class="collapse" data-parent="#accordion">
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
-						<sj:select href="%{remoteurl}" list="reviewerEmails" id="r4"
-							emptyOption="true" headerKey="-1" name="reviewersEmail"
+						<sj:select href="%{remoteurl}" list="reviewerIndianEmails" id="r4"
+							emptyOption="true" headerKey="-1" name="reviewersIndianEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r4Name" label="Name"></s:textfield>
@@ -99,8 +99,8 @@
 				<div id="collapseFive" class="collapse" data-parent="#accordion">
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
-						<sj:select href="%{remoteurl}" list="reviewerEmails" id="r5"
-							emptyOption="true" headerKey="-1" name="reviewersEmail"
+						<sj:select href="%{remoteurl}" list="reviewerIndianEmails" id="r5"
+							emptyOption="true" headerKey="-1" name="reviewersIndianEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r5Name" label="Name"></s:textfield>
@@ -111,9 +111,151 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div>Abroad Reviewers</div>
+		
+		<div id="accordion">
+			<div class="card">
+				<div class="card-header">
+					<a class="card-link" data-toggle="collapse" href="#collapseSix">
+						Reviewer - 1 </a>
+				</div>
+				<div id="collapseSix" class="collapse show" data-parent="#accordion">
+					<div class="card-body">
+						<s:url var="remoteurl" action="get-reviewer-emails" />
+						<sj:select href="%{remoteurl}" list="reviewerAbroadEmails" id="r6"
+							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
+							headerValue="Please Select a reviewer" />
+						<br />
+						<s:textfield id="r6Name" label="Name"></s:textfield>
+						<s:textfield id="r6Designation" label="Designation"></s:textfield>
+						<s:textfield id="r6Affiliation" label="Affiliation"></s:textfield>
+						<s:textfield id="r6ContactNo" label="Contact No"></s:textfield>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<a class="collapsed card-link" data-toggle="collapse"
+						href="#collapseSeven"> Reviewer - 2 </a>
+				</div>
+				<div id="collapseSeven" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+						<s:url var="remoteurl" action="get-reviewer-emails" />
+						<sj:select href="%{remoteurl}" list="reviewerAbroadEmail" id="r7"
+							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
+							headerValue="Please Select a reviewer" />
+						<br />
+						<s:textfield id="r7Name" label="Name"></s:textfield>
+						<s:textfield id="r7Designation" label="Designation"></s:textfield>
+						<s:textfield id="r7Affiliation" label="Affiliation"></s:textfield>
+						<s:textfield id="r7ContactNo" label="Contact No"></s:textfield>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<a class="collapsed card-link" data-toggle="collapse"
+						href="#collapseEigth"> Reviewer - 3 </a>
+				</div>
+				<div id="collapseEigth" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+						<s:url var="remoteurl" action="get-reviewer-emails" />
+						<sj:select href="%{remoteurl}" list="reviewerAbroadEmail" id="r8"
+							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
+							headerValue="Please Select a reviewer" />
+
+						<br />
+						<s:textfield id="r8Name" label="Name"></s:textfield>
+						<s:textfield id="r8Designation" label="Designation"></s:textfield>
+						<s:textfield id="r8Affiliation" label="Affiliation"></s:textfield>
+						<s:textfield id="r8ContactNo" label="Contact No"></s:textfield>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<a class="collapsed card-link" data-toggle="collapse"
+						href="#collapseNine"> Reviewer - 4 </a>
+				</div>
+				<div id="collapseNine" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+						<s:url var="remoteurl" action="get-reviewer-emails" />
+						<sj:select href="%{remoteurl}" list="reviewerAbroadEmail" id="r9"
+							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
+							headerValue="Please Select a reviewer" />
+						<br />
+						<s:textfield id="r9Name" label="Name"></s:textfield>
+						<s:textfield id="r9Designation" label="Designation"></s:textfield>
+						<s:textfield id="r9Affiliation" label="Affiliation"></s:textfield>
+						<s:textfield id="r9ContactNo" label="Contact No"></s:textfield>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<a class="collapsed card-link" data-toggle="collapse"
+						href="#collapseTen"> Reviewer - 5 </a>
+				</div>
+				<div id="collapseTen" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+						<s:url var="remoteurl" action="get-reviewer-emails" />
+						<sj:select href="%{remoteurl}" list="reviewerAbroadEmail" id="r10"
+							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
+							headerValue="Please Select a reviewer" />
+						<br />
+						<s:textfield id="r10Name" label="Name"></s:textfield>
+						<s:textfield id="r10Designation" label="Designation"></s:textfield>
+						<s:textfield id="r10Affiliation" label="Affiliation"></s:textfield>
+						<s:textfield id="r10ContactNo" label="Contact No"></s:textfield>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<s:hidden name="thesis_id" value="%{thesis_id}" />
 		<input id="submitbutton" type="submit" value="Submit" />
-	</form>
+	</s:form>
 <s:if test="hasActionErrors()">
 <s:actionerror/>
 </s:if>

@@ -16,7 +16,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public class SubmitReviewersAction extends ActionSupport{
 	
 	
-	private String reviewersEmail[];
+	private String reviewersIndianEmail[];
+	private String reviewersAbroadEmail[];
 	private int thesis_id;
 	SelectReviewerService selectReviewersService=new SelectReviewerService();
 	private String emails[];
@@ -25,16 +26,16 @@ public class SubmitReviewersAction extends ActionSupport{
 	{
 		HashSet<String> h = new HashSet<String>();
 		int count=0;
-		for(int i=0;i<reviewersEmail.length;i++)
+		for(int i=0;i<reviewersIndianEmail.length;i++)
 		{
-			if(!(reviewersEmail[i].equals("-1")))
+			if(!(reviewersIndianEmail[i].equals("-1")))
 			{
-				if(h.contains(reviewersEmail[i]))
+				if(h.contains(reviewersIndianEmail[i]))
 				{
 					addActionError("You have selected same reviewers");
 				}
-				h.add(reviewersEmail[i]);
-				emails[count]=reviewersEmail[i];
+				h.add(reviewersIndianEmail[i]);
+				emails[count]=reviewersIndianEmail[i];
 				count++;
 			}
 		}
@@ -45,18 +46,19 @@ public class SubmitReviewersAction extends ActionSupport{
 	}
 	public String execute()
 	{
-		System.out.println(this.reviewersEmail.length);
-		this.selectReviewersService.submitReviewers(thesis_id, reviewersEmail);
+		System.out.println(this.reviewersIndianEmail.length);
+		this.selectReviewersService.submitIndianReviewers(thesis_id, reviewersIndianEmail);
+		this.selectReviewersService.submitAbroadReviewers(thesis_id, reviewersAbroadEmail);
 		return SUCCESS;
 	}
 	
 
-	public String[] getReviewersEmail() {
-		return reviewersEmail;
+	public String[] getreviewersIndianEmail() {
+		return reviewersIndianEmail;
 	}
 
-	public void setReviewersEmail(String reviewersEmail[]) {
-		this.reviewersEmail = reviewersEmail;
+	public void setreviewersIndianEmail(String reviewersIndianEmail[]) {
+		this.reviewersIndianEmail = reviewersIndianEmail;
 	}
 
 
@@ -67,6 +69,12 @@ public class SubmitReviewersAction extends ActionSupport{
 
 	public void setThesis_id(int thesis_id) {
 		this.thesis_id = thesis_id;
+	}
+	public String[] getReviewersAbroadEmail() {
+		return reviewersAbroadEmail;
+	}
+	public void setReviewersAbroadEmail(String reviewersAbroadEmail[]) {
+		this.reviewersAbroadEmail = reviewersAbroadEmail;
 	}
 	
 	
