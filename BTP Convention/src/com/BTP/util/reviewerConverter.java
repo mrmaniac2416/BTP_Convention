@@ -19,15 +19,15 @@ public Object convertFromString(Map context, String[] values, Class toClass) {
 	for(String value:values)
 		System.out.println(value);
 	reviewerPK reviewerPK=new reviewerPK();
-	reviewerPK.setEmail_id(values[0]);
+	reviewerPK.setEmail(values[0]);
 	reviewerPK.setSupervisor_id(values[1]);
 	reviewer.setReviewerId(reviewerPK);
 	reviewer.setAddress(values[2]);
 	reviewer.setAffiliation(values[3]);
-	reviewer.setContact_no(values[4]);
+	reviewer.setContact(values[4]);
 	reviewer.setDesignation(values[5]);
 	reviewer.setName(values[6]);
-	reviewer.setReviewer_type(values[7]);
+	reviewer.setReviewerType(values[7]);
 	System.out.println("calleddd convert from string");
 	
 	return reviewer;

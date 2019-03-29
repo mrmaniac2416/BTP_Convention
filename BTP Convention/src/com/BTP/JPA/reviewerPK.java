@@ -2,13 +2,18 @@ package com.BTP.JPA;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+
+import com.opensymphony.xwork2.validator.annotations.EmailValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
 @Embeddable
 public class reviewerPK implements Serializable{
 
 
-	private String email_id;
+	@Column(name="email_id")
+	private String email;
 	private String supervisor_id;
 
 	public reviewerPK() {
@@ -18,15 +23,17 @@ public class reviewerPK implements Serializable{
 
 
 
-	public String getEmail_id() {
-		return email_id;
+	public String getEmail() {
+		return email;
 	}
 
 
 
 
-	public void setEmail_id(String email_id) {
-		this.email_id = email_id;
+	@RequiredStringValidator(message = "Enter Email.")
+    @EmailValidator(message = "Enter a valid E-mail address." )
+	public void setEmail(String email_id) {
+		this.email = email_id;
 	}
 
 
@@ -57,7 +64,7 @@ public class reviewerPK implements Serializable{
 		reviewerPK castOther = (reviewerPK)other;
 		return 
 				this.supervisor_id.equals(castOther.supervisor_id)
-		&& this.email_id.equals(castOther.email_id);
+		&& this.email.equals(castOther.email);
 	}
 
 	@Override
@@ -65,7 +72,7 @@ public class reviewerPK implements Serializable{
 		final int prime = 31;
 		int hash = 17;
 		hash = hash * prime + this.supervisor_id.hashCode();
-		hash = hash * prime + this.email_id.hashCode();
+		hash = hash * prime + this.email.hashCode();
 
 		return hash;
 	}

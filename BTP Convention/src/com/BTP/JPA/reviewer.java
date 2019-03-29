@@ -1,10 +1,15 @@
 package com.BTP.JPA;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
+import com.opensymphony.xwork2.validator.annotations.FieldExpressionValidator;
+import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 
 @Entity
 
@@ -15,14 +20,19 @@ public class reviewer {
 	private String affiliation;
 	private String designation;
 	private String address;
-	private String reviewer_type;
-	private String contact_no;
+	@Column(name="reviewer_type")
+	private String reviewerType;
+	
+	@Column(name="contact_no")
+	private String contact;
 	private String name;
 	
 	
 	public reviewerPK getReviewerId() {
 		return reviewerId;
 	}
+	
+	@VisitorFieldValidator(message = "")
 	public void setReviewerId(reviewerPK reviewerId) {
 		this.reviewerId = reviewerId;
 	}
@@ -44,21 +54,28 @@ public class reviewer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getReviewer_type() {
-		return reviewer_type;
+	public String getReviewerType() {
+		return reviewerType;
 	}
-	public void setReviewer_type(String reviewer_type) {
-		this.reviewer_type = reviewer_type;
+	
+	@RequiredStringValidator(message = "Enter type.")
+	@FieldExpressionValidator(message="Enter a type", expression="(reviewerType!='-1')" )
+	public void setReviewerType(String reviewer_type) {
+		this.reviewerType = reviewer_type;
 	}
-	public String getContact_no() {
-		return contact_no;
+	public String getContact() {
+		return contact;
 	}
-	public void setContact_no(String contact_no) {
-		this.contact_no = contact_no;
+	
+	@RegexFieldValidator(message="Enter a valid phone number.",regex="[+]?[0-9]{7,}")
+	public void setContact(String contact_no) {
+		this.contact = contact_no;
 	}
 	public String getName() {
 		return name;
 	}
+	
+	@RequiredStringValidator(message = "Enter Reviewer name.")
 	public void setName(String name) {
 		this.name = name;
 	}

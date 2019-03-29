@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<sj:head jqueryui="true"/>
 
 </head>
 <body>
@@ -16,7 +15,7 @@
 		<s:iterator value="reviewers" var="reviewer">
 			<s:url action="display-reviewer-details"
 				var="displayReviewerDetails_url" escapeAmp="false">
- 				<s:param name="reviewer_email_id"><s:property value="#reviewer.reviewerId.email_id"/> </s:param> 
+ 				<s:param name="reviewer_email_id"><s:property value="#reviewer.reviewerId.email"/> </s:param> 
  				<s:param name="reviewer_supervisor_id"><s:property value="#reviewer.reviewerId.supervisor_id"/> </s:param>
 				
 

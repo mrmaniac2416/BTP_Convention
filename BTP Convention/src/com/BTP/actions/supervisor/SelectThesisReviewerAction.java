@@ -45,7 +45,7 @@ public class SelectThesisReviewerAction extends ActionSupport{
 		 setReviewerList(this.displayReviewer.fetchReviewers(userId));
 		 for(reviewer  reviewer: reviewerList)
 		{
-			reviewerEmails.add(reviewer.getReviewerId().getEmail_id());
+			reviewerEmails.add(reviewer.getReviewerId().getEmail());
 		}
 		return SUCCESS;
 	}
@@ -60,7 +60,7 @@ public class SelectThesisReviewerAction extends ActionSupport{
 		 setReviewerList(this.displayReviewer.fetchReviewers(userId));
 		 for(reviewer  reviewer: reviewerList)
 			{
-				if(reviewer.getReviewerId().getEmail_id().equals(getEmail()))
+				if(reviewer.getReviewerId().getEmail().equals(getEmail()))
 				{
 					this.setReviewerFromEmail(reviewer);
 					break;
