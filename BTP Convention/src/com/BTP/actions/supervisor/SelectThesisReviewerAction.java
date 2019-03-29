@@ -57,11 +57,11 @@ public class SelectThesisReviewerAction extends ActionSupport{
 		 setReviewerAbroadList(this.displayReviewer.fetchAbroadReviewers(userId));
 		 for(reviewer  reviewer: reviewerIndianList)
 		{
-			reviewerIndianEmails.add(reviewer.getReviewerId().getEmail_id());
+			reviewerIndianEmails.add(reviewer.getReviewerId().getEmail());
 		}
 		 for(reviewer  reviewer: reviewerAbroadList)
 			{
-				reviewerAbroadEmails.add(reviewer.getReviewerId().getEmail_id());
+				reviewerAbroadEmails.add(reviewer.getReviewerId().getEmail());
 			}
 		return SUCCESS;
 	}
@@ -76,7 +76,7 @@ public class SelectThesisReviewerAction extends ActionSupport{
 		 setreviewerIndianList(this.displayReviewer.fetchReviewers(userId));
 		 for(reviewer  reviewer: reviewerIndianList)
 			{
-				if(reviewer.getReviewerId().getEmail_id().equals(getEmail()))
+				if(reviewer.getReviewerId().getEmail().equals(getEmail()))
 				{
 					this.setReviewerFromEmail(reviewer);
 					break;

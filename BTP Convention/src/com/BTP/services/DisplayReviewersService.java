@@ -38,7 +38,7 @@ public class DisplayReviewersService {
 	public reviewer fetchReviewer(String reviewer_supervisor_id,String reviewer_email_id)
 	{
 		reviewerPK reviewerId=new reviewerPK();
-		reviewerId.setEmail_id(reviewer_email_id);
+		reviewerId.setEmail(reviewer_email_id);
 		reviewerId.setSupervisor_id(reviewer_supervisor_id);
 		Configuration con = new Configuration().configure().addAnnotatedClass(reviewer.class);
 		SessionFactory sf = con.buildSessionFactory();
