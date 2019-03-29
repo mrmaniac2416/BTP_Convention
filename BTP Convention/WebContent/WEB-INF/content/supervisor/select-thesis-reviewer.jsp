@@ -114,7 +114,9 @@
 		<s:hidden name="thesis_id" value="%{thesis_id}" />
 		<input id="submitbutton" type="submit" value="Submit" />
 	</form>
-
+<s:if test="hasActionErrors()">
+<s:actionerror/>
+</s:if>
 	<script>
 		/* var counter = 3;
 		$('document')
