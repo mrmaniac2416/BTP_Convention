@@ -6,7 +6,7 @@ import com.BTP.services.SelectReviewerService;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Result(name="success",location="select-reviewer",type="redirect")
-public class SubmitReviewers extends ActionSupport{
+public class SubmitReviewersAction extends ActionSupport{
 	
 	
 	private String reviewersEmail[];

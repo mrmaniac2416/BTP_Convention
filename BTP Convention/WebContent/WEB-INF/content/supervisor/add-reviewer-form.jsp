@@ -37,7 +37,10 @@ $.subscribe('refresh',function(event,data){
 <s:textfield key="reviewer.designation" label="Designation"/>
 <s:textfield key="reviewer.contact_no" label="Contact No"/>
 <s:textfield key="reviewer.reviewerId.email_id" label="Email ID"/>
-<s:textfield key="reviewer.reviewer_type" label="Indian/Abroad"/>
+<s:select label="Indian/Abroad" 
+		headerKey="-1" headerValue="Select reviewer type"
+		list="#{'indian':'indian', 'abroad':'abroad'}"
+		key="reviewer.reviewer_type" />
 <s:textarea key="reviewer.address" label="Address"/>
 <sj:submit value="Submit details" targets="formResult" indicator="indicator" onCompleteTopics="refresh" />
 </s:form> 
