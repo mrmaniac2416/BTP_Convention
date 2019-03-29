@@ -26,6 +26,7 @@ public class EditReviewAction extends ActionSupport{
 	public void method()
 	{
 		
+		System.out.println("called edit review");
 		reviewer.getReviewerId().setSupervisor_id((String)session.get("userId"));
 		this.displayReviewersService.editReviewer(reviewer);
 	}

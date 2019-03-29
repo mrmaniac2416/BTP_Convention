@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Welcome</title>
+<s:head/>
 </head>
 <body>
 

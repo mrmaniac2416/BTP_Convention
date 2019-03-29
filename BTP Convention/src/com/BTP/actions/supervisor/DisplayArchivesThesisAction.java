@@ -2,7 +2,7 @@ package com.BTP.actions.supervisor;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class DisplayArchivesDetailsAction extends ActionSupport{
+public class DisplayArchivesThesisAction extends ActionSupport{
 
 	private Object[] archivethesis;
 

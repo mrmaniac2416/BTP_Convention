@@ -50,7 +50,7 @@
 
 						<s:url action="display-archives-thesis"
 							var="displayArchivesThesis_url" escapeAmp="false">
-							<s:param name="archivethesis" value="archivethesis" />
+							<s:param name="archivethesis" value="#archivethesis" />
 
 						</s:url>
 						<s:iterator value="#archivethesis" var="thesis_element" begin="0" end="4">
