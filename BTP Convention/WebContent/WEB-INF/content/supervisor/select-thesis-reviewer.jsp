@@ -7,12 +7,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<script language="JavaScript"
+	src="${pageContext.request.contextPath}/struts/utils.js"
+	type="text/javascript"></script>
+<script language="JavaScript"
+	src="${pageContext.request.contextPath}/struts/xhtml/validation.js"
+	type="text/javascript"></script>
 <sj:head jqueryui="true" />
 <title>Insert title here</title>
 </head>
 <body>
 
-	<s:form id="reviewer" action="submit-reviewers">
+	<s:form id="reviewer" action="submit-reviewers" theme="simple">
 		<div id="accordion">
 			<div class="card">
 				<div class="card-header">
@@ -254,8 +260,10 @@
 		
 		
 		<s:hidden name="thesis_id" value="%{thesis_id}" />
-		<input id="submitbutton" type="submit" value="Submit" />
+		<sj:submit value="Submit" validate="true" targets="errorShowing"></sj:submit>
+		<!-- <input id="submitbutton" type="submit" value="Submit" /> -->
 	</s:form>
+	<div id="errorShowing"></div>
 <s:if test="hasActionErrors()">
 <s:actionerror/>
 </s:if>
@@ -326,7 +334,7 @@
 																				+ dropdownId
 																				+ 'ContactNo')
 																		.val(
-																				data.reviewerFromEmail.contact_no);
+																				data.reviewerFromEmail.contact);
 
 															}
 														});

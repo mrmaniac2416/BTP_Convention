@@ -3,16 +3,18 @@ package com.BTP.actions.supervisor;
 
 import java.util.HashSet;
 
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
 import com.BTP.services.SelectReviewerService;
 import com.opensymphony.xwork2.ActionSupport;
 
-@Results({
-@Result(name="success",location="select-reviewer",type="redirect"),
-@Result(name="input",location="select-reviewer",type="redirect")})
 
+@ParentPackage(value = "custom")
+@InterceptorRef("jsonValidationWorkflowStack")
 public class SubmitReviewersAction extends ActionSupport{
 	
 	
@@ -20,36 +22,51 @@ public class SubmitReviewersAction extends ActionSupport{
 	private String reviewersAbroadEmail[];
 	private int thesis_id;
 	SelectReviewerService selectReviewersService=new SelectReviewerService();
-	private String emails[];
+	private String indianEmails[];
+	private String abroadEmails[];
 	
 	public void validate()
 	{
+		System.out.println(reviewersIndianEmail.length);
 		HashSet<String> h = new HashSet<String>();
-		int count=0;
+		int count=0,count2=0;
 		for(int i=0;i<reviewersIndianEmail.length;i++)
 		{
 			if(!(reviewersIndianEmail[i].equals("-1")))
 			{
 				if(h.contains(reviewersIndianEmail[i]))
 				{
-					addActionError("You have selected same reviewers");
+					addActionError("You have selected same reviewers in indian");
 				}
 				h.add(reviewersIndianEmail[i]);
-				emails[count]=reviewersIndianEmail[i];
+				indianEmails[count]=reviewersIndianEmail[i];
 				count++;
 			}
 		}
-		if(count<3)
+		for(int i=0;i<reviewersAbroadEmail.length;i++)
+		{
+			if(!(reviewersAbroadEmail[i].equals("-1")))
+			{
+				if(h.contains(reviewersAbroadEmail[i]))
+				{
+					addActionError("You have selected same reviewers in abroad");
+				}
+				h.add(reviewersAbroadEmail[i]);
+				abroadEmails[count]=reviewersAbroadEmail[i];
+				count2++;
+			}
+		}
+		if(count<3 || count2<3)
 		{
 			addActionError("Please select minimum 3 reviewers");
 		}
 	}
-	public String execute()
+	@Action("submit-reviewers")
+	public void execut()
 	{
 		System.out.println(this.reviewersIndianEmail.length);
-		this.selectReviewersService.submitIndianReviewers(thesis_id, reviewersIndianEmail);
-		this.selectReviewersService.submitAbroadReviewers(thesis_id, reviewersAbroadEmail);
-		return SUCCESS;
+		this.selectReviewersService.submitIndianReviewers(thesis_id, indianEmails);
+		this.selectReviewersService.submitAbroadReviewers(thesis_id, abroadEmails);
 	}
 	
 
