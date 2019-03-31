@@ -49,11 +49,12 @@ $.subscribe('refresh',function(event,data){
 		list="#{'indian':'indian', 'abroad':'abroad'}"
 		key="reviewer.reviewerType" />
 <s:textarea key="reviewer.address" label="Address"/>
-<sj:submit value="Submit details" targets="formResult" onCompleteTopics="refresh" validate="true" />
+<sj:submit value="Submit details" onCompleteTopics="refresh" validate="true" />
 </s:form> 
 
+
  
-<div id="formResult"></div>
+
 
 
 </body>
