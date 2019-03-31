@@ -18,7 +18,7 @@
 </head>
 <body>
 
-	<s:form id="reviewer" action="submit-reviewers" theme="simple">
+	 	<s:form id="reviewer" action="submit-reviewers" theme="bootstrap">
 		<div id="accordion">
 			<div class="card">
 				<div class="card-header">
@@ -160,7 +160,7 @@
 				<div id="collapseSeven" class="collapse" data-parent="#accordion">
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
-						<sj:select href="%{remoteurl}" list="reviewerAbroadEmail" id="r7"
+						<sj:select href="%{remoteurl}" list="reviewerAbroadEmails" id="r7"
 							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
@@ -179,7 +179,7 @@
 				<div id="collapseEigth" class="collapse" data-parent="#accordion">
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
-						<sj:select href="%{remoteurl}" list="reviewerAbroadEmail" id="r8"
+						<sj:select href="%{remoteurl}" list="reviewerAbroadEmails" id="r8"
 							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
 							headerValue="Please Select a reviewer" />
 
@@ -199,7 +199,7 @@
 				<div id="collapseNine" class="collapse" data-parent="#accordion">
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
-						<sj:select href="%{remoteurl}" list="reviewerAbroadEmail" id="r9"
+						<sj:select href="%{remoteurl}" list="reviewerAbroadEmails" id="r9"
 							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
@@ -218,7 +218,7 @@
 				<div id="collapseTen" class="collapse" data-parent="#accordion">
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
-						<sj:select href="%{remoteurl}" list="reviewerAbroadEmail" id="r10"
+						<sj:select href="%{remoteurl}" list="reviewerAbroadEmails" id="r10"
 							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
@@ -263,10 +263,32 @@
 		<sj:submit value="Submit" validate="true" targets="errorShowing"></sj:submit>
 		<!-- <input id="submitbutton" type="submit" value="Submit" /> -->
 	</s:form>
-	<div id="errorShowing"></div>
+	
 <s:if test="hasActionErrors()">
 <s:actionerror/>
 </s:if>
+<div id="errorShowing"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<script>
 		/* var counter = 3;
 		$('document')

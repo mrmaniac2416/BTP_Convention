@@ -27,7 +27,7 @@ public class SubmitReviewersAction extends ActionSupport{
 	
 	public void validate()
 	{
-		System.out.println(reviewersIndianEmail.length);
+		System.out.println("///////////////");
 		HashSet<String> h = new HashSet<String>();
 		int count=0,count2=0;
 		for(int i=0;i<reviewersIndianEmail.length;i++)
@@ -39,7 +39,7 @@ public class SubmitReviewersAction extends ActionSupport{
 					addActionError("You have selected same reviewers in indian");
 				}
 				h.add(reviewersIndianEmail[i]);
-				indianEmails[count]=reviewersIndianEmail[i];
+				/* indianEmails[count]=reviewersIndianEmail[i]; */
 				count++;
 			}
 		}
@@ -52,7 +52,7 @@ public class SubmitReviewersAction extends ActionSupport{
 					addActionError("You have selected same reviewers in abroad");
 				}
 				h.add(reviewersAbroadEmail[i]);
-				abroadEmails[count]=reviewersAbroadEmail[i];
+				/* abroadEmails[count2]=reviewersAbroadEmail[i]; */
 				count2++;
 			}
 		}
@@ -60,22 +60,33 @@ public class SubmitReviewersAction extends ActionSupport{
 		{
 			addActionError("Please select minimum 3 reviewers");
 		}
+		indianEmails = new String[count];
+		abroadEmails = new String[count2];
+		int temp=0;
+		for(int i=0;i<reviewersIndianEmail.length;i++)
+		{
+			if(!(reviewersIndianEmail[i].equals("-1")))
+			{
+				indianEmails[temp]=reviewersIndianEmail[i];
+				temp++;
+			}
+		}
+		temp=0;
+		for(int i=0;i<reviewersAbroadEmail.length;i++)
+		{
+			if(!(reviewersAbroadEmail[i].equals("-1")))
+			{
+				abroadEmails[temp]=reviewersAbroadEmail[i];
+				temp++;
+			}
+		}
 	}
 	@Action("submit-reviewers")
 	public void execut()
 	{
-		System.out.println(this.reviewersIndianEmail.length);
+		System.out.println("***********************************************");
 		this.selectReviewersService.submitIndianReviewers(thesis_id, indianEmails);
 		this.selectReviewersService.submitAbroadReviewers(thesis_id, abroadEmails);
-	}
-	
-
-	public String[] getreviewersIndianEmail() {
-		return reviewersIndianEmail;
-	}
-
-	public void setreviewersIndianEmail(String reviewersIndianEmail[]) {
-		this.reviewersIndianEmail = reviewersIndianEmail;
 	}
 
 
@@ -87,10 +98,16 @@ public class SubmitReviewersAction extends ActionSupport{
 	public void setThesis_id(int thesis_id) {
 		this.thesis_id = thesis_id;
 	}
+	public String[] getReviewersIndianEmail() {
+		return reviewersIndianEmail;
+	}
+	public void setReviewersIndianEmail(String[] reviewersIndianEmail) {
+		this.reviewersIndianEmail = reviewersIndianEmail;
+	}
 	public String[] getReviewersAbroadEmail() {
 		return reviewersAbroadEmail;
 	}
-	public void setReviewersAbroadEmail(String reviewersAbroadEmail[]) {
+	public void setReviewersAbroadEmail(String[] reviewersAbroadEmail) {
 		this.reviewersAbroadEmail = reviewersAbroadEmail;
 	}
 	
