@@ -17,14 +17,13 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import com.BTP.services.LoginService;
 
-
-@ParentPackage(value = "custom")
-@InterceptorRef("jsonValidationWorkflowStack")
 @Results({
-@Result(name="student", location="student/home-page",type="redirectAction"),
-@Result(name="input",location="login-page.jsp"),
-@Result(name="supervisor",location="supervisor/home-page",type="redirectAction"),
-@Result(name="deanAP",location="deanAP/home-page",type="redirectAction")})
+	@Result(name="student", location="student/home-page",type="redirectAction"),
+	@Result(name="supervisor",location="supervisor/home-page",type="redirectAction"),
+	@Result(name="deanAP",location="deanAP/home-page",type="redirectAction")
+	})
+@ParentPackage(value = "custom2")
+@InterceptorRef("jsonValidationWorkflowStack")
 public class LoginAction extends ActionSupport implements SessionAware{
 
 	private String userId;
@@ -60,11 +59,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		this.password = password;
 	}
 	
-
-
-	
-	
-	
+		
 	
 	public void validate()
 	{
@@ -77,6 +72,8 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		
 	}
 	
+	
+
 	public String execute()
 	{
         System.out.println((String)result[3]);

@@ -15,10 +15,26 @@
 	src="${pageContext.request.contextPath}/struts/xhtml/validation.js"
 	type="text/javascript"></script>
 <sj:head jqueryui="true" />
- <sb:head includeScripts="true"/>
+<sb:head includeScripts="true"/>
+<script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+ 
+ <script>
+ $.subscribe('refresh',function(event,data){
+	  
+	  
+		$('#localtabs').tabs();
+		$('#localtabs').tabs("load", "#tab2");
+		$('#localtabs').tabs("load", "#tab1");
+		alert("Reviewers list submitted");
+	  
+	});
+ </script>
 <title>Insert title here</title>
 </head>
 <body>
+
+       
 
 	 	<s:form id="reviewer" action="submit-reviewers" theme="bootstrap">
 		<div id="accordion">
@@ -31,7 +47,7 @@
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
 						<sj:select href="%{remoteurl}" list="reviewerIndianEmails" id="r1"
-							emptyOption="true" headerKey="-1" name="reviewersIndianEmail"
+							 headerKey="-1" name="reviewersIndianEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r1Name" label="Name"></s:textfield>
@@ -50,7 +66,7 @@
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
 						<sj:select href="%{remoteurl}" list="reviewerIndianEmails" id="r2"
-							emptyOption="true" headerKey="-1" name="reviewersIndianEmail"
+							 headerKey="-1" name="reviewersIndianEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r2Name" label="Name"></s:textfield>
@@ -69,7 +85,7 @@
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
 						<sj:select href="%{remoteurl}" list="reviewerIndianEmails" id="r3"
-							emptyOption="true" headerKey="-1" name="reviewersIndianEmail"
+							headerKey="-1" name="reviewersIndianEmail"
 							headerValue="Please Select a reviewer" />
 
 						<br />
@@ -89,7 +105,7 @@
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
 						<sj:select href="%{remoteurl}" list="reviewerIndianEmails" id="r4"
-							emptyOption="true" headerKey="-1" name="reviewersIndianEmail"
+							 headerKey="-1" name="reviewersIndianEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r4Name" label="Name"></s:textfield>
@@ -108,7 +124,7 @@
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
 						<sj:select href="%{remoteurl}" list="reviewerIndianEmails" id="r5"
-							emptyOption="true" headerKey="-1" name="reviewersIndianEmail"
+							 headerKey="-1" name="reviewersIndianEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r5Name" label="Name"></s:textfield>
@@ -144,7 +160,7 @@
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
 						<sj:select href="%{remoteurl}" list="reviewerAbroadEmails" id="r6"
-							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
+							 headerKey="-1" name="reviewersAbroadEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r6Name" label="Name"></s:textfield>
@@ -163,7 +179,7 @@
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
 						<sj:select href="%{remoteurl}" list="reviewerAbroadEmails" id="r7"
-							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
+							 headerKey="-1" name="reviewersAbroadEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r7Name" label="Name"></s:textfield>
@@ -182,7 +198,7 @@
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
 						<sj:select href="%{remoteurl}" list="reviewerAbroadEmails" id="r8"
-							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
+							 headerKey="-1" name="reviewersAbroadEmail"
 							headerValue="Please Select a reviewer" />
 
 						<br />
@@ -202,7 +218,7 @@
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
 						<sj:select href="%{remoteurl}" list="reviewerAbroadEmails" id="r9"
-							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
+							 headerKey="-1" name="reviewersAbroadEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r9Name" label="Name"></s:textfield>
@@ -221,7 +237,7 @@
 					<div class="card-body">
 						<s:url var="remoteurl" action="get-reviewer-emails" />
 						<sj:select href="%{remoteurl}" list="reviewerAbroadEmails" id="r10"
-							emptyOption="true" headerKey="-1" name="reviewersAbroadEmail"
+							 headerKey="-1" name="reviewersAbroadEmail"
 							headerValue="Please Select a reviewer" />
 						<br />
 						<s:textfield id="r10Name" label="Name"></s:textfield>
@@ -262,7 +278,7 @@
 		
 		
 		<s:hidden name="thesis_id" value="%{thesis_id}" />
-		<sj:submit value="Submit" validate="true" targets="errorShowing" validateFunction="bootstrapValidation"></sj:submit>
+		<sj:submit value="Submit" validate="true" targets="errorShowing" validateFunction="bootstrapValidation" onCompleteTopics="refresh"></sj:submit>
 		<!-- <input id="submitbutton" type="submit" value="Submit" /> -->
 	</s:form>
 	
