@@ -27,7 +27,6 @@ public class SubmitReviewersAction extends ActionSupport{
 	
 	public void validate()
 	{
-		System.out.println("///////////////");
 		HashSet<String> h = new HashSet<String>();
 		int count=0,count2=0;
 		for(int i=0;i<reviewersIndianEmail.length;i++)
@@ -37,6 +36,7 @@ public class SubmitReviewersAction extends ActionSupport{
 				if(h.contains(reviewersIndianEmail[i]))
 				{
 					addActionError("You have selected same reviewers in indian");
+					return ;
 				}
 				h.add(reviewersIndianEmail[i]);
 				/* indianEmails[count]=reviewersIndianEmail[i]; */
@@ -50,6 +50,7 @@ public class SubmitReviewersAction extends ActionSupport{
 				if(h.contains(reviewersAbroadEmail[i]))
 				{
 					addActionError("You have selected same reviewers in abroad");
+					return ;
 				}
 				h.add(reviewersAbroadEmail[i]);
 				/* abroadEmails[count2]=reviewersAbroadEmail[i]; */

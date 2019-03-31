@@ -3,6 +3,7 @@
 
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 	src="${pageContext.request.contextPath}/struts/xhtml/validation.js"
 	type="text/javascript"></script>
 <sj:head jqueryui="true" />
+ <sb:head includeScripts="true"/>
 <title>Insert title here</title>
 </head>
 <body>
@@ -260,7 +262,7 @@
 		
 		
 		<s:hidden name="thesis_id" value="%{thesis_id}" />
-		<sj:submit value="Submit" validate="true" targets="errorShowing"></sj:submit>
+		<sj:submit value="Submit" validate="true" targets="errorShowing" validateFunction="bootstrapValidation"></sj:submit>
 		<!-- <input id="submitbutton" type="submit" value="Submit" /> -->
 	</s:form>
 	
