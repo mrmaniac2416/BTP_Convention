@@ -45,12 +45,12 @@ public class SelectReviewerService {
 		Session session = sf.openSession();
 		
 		Transaction tx = session.beginTransaction();
-		
-	    Query q = session.createQuery("update thesis set indian_reviewer_email_id=:reviewersEmail where thesis_id=:thesis_id");
+		String status="reviewersSelected";
+	    Query q = session.createQuery("update thesis set indian_reviewer_email_id=:reviewersEmail, status=:status where thesis_id=:thesis_id");
         q.setParameter("reviewersEmail", reviewersEmail);
+        q.setParameter("status", status);
         q.setParameter("thesis_id", thesis_id);
         
-        System.out.println("upload mein gaya");
         
         q.executeUpdate();
         
@@ -72,9 +72,10 @@ public class SelectReviewerService {
 		Session session = sf.openSession();
 		
 		Transaction tx = session.beginTransaction();
-		
-	    Query q = session.createQuery("update thesis set abroad_reviewer_email_id=:reviewersEmail where thesis_id=:thesis_id");
+		String status="reviewersSelected";
+	    Query q = session.createQuery("update thesis set abroad_reviewer_email_id=:reviewersEmail, status=:status where thesis_id=:thesis_id");
         q.setParameter("reviewersEmail", reviewersEmail);
+        q.setParameter("status", status);
         q.setParameter("thesis_id", thesis_id);
         
         System.out.println("upload mein gaya");
