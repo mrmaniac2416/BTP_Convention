@@ -8,16 +8,23 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import com.BTP.services.LoginService;
 
+
+@ParentPackage(value = "custom")
+@InterceptorRef("jsonValidationWorkflowStack")
 @Results({
 @Result(name="student", location="student/home-page",type="redirectAction"),
 @Result(name="input",location="login-page.jsp"),
-@Result(name="supervisor",location="supervisor/home-page",type="redirectAction")})
+@Result(name="supervisor",location="supervisor/home-page",type="redirectAction"),
+@Result(name="deanAP",location="deanAP/home-page",type="redirectAction")})
 public class LoginAction extends ActionSupport implements SessionAware{
 
 	private String userId;
@@ -39,12 +46,16 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public String getUserId() {
 		return userId;
 	}
+	
+	@RequiredStringValidator(message = "Enter your User ID.")
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getPassword() {
 		return password;
 	}
+	
+	@RequiredStringValidator(message = "Enter your Password.")
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -57,21 +68,11 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	
 	public void validate()
 	{
-		if(StringUtils.isEmpty(getUserId()))
-		{
-			addFieldError("userId", "UserId cannot be blank");
-		}
 		
-		else if(StringUtils.isEmpty(getPassword()))
-		{
-			addFieldError("password", "Password cannot be blank");
-		}
-		else
-		{
-			result=loginService.authenticate(userId, password);
+		result=loginService.authenticate(userId, password);
 		if(result==null)
 			addActionError("Username or password not valid!");
-		}
+		
 			
 		
 	}
