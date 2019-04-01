@@ -76,6 +76,7 @@ public class LoginService {
 		list.add(sname);
 		tx.commit();
 		session.close();
+		sf.close();
 		return list;
 	}
 
@@ -102,6 +103,7 @@ public class LoginService {
 		
 		tx.commit();
 		session.close();
+		sf.close();
 		return supervisorProfile;
 	}
 

@@ -50,6 +50,7 @@ public class AcceptThesisService {
 		q.executeUpdate();
 		tx.commit();
 		session.close();
+		sf.close();
 		
 	}
 }
