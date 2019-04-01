@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <sj:head jqueryui="true" />
-
+<sb:head includeScripts="true"/>
 
 
 <title>Insert title here</title>

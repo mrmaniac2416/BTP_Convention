@@ -15,7 +15,7 @@
 	src="${pageContext.request.contextPath}/struts/xhtml/validation.js"
 	type="text/javascript"></script>
 <sj:head jqueryui="true" />
-<sb:head includeScripts="true"/>
+<%-- <sb:head includeScripts="true"/> --%>
 <script
   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
  

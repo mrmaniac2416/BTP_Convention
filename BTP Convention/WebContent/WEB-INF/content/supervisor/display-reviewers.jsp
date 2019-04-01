@@ -37,9 +37,7 @@
 	Add reviewer
 	</sj:a>
 	
-	<%-- asshole <s:form action="add-reviewer-form"> 
-	<sj:submit value="Add reviewer" targets="detail"/>
-	</s:form> --%>
+	
 	
 
 
