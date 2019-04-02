@@ -119,7 +119,7 @@ public class LoginService {
 
 		Transaction tx = session.beginTransaction();
 		
-		Query q = session.createQuery("select t.thesis_id,t.thesis_name,u.user_name,t.submitted_date,t.status from student s inner join users u on u.user_id=s.student_id inner join thesis t on t.thesis_id=s.thesis_id where t.submitted_date >  (CURRENT_DATE-365)");
+		Query q = session.createQuery("select t.thesis_id,t.thesis_name,u.user_name,nm.user_name,t.submitted_date,t.status from student s inner join users u on u.user_id=s.student_id inner join users nm on nm.user_id=s.supervisor_id inner join thesis t on t.thesis_id=s.thesis_id where t.submitted_date >  (CURRENT_DATE-365)");
 		
 		List<Object[]> deanProfile = (List<Object[]>) q.list();
 		

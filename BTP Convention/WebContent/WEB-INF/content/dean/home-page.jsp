@@ -32,6 +32,7 @@
 				<th>Thesis ID</th>
 				<th>Thesis title</th>
 				<th>Student Name</th>
+				<th>Supervisor</th>
 				<th>Submitted date</th>
 				<th>Status</th>
 			</tr>
