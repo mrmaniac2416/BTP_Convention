@@ -6,13 +6,39 @@
 
 
 <struts>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.convention.default.parent.package" value="default"/>
+	
+	<package name="default" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="com.BTP.util.LoginInterceptor" />
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="loginStack" />
+		<global-results>
+			<result name="login-page" type="redirect">/login-page</result>
+		</global-results>
+		
+	</package>
+	
+	
+	
+	
+	
+	<package name="custom" extends="struts-default,json-default,default"
+		namespace="/supervisor">
+	</package>
 
-	<constant name="struts.devMode" value="true" />
-	<package name="custom" extends="struts-default,json-default" namespace="/supervisor">
+	<package name="custom2" extends="struts-default,json-default,default"
+		namespace="/">
+	</package>
+
+
 	
-    </package>
-    
-    <package name="custom2" extends="struts-default,json-default" namespace="/">
-    </package>
-	
+
+
 </struts>

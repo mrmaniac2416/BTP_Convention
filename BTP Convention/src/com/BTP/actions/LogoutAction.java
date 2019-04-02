@@ -12,10 +12,12 @@ import com.opensymphony.xwork2.ActionSupport;
 
 
 public class LogoutAction extends ActionSupport{
+	
 	Map<String, Object> session = ActionContext.getContext().getSession();
 	
 	public String execute()
 	{
+		session.clear();
 		return SUCCESS;
 	}
 
