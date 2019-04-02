@@ -18,6 +18,9 @@ public class DisplayReviewerListAction extends ActionSupport{
 	{
 		
 		System.out.println(thesis_id);
+		setThesisDetails(deanService.ThesisDetails(thesis_id));
+		setIndianReviewers(deanService.fetchIndianReviewers(thesis_id));
+		setAbroadReviewers(deanService.fetchAbroadReviewers(thesis_id));
 		return SUCCESS;
 	}
 	
