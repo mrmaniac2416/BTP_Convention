@@ -14,9 +14,11 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import com.BTP.JPA.reviewer;
 import com.BTP.services.DisplayReviewersService;
+import org.apache.struts2.convention.annotation.Result;
 
 
 @ParentPackage(value="custom")
+
 public class SelectThesisReviewerAction extends ActionSupport{
 	
 	Map<String, Object> session = ActionContext.getContext().getSession();
@@ -37,6 +39,7 @@ public class SelectThesisReviewerAction extends ActionSupport{
 	private String email;
 	DisplayReviewersService displayReviewer = new DisplayReviewersService();
 	String userId=(String)session.get("userId");
+	
 	
 	public String execute()
 	{
