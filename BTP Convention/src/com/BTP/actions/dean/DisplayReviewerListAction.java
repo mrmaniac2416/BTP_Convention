@@ -17,7 +17,9 @@ public class DisplayReviewerListAction extends ActionSupport{
 	public String execute()
 	{
 		
-		
+		setThesisDetails(deanService.ThesisDetails(Integer.parseInt(thesis_id)));
+		setIndianReviewers(deanService.fetchIndianReviewers(Integer.parseInt(thesis_id)));
+		setAbroadReviewers(deanService.fetchAbroadReviewers(Integer.parseInt(thesis_id)));
 		return SUCCESS;
 	}
 	
