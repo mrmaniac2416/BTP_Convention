@@ -3,13 +3,10 @@ package com.BTP.actions.supervisor;
 import java.util.List;
 import java.util.Map;
 
-
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import com.BTP.services.LoginService;
-
 
 public class HomePageAction extends ActionSupport {
       private LoginService loginService=new LoginService();
