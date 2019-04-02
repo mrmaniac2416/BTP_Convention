@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/home-page.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/home-page.css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -20,9 +21,9 @@
 <title>Dean AP Dashboard</title>
 </head>
 <body>
-	
 
-	
+
+
 	<s:if test="deanProfile.isEmpty()">
 		<div class="noUpdateMesage">No new updates to show!</div>
 	</s:if>
@@ -35,13 +36,28 @@
 				<th>Supervisor</th>
 				<th>Submitted date</th>
 				<th>Status</th>
+				<th>Reviewer List</th>
 			</tr>
 
 			<s:iterator value="deanProfile" var="thesis">
 				<tr>
+					
+					
+					<s:url action="display-reviewer-list" var="reviewer_url" escapeAmp="false">
+						<s:param name="thesis_id">
+							<s:property value="#thesis[0]" />
+						</s:param>
+					</s:url>
+					
 					<s:iterator value="#thesis" var="thesis_element">
 						<td><s:property value="#thesis_element" /></td>
 					</s:iterator>
+
+
+					
+					<td><a href='<s:property value = "#reviewer_url"/>'>View Reviewers</a></td>
+
+
 				</tr>
 
 			</s:iterator>
