@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class DisplayReviewerListAction extends ActionSupport{
 	
-	private String thesis_id;
+	private int thesis_id;
 	private List<Object[]> thesisDetails;
 	private List<Object[]> indianReviewers;
 	private List<Object[]> abroadReviewers;
@@ -17,24 +17,13 @@ public class DisplayReviewerListAction extends ActionSupport{
 	public String execute()
 	{
 		
-		
+		System.out.println(thesis_id);
 		return SUCCESS;
 	}
 	
 	
 	
 	
-	public String getThesis_id() {
-		return thesis_id;
-	}
-
-
-
-
-	public void setThesis_id(String thesis_id) {
-		this.thesis_id = thesis_id;
-	}
-
 
 
 
@@ -55,6 +44,26 @@ public class DisplayReviewerListAction extends ActionSupport{
 	}
 	public void setAbroadReviewers(List<Object[]> abroadReviewers) {
 		this.abroadReviewers = abroadReviewers;
+	}
+
+
+
+
+
+
+
+	public int getThesis_id() {
+		return thesis_id;
+	}
+
+
+
+
+
+
+
+	public void setThesis_id(int thesis_id) {
+		this.thesis_id = thesis_id;
 	}
 
 }
