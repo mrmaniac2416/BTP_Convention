@@ -18,6 +18,7 @@ public class LogoutAction extends ActionSupport{
 	public String execute()
 	{
 		session.clear();
+		
 		return SUCCESS;
 	}
 
