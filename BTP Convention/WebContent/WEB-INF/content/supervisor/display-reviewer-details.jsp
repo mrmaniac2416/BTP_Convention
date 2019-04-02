@@ -94,7 +94,7 @@ $.subscribe('complete', function(event,data) {
 		value="%{reviewer.reviewerType}" />
 <s:textarea key="reviewer.address" label="Address" value="%{reviewer.address}" /> 
 <s:submit type="button" onclick="makeEditable(); return false" value="Edit"/>
-<sj:submit id="save_button" value="Save" targets="formResult" loadingText="Loading..." onCompleteTopics="complete" validate="true" validateFunction="bootstrapValidation" />
+<sj:submit id="save_button" value="Save" targets="formResult" loadingText="Loading..." onSuccessTopics="complete" validate="true" validateFunction="bootstrapValidation" />
 </s:form> 
 
 </div>
