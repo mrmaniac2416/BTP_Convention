@@ -39,33 +39,17 @@ $.subscribe('refresh',function(event,data){
 
  
 <s:form id="reviewer_form" action="add-reviewer" theme="bootstrap" cssClass="form-horizontal" style="max-width: 50%">
-<!-- <div class="form-group"> -->
 <s:textfield key="reviewer.name" label="Name" />
-<!-- <!-- </div>
-<div class="form-group"> -->
 <s:textfield key="reviewer.affiliation" label="Affliation" />
-<!-- </div>
-<div class="form-group"> -->
 <s:textfield key="reviewer.designation" label="Designation"/>
-<!-- </div>
-<div class="form-group"> -->
 <s:textfield key="reviewer.contact" label="Contact No"/>
-<!-- </div>
-<div class="form-group"> -->
 <s:textfield key="reviewer.reviewerId.email" label="Email ID"/>
-<!-- </div>
-<div class="form-group"> -->
 <s:select label="Indian/Abroad" 
 		headerKey="-1" headerValue="Select reviewer type"
 		list="#{'indian':'indian', 'abroad':'abroad'}"
 		key="reviewer.reviewerType" />
-		<!-- </div>
-		<div class="form-group"> -->
 <s:textarea key="reviewer.address" label="Address"/>
-<!-- </div>
-<div class="form-group"> -->
 <sj:submit value="Submit details" targets="formResult" onCompleteTopics="refresh" validate="true" validateFunction="bootstrapValidation" />
-<!-- </div>	 -->
 </s:form> 
 
 

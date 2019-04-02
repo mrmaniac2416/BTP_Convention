@@ -57,25 +57,18 @@ function makeEditable()
 
 $.subscribe('complete', function(event,data) {
 	console.log("called complete");
-	var f = document.forms['reviewer_form'];
+	/* var f = document.forms['reviewer_form'];
 	for(var i=0,fLen=f.length;i<fLen;i++){
 	f.elements[i].readOnly = true;
 	 if(f.elements[i].name=="reviewer.reviewerType" || f.elements[i].id=="save_button")
 		f.elements[i].disabled=true; 
-	}
-	document.getElementById("saveSuccessMsg").innerHTML="Reviewer saved";
+	} */
+	document.getElementById("formResult").innerHTML="Reviewer saved";
 	
 	
 });
 
-$.subscribe('refresh',function(event,data){
-	  
-	  
-	$('#localtabs').tabs();
-	$('#localtabs').tabs("load", "#tab2");
-	$('#localtabs').tabs("load", "#tab1");
-	alert("Reviewer saved");
-});
+
 
 
 
@@ -87,7 +80,7 @@ $.subscribe('refresh',function(event,data){
 <body>
 
 
- 
+ <div id="formResult">
 <s:form id="reviewer_form" action="edit-review" theme="bootstrap" cssClass="well form-horizontal" style="max-width: 50%">
 <s:textfield key="reviewer.name" label="Name" value="%{reviewer.name}" />
 <s:textfield key="reviewer.affiliation" label="Affliation" value="%{reviewer.affiliation}" />
@@ -101,12 +94,12 @@ $.subscribe('refresh',function(event,data){
 		value="%{reviewer.reviewerType}" />
 <s:textarea key="reviewer.address" label="Address" value="%{reviewer.address}" /> 
 <s:submit type="button" onclick="makeEditable(); return false" value="Edit"/>
-<sj:submit id="save_button" value="Save" targets="formResult" loadingText="Loading..." onSuccessTopics="refresh" validate="true" validateFunction="bootstrapValidation" />
+<sj:submit id="save_button" value="Save" targets="formResult" loadingText="Loading..." onCompleteTopics="complete" validate="true" validateFunction="bootstrapValidation" />
 </s:form> 
 
-<div id="formResult"></div>
+</div>
 
-<div id="saveSuccessMsg"></div>
+
 
 </body>
 </html>
