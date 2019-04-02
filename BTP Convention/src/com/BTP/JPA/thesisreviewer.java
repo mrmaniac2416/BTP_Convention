@@ -2,6 +2,7 @@ package com.BTP.JPA;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
@@ -11,11 +12,12 @@ public class thesisreviewer {
 	
 	@EmbeddedId
 	private thesisreviewerPK thesisreviewerId;
+	@Column(name="supervisor_id")
 	private String supervisorId;
 	private String token;
-	private Date sentDate;
+	private Date sentdate;
 	private String status;
-	private Date acceptedDate;
+	private Date accepteddate;
 	public thesisreviewerPK getThesisreviewerId() {
 		return thesisreviewerId;
 	}
@@ -34,25 +36,24 @@ public class thesisreviewer {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public Date getSentDate() {
-		return sentDate;
-	}
-	public void setSentDate(Date sentDate) {
-		this.sentDate = sentDate;
-	}
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Date getAcceptedDate() {
-		return acceptedDate;
+	public Date getSentdate() {
+		return sentdate;
 	}
-	public void setAcceptedDate(Date acceptedDate) {
-		this.acceptedDate = acceptedDate;
+	public void setSentdate(Date sentdate) {
+		this.sentdate = sentdate;
 	}
-	
+	public Date getAccepteddate() {
+		return accepteddate;
+	}
+	public void setAccepteddate(Date accepteddate) {
+		this.accepteddate = accepteddate;
+	}
 	
 	
 

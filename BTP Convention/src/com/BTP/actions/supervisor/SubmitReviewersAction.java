@@ -2,6 +2,7 @@ package com.BTP.actions.supervisor;
 
 
 import java.util.HashSet;
+import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
@@ -10,6 +11,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
 import com.BTP.services.SelectReviewerService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -24,6 +26,7 @@ public class SubmitReviewersAction extends ActionSupport{
 	SelectReviewerService selectReviewersService=new SelectReviewerService();
 	private String indianEmails[];
 	private String abroadEmails[];
+	Map<String, Object> session = ActionContext.getContext().getSession();
 	
 	public void validate()
 	{
@@ -85,7 +88,8 @@ public class SubmitReviewersAction extends ActionSupport{
 	@Action("submit-reviewers")
 	public void execut()
 	{
-		System.out.println("***********************************************");
+		String userId=(String)session.get("userId");
+		this.selectReviewersService.submitReviewers(thesis_id, indianEmails,abroadEmails, userId);
 		this.selectReviewersService.submitIndianReviewers(thesis_id, indianEmails);
 		this.selectReviewersService.submitAbroadReviewers(thesis_id, abroadEmails);
 	}

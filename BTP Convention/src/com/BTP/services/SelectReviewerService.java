@@ -10,6 +10,8 @@ import org.hibernate.query.Query;
 
 import com.BTP.JPA.student;
 import com.BTP.JPA.thesis;
+import com.BTP.JPA.thesisreviewer;
+import com.BTP.JPA.thesisreviewerPK;
 import com.BTP.JPA.users;
 
 public class SelectReviewerService {
@@ -82,6 +84,56 @@ public class SelectReviewerService {
         
         q.executeUpdate();
         
+        tx.commit();
+        session.close();
+        sf.close();
+				
+		
+		
+	}
+	
+	
+	public void submitReviewers(int thesisId,String []indianReviewers,String []abroadReviewers,String supervisorId)
+	{
+
+		Configuration con = new Configuration().configure().addAnnotatedClass(thesisreviewer.class).addAnnotatedClass(thesis.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+		
+		Transaction tx = session.beginTransaction();
+		String stat="selected";
+	    for(int i=0;i<indianReviewers.length;i++)
+	    {
+	    	thesisreviewer thesisReviewer = new thesisreviewer();
+	    	thesisreviewerPK thesisreviewerId = new thesisreviewerPK();
+	    	thesisreviewerId.setThesisId(thesisId);
+	    	thesisreviewerId.setReviewerId(indianReviewers[i]);
+	    	thesisReviewer.setThesisreviewerId(thesisreviewerId);
+	    	thesisReviewer.setSupervisorId(supervisorId);
+	    	thesisReviewer.setStatus(stat);
+	    	session.save(thesisReviewer);
+	    }
+	    for(int i=0;i<abroadReviewers.length;i++)
+	    {
+	    	thesisreviewer thesisReviewer = new thesisreviewer();
+	    	thesisreviewerPK thesisreviewerId = new thesisreviewerPK();
+	    	thesisreviewerId.setThesisId(thesisId);
+	    	thesisreviewerId.setReviewerId(abroadReviewers[i]);
+	    	thesisReviewer.setThesisreviewerId(thesisreviewerId);
+	    	thesisReviewer.setSupervisorId(supervisorId);
+	    	thesisReviewer.setStatus(stat);
+	    	session.save(thesisReviewer);
+	    }
+        
+	    String status="reviewersSelected";
+	    Query q = session.createQuery("update thesis set status=:status where thesis_id=:thesis_id");
+        q.setParameter("status", status);
+        q.setParameter("thesis_id", thesisId);
+        q.executeUpdate();
+	    
+	    
         tx.commit();
         session.close();
         sf.close();

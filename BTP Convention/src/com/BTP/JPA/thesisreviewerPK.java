@@ -1,12 +1,16 @@
 package com.BTP.JPA;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class thesisreviewerPK {
+public class thesisreviewerPK implements Serializable{
 	
-	
+	@Column(name="thesis_id")
 	private int thesisId;
+	@Column(name="reviewer_id")
 	private String reviewerId;
 	
 	public thesisreviewerPK()
