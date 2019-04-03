@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class DisplayReviewerListAction extends ActionSupport implements SessionAware{
 	
-	private int thesis_id;
+	private int thesisId;
 	private List<Object[]> thesisDetails;
 	private List<Object[]> indianReviewers;
 	private List<Object[]> abroadReviewers;
@@ -21,11 +21,11 @@ public class DisplayReviewerListAction extends ActionSupport implements SessionA
 	public String execute()
 	{
 		
-		System.out.println(thesis_id);
-		sessionMap.put("thesisId",thesis_id);
-		setThesisDetails(deanService.ThesisDetails(thesis_id));
-		setIndianReviewers(deanService.fetchIndianReviewers(thesis_id));
-		setAbroadReviewers(deanService.fetchAbroadReviewers(thesis_id));
+		System.out.println(thesisId);
+		sessionMap.put("thesisId",thesisId);
+		setThesisDetails(deanService.ThesisDetails(thesisId));
+		setIndianReviewers(deanService.fetchIndianReviewers(thesisId));
+		setAbroadReviewers(deanService.fetchAbroadReviewers(thesisId));
 		return SUCCESS;
 	}
 	
@@ -60,8 +60,8 @@ public class DisplayReviewerListAction extends ActionSupport implements SessionA
 
 
 
-	public int getThesis_id() {
-		return thesis_id;
+	public int getThesisId() {
+		return thesisId;
 	}
 
 
@@ -70,8 +70,8 @@ public class DisplayReviewerListAction extends ActionSupport implements SessionA
 
 
 
-	public void setThesis_id(int thesis_id) {
-		this.thesis_id = thesis_id;
+	public void setThesisId(int thesis_id) {
+		this.thesisId = thesis_id;
 	}
 
 

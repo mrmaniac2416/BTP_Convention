@@ -18,6 +18,13 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <sj:head jqueryui="true" />
+<script>
+$.subscribe('dialogclosetopic', function(event,ui) {
+	console.log('run topic on dialog close');
+	window.location.reload(true);
+});
+
+</script>
 <title></title>
 </head>
 <body>
@@ -41,10 +48,12 @@
 
 		</s:iterator>
 	</table>
-	<br/>
-	<br/>
-	<div><s:property value="thesis_id"/></div>
-	
+	<br />
+	<br />
+	<div>
+		<s:property value="thesisId" />
+	</div>
+
 	<h2>Indian Reviewer</h2>
 	<table>
 		<tr>
@@ -69,7 +78,7 @@
 						<s:property value="#indianreviewers[4]" />
 					</s:param>
 					<s:param name="thesisId">
-					<s:property value="thesis_id" />
+						<s:property value="thesisId" />
 					</s:param>
 				</s:url>
 
@@ -94,6 +103,7 @@
 			<th>Contact No.</th>
 			<th>Email</th>
 			<th>Mail Sent Date</th>
+			<th>Accept</th>
 		</tr>
 
 		<s:iterator value="abroadReviewers" var="abroadreviewers">
@@ -108,8 +118,8 @@
 					<s:param name="email">
 						<s:property value="#abroadreviewers[4]" />
 					</s:param>
-					<s:param name="thesis_id">
-					<s:property value="thesis_id" />
+					<s:param name="thesisId">
+						<s:property value="thesisId" />
 					</s:param>
 				</s:url>
 
@@ -118,15 +128,17 @@
 					</sj:a></td>
 
 				<td><s:property value="#abroadreviewers[5]" /></td>
+
 			</tr>
 
 		</s:iterator>
 	</table>
 
 	<sj:dialog id="myclickdialog" autoOpen="false" modal="true"
-		title="Give Body">
+		title="Give Body" showEffect="slide" hideEffect="slide"
+		onCloseTopics="dialogclosetopic">
 
-		
+
 	</sj:dialog>
 
 
