@@ -19,6 +19,7 @@ $.subscribe('complete', function(event,data) {
 		f.elements[i].disabled=true; 
 	} */
 	document.getElementById("successMsg").innerHTML="Email sent";
+	alert("Email sent");
 	
 	
 });
@@ -31,11 +32,11 @@ $.subscribe('complete', function(event,data) {
 <div id="successMsg">
 <s:form action="send-invitation-mail">
 			<s:hidden value="%{email}" name="email_id" />
-			<s:hidden value="%{thesis_id}" name="thesis_id" />
+			<s:hidden value="%{thesisId}" name="thesisId" />
 			<s:textarea label="Body" name="body"></s:textarea>
 			<sj:submit loadingText="Sending Email..." targets="successMsg" onSuccessTopics="complete"></sj:submit>
-		</s:form>
+</s:form>
 </div>
-<s:property value="thesis_id"/>
+<s:property value="thesisId"/>
 </body>
 </html>

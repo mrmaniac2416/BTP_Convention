@@ -68,7 +68,7 @@
 					<s:param name="email">
 						<s:property value="#indianreviewers[4]" />
 					</s:param>
-					<s:param name="thesis_id">
+					<s:param name="thesisId">
 					<s:property value="thesis_id" />
 					</s:param>
 				</s:url>

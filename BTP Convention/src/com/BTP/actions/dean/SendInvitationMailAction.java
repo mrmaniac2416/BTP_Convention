@@ -19,7 +19,7 @@ import org.apache.struts2.convention.annotation.Result;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-@Result(name="success", location="display-reviewer-list", type="redirectAction",params= {"thesis_id", "${thesis_id}"})
+//@Result(name="success", location="display-reviewer-list", type="redirectAction",params= {"thesisId", "${thesisId}"})
 public class SendInvitationMailAction extends ActionSupport{
 
 	private String from="pdhruv1109@gmail.com";
@@ -28,7 +28,7 @@ public class SendInvitationMailAction extends ActionSupport{
 	private String subject;
 	private String body;
 	private String email_id;
-	private int thesis_id;
+	private int thesisId;
 	static Properties properties = new Properties();
 	static {
 		properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -53,7 +53,7 @@ public class SendInvitationMailAction extends ActionSupport{
 			}
 					);
 
-			Date date = Calendar.getInstance().getTime();  
+			Date date = new Date();  
 			DateFormat dateFormat = new SimpleDateFormat("ssyyyyhhddmm");  
 			String strDate = dateFormat.format(date);
 			Random rand = new Random(); 
@@ -137,12 +137,12 @@ public class SendInvitationMailAction extends ActionSupport{
 		this.email_id = email_id;
 	}
 
-	public int getThesis_id() {
-		return thesis_id;
+	public int getThesisId() {
+		return thesisId;
 	}
 
-	public void setThesis_id(int thesis_id) {
-		this.thesis_id = thesis_id;
+	public void setThesisId(int thesis_id) {
+		this.thesisId = thesis_id;
 	}
 
 }

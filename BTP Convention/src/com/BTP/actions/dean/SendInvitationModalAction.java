@@ -5,7 +5,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class SendInvitationModalAction extends ActionSupport{
 	
 	private String email;
-	private int thesis_id;
+	private int thesisId;
 	
 	public String execute()
 	{
@@ -21,12 +21,14 @@ public class SendInvitationModalAction extends ActionSupport{
 		this.email = email;
 	}
 
-	public int getThesis_id() {
-		return thesis_id;
+
+
+	public int getThesisId() {
+		return thesisId;
 	}
 
-	public void setThesis_id(int thesis_id) {
-		this.thesis_id = thesis_id;
+	public void setThesisId(int thesisId) {
+		this.thesisId = thesisId;
 	}
 	
 
