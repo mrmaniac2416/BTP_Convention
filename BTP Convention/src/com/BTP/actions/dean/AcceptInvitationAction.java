@@ -1,8 +1,12 @@
 package com.BTP.actions.dean;
 
+import org.apache.struts2.convention.annotation.InterceptorRef;
+
 import com.BTP.services.DeanService;
 import com.opensymphony.xwork2.ActionSupport;
 
+
+@InterceptorRef("defaultStack")
 public class AcceptInvitationAction extends ActionSupport{
 	private String token;
 	DeanService deanService = new DeanService();
