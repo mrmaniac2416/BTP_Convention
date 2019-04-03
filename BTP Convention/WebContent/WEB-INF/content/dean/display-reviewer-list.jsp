@@ -94,6 +94,7 @@
 			<th>Contact No.</th>
 			<th>Email</th>
 			<th>Mail Sent Date</th>
+			<th>Accept</th>
 		</tr>
 
 		<s:iterator value="abroadReviewers" var="abroadreviewers">
@@ -118,6 +119,7 @@
 					</sj:a></td>
 
 				<td><s:property value="#abroadreviewers[5]" /></td>
+				
 			</tr>
 
 		</s:iterator>

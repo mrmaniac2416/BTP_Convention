@@ -30,7 +30,7 @@ $.subscribe('complete', function(event,data) {
 
 <div id="successMsg">
 <s:form action="send-invitation-mail">
-			<s:hidden value="%{email}" name="email_id" />
+			<s:hidden value="%{email}" name="email" />
 			<s:hidden value="%{thesis_id}" name="thesis_id" />
 			<s:textarea label="Body" name="body"></s:textarea>
 			<sj:submit loadingText="Sending Email..." targets="successMsg" onSuccessTopics="complete"></sj:submit>
