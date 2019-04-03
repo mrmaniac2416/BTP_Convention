@@ -91,14 +91,7 @@ $.subscribe('error', function(event,data) {
 
  <div id="result">
 	<s:form id="emailForm" action="send-invitation-mail" theme="bootstrap" cssClass="form-horizontal">
-		<%-- <s:textfield key="user.name" label="Name" />
-		<s:textfield key="email" label="Email2" />
-		<s:textfield key="user.email" label="Email" />
-		<s:textfield key="user.contact" label="Contact" />
-		<s:select label="Type" headerKey="-1"
-			headerValue="Select reviewer type"
-			list="#{'indian':'indian', 'abroad':'abroad'}"
-			key="user.type"  /> --%>
+		
 		<s:hidden value="%{email}" name="email" /> 
 		<s:textarea label="Body" name="body" />
 		<s:hidden value="%{thesisId}" name="thesisId" />

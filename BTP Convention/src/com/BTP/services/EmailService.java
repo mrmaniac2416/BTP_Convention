@@ -24,7 +24,7 @@ import com.BTP.JPA.thesisreviewer;
 public class EmailService {
 	
 	private String from="pdhruv1109@gmail.com";
-	private String password="ms1234m";
+	private String password="ms1234ms";
 	static Properties properties = new Properties();
 	static {
 		properties.put("mail.smtp.host", "smtp.gmail.com");

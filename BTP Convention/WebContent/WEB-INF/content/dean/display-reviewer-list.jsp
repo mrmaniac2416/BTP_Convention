@@ -86,7 +86,7 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 						<s:property value="#indianreviewers[4]" />
 					</sj:a></td>
 
-				<td><s:property value="#indianreviewers[5]" /></td>
+				<td><s:date name="#indianreviewers[5]" format="dd,MMMMM yyyy" /></td>
 			</tr>
 
 		</s:iterator>
@@ -126,8 +126,8 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 				<td><sj:a openDialog="myclickdialog" href='%{email_url}'>
 						<s:property value="#abroadreviewers[4]" />
 					</sj:a></td>
-
-				<td><s:property value="#abroadreviewers[5]" /></td>
+                    
+				<td><s:date name="#abroadreviewers[5]" format="dd,MMMMM yyyy" /></td>
 
 			</tr>
 
