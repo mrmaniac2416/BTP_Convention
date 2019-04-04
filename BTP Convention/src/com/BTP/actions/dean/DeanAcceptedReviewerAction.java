@@ -1,5 +1,8 @@
 package com.BTP.actions.dean;
 
-public class DeanAcceptedReviewerAction {
+import com.opensymphony.xwork2.ActionSupport;
+
+public class DeanAcceptedReviewerAction extends ActionSupport{
+	
 
 }

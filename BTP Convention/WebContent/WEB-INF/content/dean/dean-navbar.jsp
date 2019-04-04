@@ -11,7 +11,11 @@
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#deanHomePage_url"/>'>Home</a></li>
 
-			<s:url action="display-reviewer-list" var="reviewerlist_url"></s:url>
+			<s:url action="display-reviewer-list" var="reviewerlist_url">
+				<s:param name="thesisId">
+					<%= session.getAttribute("thesisId")  %>
+				</s:param>
+			</s:url>
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#reviewerlist_url"/>'>Reviewer List</a></li>
 
@@ -29,7 +33,14 @@
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#"/>'>Reviewed</a></li>
 		</ul>
+		
+		
 		<ul class="navbar-nav ml-auto">
+		
+		<s:url action="#" var="#"></s:url>
+			<li class="nav-item margin"><a class="nav-link fontColor"
+				href='<s:property value = "#"/>'>Email</a></li>
+				
 			<s:url namespace="/" action="logout" var="logout_url"></s:url>
 
 			<li class="nav-item"><a class="nav-link colorGreen fontColor"
@@ -37,6 +48,5 @@
 
 		</ul>
 	</nav>
-
 </body>
 </html>
