@@ -41,10 +41,9 @@
 
 		</s:iterator>
 	</table>
-	<br/>
-	<br/>
-	<div><s:property value="thesis_id"/></div>
-	
+	<br />
+	<br />
+
 	<h2>Indian Reviewer</h2>
 	<table>
 		<tr>
@@ -54,6 +53,7 @@
 			<th>Contact No.</th>
 			<th>Email</th>
 			<th>Mail Sent Date</th>
+			<th>Accept</th>
 		</tr>
 
 		<s:iterator value="indianReviewers" var="indianreviewers">
@@ -69,7 +69,7 @@
 						<s:property value="#indianreviewers[4]" />
 					</s:param>
 					<s:param name="thesis_id">
-					<s:property value="thesis_id" />
+						<s:property value="thesis_id" />
 					</s:param>
 				</s:url>
 
@@ -78,6 +78,14 @@
 					</sj:a></td>
 
 				<td><s:property value="#indianreviewers[5]" /></td>
+				
+				<td><s:if test="#indianreviewers[6].equals('revieweraccepted')">
+						<a>Accept</a>
+					</s:if> 
+					<s:elseif test="#indianreviewers[6].equals('deanaccepted')">
+						<div>Accepted</div>
+					</s:elseif></td>
+				
 			</tr>
 
 		</s:iterator>
@@ -110,7 +118,7 @@
 						<s:property value="#abroadreviewers[4]" />
 					</s:param>
 					<s:param name="thesis_id">
-					<s:property value="thesis_id" />
+						<s:property value="thesis_id" />
 					</s:param>
 				</s:url>
 
@@ -119,7 +127,13 @@
 					</sj:a></td>
 
 				<td><s:property value="#abroadreviewers[5]" /></td>
-				
+
+				<td><s:if test="#abroadreviewers[6].equals('revieweraccepted')">
+						<a>Accept</a>
+					</s:if> 
+					<s:elseif test="#abroadreviewers[6].equals('deanaccepted')">
+						<div>Accepted</div>
+					</s:elseif></td>
 			</tr>
 
 		</s:iterator>
@@ -128,7 +142,7 @@
 	<sj:dialog id="myclickdialog" autoOpen="false" modal="true"
 		title="Give Body">
 
-		
+
 	</sj:dialog>
 
 
