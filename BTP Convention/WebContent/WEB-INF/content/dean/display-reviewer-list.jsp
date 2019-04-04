@@ -18,6 +18,13 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <sj:head jqueryui="true" />
+<script>
+$.subscribe('dialogclosetopic', function(event,ui) {
+	console.log('run topic on dialog close');
+	window.location.reload(true);
+});
+
+</script>
 <title></title>
 </head>
 <body>
@@ -68,16 +75,17 @@
 					<s:param name="email">
 						<s:property value="#indianreviewers[4]" />
 					</s:param>
-					<s:param name="thesis_id">
-						<s:property value="thesis_id" />
+
+					<s:param name="thesisId">
+						<s:property value="thesisId" />
 					</s:param>
 				</s:url>
 
 				<td><sj:a openDialog="myclickdialog" href='%{email_url}'>
 						<s:property value="#indianreviewers[4]" />
 					</sj:a></td>
-
-				<td><s:property value="#indianreviewers[5]" /></td>
+				
+				<td><s:date name="#indianreviewers[5]" format="dd,MMMMM yyyy" /></td>
 				
 				<td><s:if test="#indianreviewers[6].equals('revieweraccepted')">
 						<a>Accept</a>
@@ -85,6 +93,7 @@
 					<s:elseif test="#indianreviewers[6].equals('deanaccepted')">
 						<div>Accepted</div>
 					</s:elseif></td>
+				
 				
 			</tr>
 
@@ -117,16 +126,20 @@
 					<s:param name="email">
 						<s:property value="#abroadreviewers[4]" />
 					</s:param>
-					<s:param name="thesis_id">
-						<s:property value="thesis_id" />
+
+					<s:param name="thesisId">
+						<s:property value="thesisId" />
 					</s:param>
 				</s:url>
 
 				<td><sj:a openDialog="myclickdialog" href='%{email_url}'>
 						<s:property value="#abroadreviewers[4]" />
 					</sj:a></td>
-
-				<td><s:property value="#abroadreviewers[5]" /></td>
+                    
+				<td><s:date name="#abroadreviewers[5]" format="dd,MMMMM yyyy" /></td>
+				
+				
+				
 
 				<td><s:if test="#abroadreviewers[6].equals('revieweraccepted')">
 						<a>Accept</a>
@@ -140,7 +153,8 @@
 	</table>
 
 	<sj:dialog id="myclickdialog" autoOpen="false" modal="true"
-		title="Give Body">
+		title="Give Body" showEffect="slide" hideEffect="slide"
+		onCloseTopics="dialogclosetopic">
 
 
 	</sj:dialog>

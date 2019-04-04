@@ -1,22 +1,32 @@
 package com.BTP.actions.dean;
 
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Actions;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.BTP.services.EmailService;
 import com.opensymphony.xwork2.ActionSupport;
 
-
-@Result(name="success", location="display-reviewer-list", type="redirectAction",params= {"thesis_id", "${thesis_id}"})
+@ParentPackage(value="custom3")
 public class SendInvitationMailAction extends ActionSupport{
 	private String subject;
 	private String body;
+
 	private String email;
-	private int thesis_id;
+	private int thesisId;
 	EmailService emailService = new EmailService();
 	
-	
+	 @Actions( {
+		    @Action(value = "send-invitation-mail", results = {
+		      @Result(name = "success", type = "json"),
+		      @Result(name="error",type="json",params= {"errorCode","400"})
+		    })
+		  })
 	public String execute() {
-		return emailService.sendEmail(email, subject, body, thesis_id);
+
+		 System.out.println("in send inviataion mail");
+		 return emailService.sendEmail(email, subject, body, thesisId);
 	}
 
 	public String getSubject() {
@@ -43,12 +53,12 @@ public class SendInvitationMailAction extends ActionSupport{
 		this.email = email;
 	}
 
-	public int getThesis_id() {
-		return thesis_id;
+	public int getThesisId() {
+		return thesisId;
 	}
 
-	public void setThesis_id(int thesis_id) {
-		this.thesis_id = thesis_id;
+	public void setThesisId(int thesis_id) {
+		this.thesisId = thesis_id;
 	}
 
 }

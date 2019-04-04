@@ -36,6 +36,11 @@
 	<package name="custom2" extends="struts-default,json-default,default"
 		namespace="/">
 	</package>
+	
+	
+	<package name="custom3" extends="struts-default,json-default,default"
+		namespace="/dean">
+	</package>
 
 
 	

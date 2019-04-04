@@ -44,7 +44,7 @@
 					
 					
 					<s:url action="display-reviewer-list" var="reviewer_url" escapeAmp="false">
-						<s:param name="thesis_id">
+						<s:param name="thesisId">
 							<s:property value="#thesis[0]" />
 						</s:param>
 					</s:url>
