@@ -7,6 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/navbar.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/home-page.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -28,6 +30,8 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 <title></title>
 </head>
 <body>
+
+<s:include value="dean-navbar.jsp" />
 
 	<table>
 		<tr>
@@ -88,7 +92,15 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 				<td><s:date name="#indianreviewers[5]" format="dd,MMMMM yyyy" /></td>
 				
 				<td><s:if test="#indianreviewers[6].equals('revieweraccepted')">
-						<a>Accept</a>
+				<s:url action="accept-reviewer" var="accept_url" escapeAmp="false" >
+				<s:param name="reviewerEmail">
+						<s:property value="#indianreviewers[4]" />
+					</s:param>
+					<s:param name="thesisId">
+						<s:property value="thesisId" />
+					</s:param>
+					</s:url>
+						<a href='<s:property value = "#accept_url"/>'>Accept</a>
 					</s:if> 
 					<s:elseif test="#indianreviewers[6].equals('deanaccepted')">
 						<div>Accepted</div>
@@ -141,8 +153,16 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 				
 				
 
-				<td><s:if test="#abroadreviewers[6].equals('revieweraccepted')">
-						<a>Accept</a>
+			<td><s:if test="#abroadreviewers[6].equals('revieweraccepted')">
+						<s:url action="accept-reviewer" var="accept_url" escapeAmp="false" >
+				<s:param name="reviewerEmail">
+						<s:property value="#abroadreviewers[4]" />
+					</s:param>
+					<s:param name="thesisId">
+						<s:property value="thesisId" />
+					</s:param>
+					</s:url>
+						<a href='<s:property value = "#accept_url"/>'>Accept</a>
 					</s:if> 
 					<s:elseif test="#abroadreviewers[6].equals('deanaccepted')">
 						<div>Accepted</div>
