@@ -37,13 +37,32 @@ public class LoginInterceptor implements Interceptor {
 		// TODO Auto-generated method stub
 		
 		Map<String,Object> session=invocation.getInvocationContext().getSession();
-		if(session.isEmpty() || session.get("userId")==null)
+		String namespace=invocation.getProxy().getNamespace();
+		String usertype=(String) session.get("usertype");
+		String actionName=invocation.getInvocationContext().getName();
+		System.out.println("***************************");
+		
+		System.out.println("in interceptor");
+		System.out.println("action name " + invocation.getInvocationContext().getName());
+		namespace=namespace.substring(1);
+		System.out.println("namespace " + namespace);
+		System.out.println("usertype from session " + session.get("usertype"));
+		System.out.println("string usertype from session " + usertype);
+		System.out.println("***************************");
+		if(session.isEmpty())
 		{
+			return "login-page";
+		}
+		else if(!usertype.equals(namespace) && !actionName.equals("logout"))
+		{
+			session.clear();
 			return "login-page";
 		}
 		else {
 			return invocation.invoke();
 		}
+		
+		
 		
 		
 	}

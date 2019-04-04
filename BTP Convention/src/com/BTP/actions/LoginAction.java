@@ -20,7 +20,7 @@ import com.BTP.services.LoginService;
 @Results({
 	@Result(name="student", location="student/home-page",type="redirectAction"),
 	@Result(name="supervisor",location="supervisor/home-page",type="redirectAction"),
-	@Result(name="deanAP",location="dean/home-page",type="redirectAction")
+	@Result(name="dean",location="dean/home-page",type="redirectAction")
 	})
 @ParentPackage(value = "custom2")
 @InterceptorRef("jsonValidationWorkflowStack")
@@ -79,6 +79,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
         System.out.println((String)result[3]);
         System.out.println("in login action");
 		sessionMap.put("userId", userId);
+		sessionMap.put("usertype",(String)result[3]);
 		return (String)result[3];
 		
 	}

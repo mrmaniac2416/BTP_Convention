@@ -17,7 +17,12 @@ public class LogoutAction extends ActionSupport{
 	
 	public String execute()
 	{
+		session.remove("usertype");
 		session.clear();
+		System.out.println("***************************");
+		System.out.println("in logout");
+		System.out.println("in logout usertype " + session.get("usertype"));
+		System.out.println("****************************");
 		
 		return SUCCESS;
 	}
