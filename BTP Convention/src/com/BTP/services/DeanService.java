@@ -94,4 +94,26 @@ public class DeanService {
 		sf.close();
 	}
 
+	public void acceptReviewer(int thesisId,String email)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(thesisreviewer.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session sessionQuery = sf.openSession();
+
+		Transaction tx = sessionQuery.beginTransaction();
+		String status="deanaccepted";
+		Query q = sessionQuery.createQuery("update thesisreviewer set status=:status where thesisreviewerId.thesisId=:thesisId and thesisreviewerId.reviewerId=:email");
+		q.setParameter("thesisId", thesisId);
+		q.setParameter("email", email);
+		q.setParameter("status", status);
+
+		q.executeUpdate();
+
+		tx.commit();
+		sessionQuery.close();
+		sf.close();
+	}
+
 }
