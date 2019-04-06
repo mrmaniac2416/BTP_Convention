@@ -42,6 +42,7 @@ public class LoginInterceptor implements Interceptor {
 		String actionName=invocation.getInvocationContext().getName();
 		System.out.println("***************************");
 		
+		
 		System.out.println("in interceptor");
 		System.out.println("action name " + invocation.getInvocationContext().getName());
 		namespace=namespace.substring(1);
