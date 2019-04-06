@@ -1,5 +1,6 @@
 package com.BTP.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -104,16 +105,62 @@ public class DeanService {
 
 		Transaction tx = sessionQuery.beginTransaction();
 		String status="deanaccepted";
-		Query q = sessionQuery.createQuery("update thesisreviewer set status=:status where thesisreviewerId.thesisId=:thesisId and thesisreviewerId.reviewerId=:email");
+		Date date=new Date();
+		Query q = sessionQuery.createQuery("update thesisreviewer set status=:status, accepteddate=:date where thesisreviewerId.thesisId=:thesisId and thesisreviewerId.reviewerId=:email");
 		q.setParameter("thesisId", thesisId);
 		q.setParameter("email", email);
 		q.setParameter("status", status);
-
+		q.setParameter("date", date);
 		q.executeUpdate();
 
 		tx.commit();
 		sessionQuery.close();
 		sf.close();
+	}
+	
+	public List<Object[]> fetchAcceptedIndianReviewers(int thesis_id)
+	{
+
+		Configuration con = new Configuration().configure().addAnnotatedClass(reviewer.class).addAnnotatedClass(thesisreviewer.class).addAnnotatedClass(reviewerPK.class).addAnnotatedClass(thesisreviewerPK.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+		String type="indian";
+		String status="deanaccepted";
+		Transaction tx = session.beginTransaction();
+		Query q = session.createQuery("select r.name,r.contact,r.reviewerId.email,tr.accepteddate from reviewer r inner join thesisreviewer tr on r.reviewerId.email=tr.thesisreviewerId.reviewerId and r.reviewerId.supervisor_id=tr.supervisorId where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type and tr.status=:status");
+		q.setParameter("thesis_id", thesis_id);
+		q.setParameter("type", type);
+		q.setParameter("status", status);
+		List<Object[]> indianReviewers = (List<Object[]>) q.list();
+		tx.commit();
+		session.close();
+		sf.close();
+		return indianReviewers;
+	}
+
+
+	public List<Object[]> fetchAcceptedAbroadReviewers(int thesis_id)
+	{
+
+		Configuration con = new Configuration().configure().addAnnotatedClass(reviewer.class).addAnnotatedClass(thesisreviewer.class).addAnnotatedClass(reviewerPK.class).addAnnotatedClass(thesisreviewerPK.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+		String type="abroad";
+		String status="deanaccepted";
+		Transaction tx = session.beginTransaction();
+		Query q = session.createQuery("select r.name,r.contact,r.reviewerId.email,tr.accepteddate from reviewer r inner join thesisreviewer tr on r.reviewerId.email=tr.thesisreviewerId.reviewerId and r.reviewerId.supervisor_id=tr.supervisorId where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type and tr.status=:status");
+		q.setParameter("thesis_id", thesis_id);
+		q.setParameter("type", type);
+		q.setParameter("status", status);
+		List<Object[]> abroadReviewers = (List<Object[]>) q.list();
+		tx.commit();
+		session.close();
+		sf.close();
+		return abroadReviewers;
 	}
 
 }
