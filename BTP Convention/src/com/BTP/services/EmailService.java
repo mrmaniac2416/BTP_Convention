@@ -11,6 +11,7 @@ import java.util.Random;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import javax.mail.Store;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -72,6 +73,7 @@ public class EmailService {
 			message.setText(body + "   http://localhost:8080/BTP_Convention/dean/accept-invitation.action?token=" + strDate);
 			Transport.send(message);
 			
+		
 			
 			Date dat=new Date();
 	        
@@ -108,6 +110,54 @@ public class EmailService {
 			e.printStackTrace();
 		}
 		return ret;
+	}
+	
+	public boolean authenticate(String email,String password)
+	{
+		
+		
+		try {
+			
+			Properties props = System.getProperties();
+		    props.setProperty("mail.store.protocol", "imaps");
+		    
+		    Session session = Session.getDefaultInstance(props, null);
+			
+
+			Store store = session.getStore("imaps");
+			store.connect("imap.gmail.com", email, password);
+			
+			
+			
+		
+			
+		
+			
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public void updateDeanEmailDetails(deanaccountdetails deanaccountdetails)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(deanaccountdetails.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		org.hibernate.Session session = sf.openSession();
+
+		Transaction tx = session.beginTransaction();
+		
+		session.update(deanaccountdetails);;
+		
+		tx.commit();
+		session.close();
+		sf.close();
 	}
 	
 	public void generateUser(int thesisId, String email)

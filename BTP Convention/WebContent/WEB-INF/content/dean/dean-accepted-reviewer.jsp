@@ -70,7 +70,7 @@
 						<s:property value="#indianreviewers[2]" />
 					</s:param>
 				</s:url>
-				<td><a href='<s:property value = "#generateUser_url"/>'>Accept</a></td>
+				<td><a href='<s:property value = "#generateUser_url"/>'>Generate</a></td>
 				
 				
 			</tr>
