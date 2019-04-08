@@ -96,13 +96,19 @@
 					<td><s:property value="#reviewer_element" /></td>
 				</s:iterator>
 				<td><s:date name="#abroadreviewers[3]" format="dd,MMMMM yyyy" /></td>
-				<s:url action="generate-user" var="generateUser_url"
-					escapeAmp="false">
-					<s:param name="email">
-						<s:property value="#abroadreviewers[2]" />
-					</s:param>
-				</s:url>
-				<td><a href='<s:property value = "#generateUser_url"/>'>Generate</a></td>
+				<s:url namespace="/" action="download-review" var="review_url" escapeAmp="false">
+						<s:param name="thesis_id">
+							<s:property value="#session.thesisId" />
+						</s:param>
+						<s:param name="thesis_title">
+							<s:property value="thesisDetails[0]" />
+						</s:param>
+						<s:param name="reviewerId">
+							<s:property value="#abroadreviewers[2]" />
+						</s:param>
+					</s:url>
+					<td><a href='<s:property value = "#review_url"/>'
+						target="_blank">View</a></td>
 				
 				
 			</tr>
