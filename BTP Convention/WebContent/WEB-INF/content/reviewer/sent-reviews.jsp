@@ -76,7 +76,7 @@
 						
 					
 					
-					<s:url namespace="/reviewer" action="download-review" var="review_url" escapeAmp="false">
+					<s:url namespace="/" action="download-review" var="review_url" escapeAmp="false">
 						<s:param name="thesis_id">
 							<s:property value="#sentReview[6]" />
 						</s:param>

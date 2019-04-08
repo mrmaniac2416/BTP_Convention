@@ -1,4 +1,4 @@
-package com.BTP.actions.reviewer;
+package com.BTP.actions;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
