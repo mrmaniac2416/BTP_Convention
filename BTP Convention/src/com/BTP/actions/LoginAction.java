@@ -20,7 +20,8 @@ import com.BTP.services.LoginService;
 @Results({
 	@Result(name="student", location="student/home-page",type="redirectAction"),
 	@Result(name="supervisor",location="supervisor/home-page",type="redirectAction"),
-	@Result(name="dean",location="dean/home-page",type="redirectAction")
+	@Result(name="dean",location="dean/home-page",type="redirectAction"),
+	@Result(name="reviewer",location="reviewer/pending-reviews",type="redirectAction")
 	})
 @ParentPackage(value = "custom2")
 @InterceptorRef("jsonValidationWorkflowStack")

@@ -15,7 +15,7 @@ import com.BTP.services.LoginService;
 import com.BTP.services.UploadSynopsisService;
 import com.BTP.services.UploadThesisService;
 
-@InterceptorRef(value="defaultStack", params= {"fileUpload.maximumSize","10485760","fileUpload.allowedTypes","application/pdf"})
+@InterceptorRef(value="loginStack", params= {"fileUpload.maximumSize","10485760","fileUpload.allowedTypes","application/pdf"})
 @Result(name= {"success","input"},location="home-page.jsp")
 public class SubmitThesisAction extends ActionSupport {
 	

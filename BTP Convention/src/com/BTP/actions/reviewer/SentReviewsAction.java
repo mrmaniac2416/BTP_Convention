@@ -7,9 +7,19 @@ import com.BTP.services.ReviewerService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class PendingReviewsAction extends ActionSupport{
+public class SentReviewsAction extends ActionSupport{
 	
-	private List<Object[]> pendingReviewsDetails;
+	private List<Object[]> sentReviewsDetails;
+	public List<Object[]> getSentReviewsDetails() {
+		return sentReviewsDetails;
+	}
+
+
+
+	public void setSentReviewsDetails(List<Object[]> sentReviewsDetails) {
+		this.sentReviewsDetails = sentReviewsDetails;
+	}
+
 	ReviewerService reviewerService=new ReviewerService();
 	private String reviewerId;
 
@@ -18,21 +28,14 @@ public class PendingReviewsAction extends ActionSupport{
 	public String execute()
 	{
 		
-		System.out.println("in action");
+		System.out.println("in send review action");
 		reviewerId=(String)session.get("userId");
-		this.pendingReviewsDetails=reviewerService.generatePendingReviews(reviewerId);
-		System.out.println(this.pendingReviewsDetails.size());
+		this.sentReviewsDetails=reviewerService.generateSentReviews(reviewerId);
+		System.out.println(this.sentReviewsDetails.size());
 		return SUCCESS;
 	}
 	
 	
-	public List<Object[]> getPendingReviewsDetails() {
-		return pendingReviewsDetails;
-	}
-
-	public void setPendingReviewsDetails(List<Object[]> pendingReviewsDetails) {
-		this.pendingReviewsDetails = pendingReviewsDetails;
-	}
 
 	public String getReviewerId() {
 		return reviewerId;
@@ -41,7 +44,6 @@ public class PendingReviewsAction extends ActionSupport{
 	public void setReviewerId(String reviewerId) {
 		this.reviewerId = reviewerId;
 	}
-
 
 
 

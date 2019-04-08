@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.BTP.services.LoginService;
 import com.BTP.services.UploadSynopsisService;
 
-@InterceptorRef(value="defaultStack", params= {"fileUpload.maximumSize","10485760","fileUpload.allowedTypes","application/pdf"})
+@InterceptorRef(value="loginStack", params= {"fileUpload.maximumSize","10485760","fileUpload.allowedTypes","application/pdf"})
 @Result(name= {"success","input"},location="home-page.jsp")
 public class SubmitSynopsisAction extends ActionSupport {
 

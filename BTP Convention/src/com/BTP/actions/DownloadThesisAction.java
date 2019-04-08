@@ -22,7 +22,7 @@ import com.BTP.JPA.thesis;
 
 
 @Result(name="success",type="stream",params= {"contentType","application/pdf","inputName","inputStream","contentDisposition"
-		,"filename=fileName","bufferSize","1024"})
+		,"filename=${fileName}","bufferSize","1024"})
 public class DownloadThesisAction extends ActionSupport{
 
 	private int thesis_id;

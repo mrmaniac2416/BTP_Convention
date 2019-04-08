@@ -54,7 +54,7 @@ public class LoginInterceptor implements Interceptor {
 		{
 			return "login-page";
 		}
-		else if(!usertype.equals(namespace) && !actionName.equals("logout"))
+		else if(!usertype.equals(namespace) && !actionName.equals("logout") && !namespace.isEmpty())
 		{
 			session.clear();
 			return "login-page";
