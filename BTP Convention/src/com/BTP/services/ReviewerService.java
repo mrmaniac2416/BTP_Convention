@@ -97,7 +97,7 @@ public class ReviewerService {
 		
 		String status="reviewSent";
 		
-		Query q = session.createQuery("select u.user_name,t.thesis_name,su.user_name,t.submitted_date,r.submissiondate,s.student_id,t.thesis_id from thesisreviewer tr "
+		Query q = session.createQuery("select u.user_name,t.thesis_name,su.user_name,t.submitted_date,r.submissiondate,s.student_id,t.thesis_id,r.reviewId.email_id from thesisreviewer tr "
 				+ "inner join thesis t on tr.thesisreviewerId.thesisId=t.thesis_id "
 				+ "inner join student s on s.thesis_id=t.thesis_id "
 				+ "inner join users u on s.student_id=u.user_id "

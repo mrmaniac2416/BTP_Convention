@@ -28,6 +28,7 @@ public class DownloadReviewAction extends ActionSupport{
 	private InputStream inputStream;
 	private String fileName;
 	private String thesis_title;
+	private String reviewerId;
 	Map<String, Object> session = ActionContext.getContext().getSession();
 	
 	
@@ -35,7 +36,6 @@ public class DownloadReviewAction extends ActionSupport{
 	public String execute() throws IOException
 	{
 		HttpServletResponse response = ServletActionContext.getResponse();
-		String reviewerId=(String)session.get("userId");
 		
 		
 		
@@ -67,6 +67,14 @@ public class DownloadReviewAction extends ActionSupport{
         
         
         return SUCCESS;
+	}
+
+	public String getReviewerId() {
+		return reviewerId;
+	}
+
+	public void setReviewerId(String reviewerId) {
+		this.reviewerId = reviewerId;
 	}
 
 	public int getThesis_id() {

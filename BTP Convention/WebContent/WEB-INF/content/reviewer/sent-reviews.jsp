@@ -83,6 +83,9 @@
 						<s:param name="thesis_title">
 							<s:property value="#sentReview[1]" />
 						</s:param>
+						<s:param name="reviewerId">
+							<s:property value="#sentReview[7]" />
+						</s:param>
 					</s:url>
 					<td><a href='<s:property value = "#review_url"/>'
 						target="_blank"> Download Review</a></td>
