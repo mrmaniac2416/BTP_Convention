@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ThesisReviewingAction extends ActionSupport{
 	Map<String, Object> session = ActionContext.getContext().getSession();
-	private List<Object[]> thesisDetails;
+	private Object[] thesisDetails;
 	private List<Object[]> indianReviewers;
 	private List<Object[]> abroadReviewers;
 	DeanService deanService = new DeanService();
@@ -23,13 +23,19 @@ public class ThesisReviewingAction extends ActionSupport{
 		return SUCCESS;
 	}
 
-	public List<Object[]> getThesisDetails() {
+	
+
+	public Object[] getThesisDetails() {
 		return thesisDetails;
 	}
 
-	public void setThesisDetails(List<Object[]> thesisDetails) {
+
+
+	public void setThesisDetails(Object[] thesisDetails) {
 		this.thesisDetails = thesisDetails;
 	}
+
+
 
 	public List<Object[]> getIndianReviewers() {
 		return indianReviewers;

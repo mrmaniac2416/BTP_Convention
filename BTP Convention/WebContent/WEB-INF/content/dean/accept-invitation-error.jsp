@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1><center>Successfully Accepted</center></h1>
+<h1><center>Link is invalid</center></h1>
 </body>
 </html>

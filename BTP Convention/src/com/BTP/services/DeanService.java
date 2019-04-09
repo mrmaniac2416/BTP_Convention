@@ -1,5 +1,6 @@
 package com.BTP.services;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -74,7 +75,7 @@ public class DeanService {
 	}
 
 
-	public void acceptInvitation(String token)
+	public String acceptInvitation(String token)
 	{
 		Configuration con = new Configuration().configure().addAnnotatedClass(thesisreviewer.class);
 
@@ -83,16 +84,21 @@ public class DeanService {
 		Session sessionQuery = sf.openSession();
 
 		Transaction tx = sessionQuery.beginTransaction();
+		String preStatus="selected";
 		String status="revieweraccepted";
-		Query q = sessionQuery.createQuery("update thesisreviewer set status=:status where token=:token");
+		Query q = sessionQuery.createQuery("update thesisreviewer set status=:status where token=:token and status=:preStatus");
 		q.setParameter("token", token);
 		q.setParameter("status", status);
-
-		q.executeUpdate();
+		q.setParameter("preStatus", preStatus);
+		int num = q.executeUpdate();
 
 		tx.commit();
 		sessionQuery.close();
 		sf.close();
+		if(num==1)
+			return "success";
+		else
+			return "error";
 	}
 
 	public void acceptReviewer(int thesisId,String email)
@@ -263,4 +269,25 @@ public class DeanService {
 		
 	}
 
+	public List<Object[]> ArchiveThesis()
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(users.class).addAnnotatedClass(student.class).addAnnotatedClass(thesis.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+
+		Transaction tx = session.beginTransaction();
+		String status[] = {"reviewersSelected","reviewing","reviewed"};
+		List<String> list = Arrays.asList(status);
+		Query q = session.createQuery("select t.thesis_id,t.thesis_name,u.user_name,nm.user_name,t.submitted_date,t.status from student s inner join users u on u.user_id=s.student_id inner join users nm on nm.user_id=s.supervisor_id inner join thesis t on t.thesis_id=s.thesis_id where t.status IN :list");
+		q.setParameterList("list", list);
+		List<Object[]> deanProfile = (List<Object[]>) q.list();
+		
+		
+		tx.commit();
+		session.close();
+		sf.close();
+		return deanProfile;
+	}
 }

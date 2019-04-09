@@ -31,7 +31,7 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 </head>
 <body>
 
-<s:include value="dean-navbar.jsp" />
+	<s:include value="dean-navbar.jsp" />
 
 	<table>
 		<tr>
@@ -39,14 +39,15 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 			<th>Student Name</th>
 			<th>Supervisor</th>
 		</tr>
+		<tr>
+			<s:iterator value="thesisDetails" var="detail">
 
-		<s:iterator value="thesisDetails" var="detail">
-
-					<td><s:property value="#thesis_element" /></td>
+				<td><s:property value="#detail" /></td>
 
 
 
-		</s:iterator>
+			</s:iterator>
+		</tr>
 	</table>
 	<br />
 	<br />
@@ -81,28 +82,39 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 					</s:param>
 				</s:url>
 
-				<td><sj:a openDialog="myclickdialog" href='%{email_url}'>
+				<td><s:if test="#indianreviewers[6].equals('selected')">
+						<sj:a openDialog="myclickdialog" href='%{email_url}'>
+							<s:property value="#indianreviewers[4]" />
+						</sj:a>
+					</s:if> <s:else>
 						<s:property value="#indianreviewers[4]" />
-					</sj:a></td>
-				
-				<td><s:date name="#indianreviewers[5]" format="dd,MMMMM yyyy" /></td>
-				
+					</s:else></td>
+
+				<td><s:if test="#indianreviewers[5]!=null">
+						<s:date name="#indianreviewers[5]" format="dd,MMMMM yyyy" />
+					</s:if> <s:else>
+						<b>&mdash;</b>
+					</s:else></td>
+
 				<td><s:if test="#indianreviewers[6].equals('revieweraccepted')">
-				<s:url action="accept-reviewer" var="accept_url" escapeAmp="false" >
-				<s:param name="reviewerEmail">
-						<s:property value="#indianreviewers[4]" />
-					</s:param>
-					<s:param name="thesisId">
-						<s:property value="thesisId" />
-					</s:param>
-					</s:url>
+						<s:url action="accept-reviewer" var="accept_url" escapeAmp="false">
+							<s:param name="reviewerEmail">
+								<s:property value="#indianreviewers[4]" />
+							</s:param>
+							<s:param name="thesisId">
+								<s:property value="thesisId" />
+							</s:param>
+						</s:url>
 						<a href='<s:property value = "#accept_url"/>'>Accept</a>
-					</s:if> 
-					<s:elseif test="#indianreviewers[6].equals('deanaccepted')">
+					</s:if> <s:elseif
+						test="!(#indianreviewers[6].equals('revieweraccepted') || #indianreviewers[6].equals('selected'))">
 						<div>Accepted</div>
-					</s:elseif></td>
-				
-				
+					</s:elseif> <s:elseif test="#indianreviewers[5]!=null">
+					Mail Sent</s:elseif> <s:else>
+						<b>&mdash;</b>
+					</s:else></td>
+
+
 			</tr>
 
 		</s:iterator>
@@ -140,33 +152,45 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 					</s:param>
 				</s:url>
 
-				<td><sj:a openDialog="myclickdialog" href='%{email_url}'>
+				<td><s:if test="#abroadreviewers[6].equals('selected')">
+						<sj:a openDialog="myclickdialog" href='%{email_url}'>
+							<s:property value="#abroadreviewers[4]" />
+						</sj:a>
+					</s:if> <s:else>
 						<s:property value="#abroadreviewers[4]" />
-					</sj:a></td>
-                    
-				<td><s:date name="#abroadreviewers[5]" format="dd,MMMMM yyyy" /></td>
-				
-				
-				
+					</s:else></td>
 
-			<td><s:if test="#abroadreviewers[6].equals('revieweraccepted')">
-						<s:url action="accept-reviewer" var="accept_url" escapeAmp="false" >
-				<s:param name="reviewerEmail">
-						<s:property value="#abroadreviewers[4]" />
-					</s:param>
-					<s:param name="thesisId">
-						<s:property value="thesisId" />
-					</s:param>
-					</s:url>
+				<td><s:if test="#abroadreviewers[5]!=null">
+						<s:date name="#abroadreviewers[5]" format="dd,MMMMM yyyy" />
+					</s:if> <s:else>
+						<b>&mdash;</b>
+					</s:else></td>
+
+
+
+				<td><s:if test="#abroadreviewers[6].equals('revieweraccepted')">
+						<s:url action="accept-reviewer" var="accept_url" escapeAmp="false">
+							<s:param name="reviewerEmail">
+								<s:property value="#abroadreviewers[4]" />
+							</s:param>
+							<s:param name="thesisId">
+								<s:property value="thesisId" />
+							</s:param>
+						</s:url>
 						<a href='<s:property value = "#accept_url"/>'>Accept</a>
-					</s:if> 
-					<s:elseif test="#abroadreviewers[6].equals('deanaccepted')">
+					</s:if> <s:elseif
+						test="!(#abroadreviewers[6].equals('revieweraccepted') || #abroadreviewers[6].equals('selected'))">
 						<div>Accepted</div>
-					</s:elseif></td>
+					</s:elseif> <s:elseif test="#abroadreviewers[5]!=null">
+					Mail Sent</s:elseif> <s:else>
+						<b>&mdash;</b>
+					</s:else></td>
 			</tr>
 
 		</s:iterator>
 	</table>
+	<br/>
+	<br/>
 
 	<sj:dialog id="myclickdialog" autoOpen="false" modal="true"
 		title="Give Body" showEffect="slide" hideEffect="slide"

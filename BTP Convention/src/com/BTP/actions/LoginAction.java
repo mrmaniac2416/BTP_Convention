@@ -81,6 +81,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
         System.out.println("in login action");
 		sessionMap.put("userId", userId);
 		sessionMap.put("usertype",(String)result[3]);
+		sessionMap.put("userName", (String)result[1]);
 		return (String)result[3];
 		
 	}
