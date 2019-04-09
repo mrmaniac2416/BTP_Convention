@@ -31,18 +31,12 @@
 			<th>Student Name</th>
 			<th>Supervisor</th>
 		</tr>
-
+		<tr>
 		<s:iterator value="thesisDetails" var="detail">
-			<tr>
-
-				<s:iterator value="#detail" var="thesis_element">
-					<td><s:property value="#thesis_element" /></td>
-				</s:iterator>
-
-
-			</tr>
-
+				
+					<td><s:property value="#detail" /></td>
 		</s:iterator>
+		</tr>
 	</table>
 	<br />
 	<br />

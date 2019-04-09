@@ -39,14 +39,15 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 			<th>Student Name</th>
 			<th>Supervisor</th>
 		</tr>
-
+		<tr>
 		<s:iterator value="thesisDetails" var="detail">
 
-					<td><s:property value="#thesis_element" /></td>
+					<td><s:property value="#detail" /></td>
 
 
 
 		</s:iterator>
+		</tr>
 	</table>
 	<br />
 	<br />
