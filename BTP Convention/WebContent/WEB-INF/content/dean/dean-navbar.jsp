@@ -29,9 +29,11 @@
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#reviewing_url"/>'>Reviewing</a></li>
 
-			<s:url action="#" var="#"></s:url>
+			<s:url action="display-reviewed" var="displayReviewed_url"></s:url>
 			<li class="nav-item margin"><a class="nav-link fontColor"
-				href='<s:property value = "#"/>'>Reviewed</a></li>
+				href='<s:property value = "#displayReviewed_url"/>'>Reviewed</a></li>
+
+		
 		</ul>
 		
 		

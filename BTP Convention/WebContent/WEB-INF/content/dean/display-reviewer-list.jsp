@@ -41,14 +41,10 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 		</tr>
 
 		<s:iterator value="thesisDetails" var="detail">
-			<tr>
 
-				<s:iterator value="#detail" var="thesis_element">
 					<td><s:property value="#thesis_element" /></td>
-				</s:iterator>
 
 
-			</tr>
 
 		</s:iterator>
 	</table>

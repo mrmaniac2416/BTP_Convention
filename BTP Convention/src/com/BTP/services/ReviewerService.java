@@ -1,5 +1,6 @@
 package com.BTP.services;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -95,16 +96,17 @@ public class ReviewerService {
 
 		Transaction tx = session.beginTransaction();
 		
-		String status="reviewSent";
+		String status[]= {"reviewSent","sentToSupervisor"};
+		List<String> list=Arrays.asList(status);
 		
-		Query q = session.createQuery("select u.user_name,t.thesis_name,su.user_name,t.submitted_date,r.submissiondate,s.student_id,t.thesis_id from thesisreviewer tr "
+		Query q = session.createQuery("select u.user_name,t.thesis_name,su.user_name,t.submitted_date,r.submissiondate,s.student_id,t.thesis_id,r.reviewId.email_id from thesisreviewer tr "
 				+ "inner join thesis t on tr.thesisreviewerId.thesisId=t.thesis_id "
 				+ "inner join student s on s.thesis_id=t.thesis_id "
 				+ "inner join users u on s.student_id=u.user_id "
 				+ "inner join users su on s.supervisor_id=su.user_id "
 				+ "inner join review r on t.thesis_id=r.reviewId.thesis_id "
-				+ "where tr.status=:status and tr.thesisreviewerId.reviewerId=:reviewerId and r.reviewId.email_id=:reviewerId");
-		q.setParameter("status", status);
+				+ "where tr.status IN :list and tr.thesisreviewerId.reviewerId=:reviewerId and r.reviewId.email_id=:reviewerId");
+		q.setParameterList("list", list);
 		q.setParameter("reviewerId", reviewerId);
 		
 		List<Object[]> sentReviews=(List<Object[]>)q.list();

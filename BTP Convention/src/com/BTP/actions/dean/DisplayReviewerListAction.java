@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class DisplayReviewerListAction extends ActionSupport implements SessionAware{
 	
 	private int thesisId;
-	private List<Object[]> thesisDetails;
+	private Object[] thesisDetails;
 	private List<Object[]> indianReviewers;
 	private List<Object[]> abroadReviewers;
 	DeanService deanService = new DeanService();
@@ -33,14 +33,8 @@ public class DisplayReviewerListAction extends ActionSupport implements SessionA
 	
 	
 
+   
 
-
-	public List<Object[]> getThesisDetails() {
-		return thesisDetails;
-	}
-	public void setThesisDetails(List<Object[]> thesisDetails) {
-		this.thesisDetails = thesisDetails;
-	}
 	public List<Object[]> getIndianReviewers() {
 		return indianReviewers;
 	}
@@ -85,6 +79,26 @@ public class DisplayReviewerListAction extends ActionSupport implements SessionA
 		// TODO Auto-generated method stub
 		this.sessionMap=(SessionMap<String, Object>) session;
 		
+	}
+
+
+
+
+
+
+
+	public Object[] getThesisDetails() {
+		return thesisDetails;
+	}
+
+
+
+
+
+
+
+	public void setThesisDetails(Object[] thesisDetails) {
+		this.thesisDetails = thesisDetails;
 	}
 
 }
