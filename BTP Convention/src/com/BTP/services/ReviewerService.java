@@ -56,10 +56,11 @@ public class ReviewerService {
 	
 	public void uploadReview(int thesisId,String reviewerId,byte[] reviewBytes)
 	{
-        Configuration con = new Configuration().configure().addAnnotatedClass(review.class).addAnnotatedClass(thesisreviewer.class);
+        Configuration con = new Configuration().configure().addAnnotatedClass(review.class).addAnnotatedClass(thesisreviewer.class).addAnnotatedClass(thesis.class);
         
         SessionFactory sf = con.buildSessionFactory();
         String status="reviewSent";
+        String thesisStatus="reviewed";
         Session session = sf.openSession();
         review review=new review();
         reviewPK reviewId=new reviewPK();
@@ -73,11 +74,15 @@ public class ReviewerService {
         
         Transaction tx = session.beginTransaction();
         session.save(review);
-        Query q=session.createQuery("update thesisreviewer set status=:status where thesisreviewerId.thesisId=:thesisId and thesisreviewerId.reviewerId=:reviewerId");
-        q.setParameter("status", status);
-        q.setParameter("thesisId", thesisId);
-        q.setParameter("reviewerId", reviewerId);
-        q.executeUpdate();
+        Query q1=session.createQuery("update thesisreviewer set status=:status where thesisreviewerId.thesisId=:thesisId and thesisreviewerId.reviewerId=:reviewerId");
+        q1.setParameter("status", status);
+        q1.setParameter("thesisId", thesisId);
+        q1.setParameter("reviewerId", reviewerId);
+        q1.executeUpdate();
+        Query q2=session.createQuery("update thesis set status=:thesisStatus where thesis_id=:thesisId");
+        q2.setParameter("thesisStatus", thesisStatus);
+        q2.setParameter("thesisId", thesisId);
+        q2.executeUpdate();
         tx.commit();
 		session.close();
 		sf.close();

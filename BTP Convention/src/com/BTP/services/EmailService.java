@@ -296,5 +296,14 @@ public class EmailService {
 		
 	}
 	
+	public String[] fetchDeanEmailDetails()
+	{
+		String[] deanEmailDetails=new String[2];
+		
+		return null;
+		
+		
+	}
+	
 	
 }
