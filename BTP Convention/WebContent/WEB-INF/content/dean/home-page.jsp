@@ -7,6 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/navbar.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/home-page.css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +24,7 @@
 </head>
 <body>
 
-
+<s:include value="home-navbar.jsp" />
 
 	<s:if test="deanProfile.isEmpty()">
 		<div class="noUpdateMesage">No new updates to show!</div>

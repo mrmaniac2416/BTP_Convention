@@ -7,13 +7,25 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Welcome</title>
-<s:head/>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/navbar.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<title>Student Dashboard</title>
+<s:head />
 </head>
 <body>
 
-
-
+	
+	<s:include value="student-navbar.jsp" />
 
 	<div>Student ID: ${studentProfile.get(0)}</div>
 	<div>Student Name:${studentProfile.get(1)}</div>
@@ -42,7 +54,8 @@
 		<s:url namespace="/" action="download-synopsis" var="synopsis_url">
 			<s:param name="student_id">${studentProfile.get(0)}</s:param>
 		</s:url>
-		<a href='<s:property value = "#synopsis_url"/>' target="_blank"> Download Synopsis</a>
+		<a href='<s:property value = "#synopsis_url"/>' target="_blank">
+			Download Synopsis</a>
 
 	</s:else>
 	<br>
@@ -71,13 +84,11 @@
 			<s:url namespace="/" action="download-thesis" var="thesis_url">
 				<s:param name="thesis_id">${studentProfile.get(5)}</s:param>
 			</s:url>
-			<a href='<s:property value = "#thesis_url"/>' target="_blank"> Download Thesis</a>
+			<a href='<s:property value = "#thesis_url"/>' target="_blank">
+				Download Thesis</a>
 
 		</div>
 	</s:else>
 
-	<s:form namespace="/" action="logout">
-		<s:submit value="Logout" />
-	</s:form>
 </body>
 </html>

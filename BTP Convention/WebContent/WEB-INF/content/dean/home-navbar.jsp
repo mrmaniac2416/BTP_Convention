@@ -11,27 +11,10 @@
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#deanHomePage_url"/>'>Home</a></li>
 
-			<s:url action="display-reviewer-list" var="reviewerlist_url">
-				<s:param name="thesisId">
-					<%= session.getAttribute("thesisId")  %>
-				</s:param>
+			<s:url action="" var="#">
 			</s:url>
 			<li class="nav-item margin"><a class="nav-link fontColor"
-				href='<s:property value = "#reviewerlist_url"/>'>Reviewer List</a></li>
-
-
-			<s:url action="dean-accepted-reviewer" var="acceptedReviewer_url"></s:url>
-			<li class="nav-item margin"><a class="nav-link fontColor"
-				href='<s:property value = "#acceptedReviewer_url"/>'>Accepted
-					Reviewers</a></li>
-
-			<s:url action="thesis-reviewing" var="reviewing_url"></s:url>
-			<li class="nav-item margin"><a class="nav-link fontColor"
-				href='<s:property value = "#reviewing_url"/>'>Reviewing</a></li>
-
-			<s:url action="#" var="#"></s:url>
-			<li class="nav-item margin"><a class="nav-link fontColor"
-				href='<s:property value = "#"/>'>Reviewed</a></li>
+				href='<s:property value = "#"/>'>Archives</a></li>
 		</ul>
 		
 		

@@ -162,5 +162,51 @@ public class DeanService {
 		sf.close();
 		return abroadReviewers;
 	}
+	
+	
+	public List<Object[]> fetchReviewingIndianReviewers(int thesis_id)
+	{
+
+		Configuration con = new Configuration().configure().addAnnotatedClass(reviewer.class).addAnnotatedClass(thesisreviewer.class).addAnnotatedClass(reviewerPK.class).addAnnotatedClass(thesisreviewerPK.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+		String type="indian";
+		String status="addedToDashboard";
+		Transaction tx = session.beginTransaction();
+		Query q = session.createQuery("select r.name,r.contact,r.reviewerId.email,tr.accepteddate from reviewer r inner join thesisreviewer tr on r.reviewerId.email=tr.thesisreviewerId.reviewerId and r.reviewerId.supervisor_id=tr.supervisorId where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type and tr.status=:status");
+		q.setParameter("thesis_id", thesis_id);
+		q.setParameter("type", type);
+		q.setParameter("status", status);
+		List<Object[]> indianReviewers = (List<Object[]>) q.list();
+		tx.commit();
+		session.close();
+		sf.close();
+		return indianReviewers;
+	}
+
+
+	public List<Object[]> fetchReviewingAbroadReviewers(int thesis_id)
+	{
+
+		Configuration con = new Configuration().configure().addAnnotatedClass(reviewer.class).addAnnotatedClass(thesisreviewer.class).addAnnotatedClass(reviewerPK.class).addAnnotatedClass(thesisreviewerPK.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+		String type="abroad";
+		String status="addedToDashboard";
+		Transaction tx = session.beginTransaction();
+		Query q = session.createQuery("select r.name,r.contact,r.reviewerId.email,tr.accepteddate from reviewer r inner join thesisreviewer tr on r.reviewerId.email=tr.thesisreviewerId.reviewerId and r.reviewerId.supervisor_id=tr.supervisorId where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type and tr.status=:status");
+		q.setParameter("thesis_id", thesis_id);
+		q.setParameter("type", type);
+		q.setParameter("status", status);
+		List<Object[]> abroadReviewers = (List<Object[]>) q.list();
+		tx.commit();
+		session.close();
+		sf.close();
+		return abroadReviewers;
+	}
 
 }

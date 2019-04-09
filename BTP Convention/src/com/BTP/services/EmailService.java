@@ -261,4 +261,40 @@ public class EmailService {
 		sf.close();
 		
 	}
+	
+	
+	public void sendNotification(int thesisId, String email)
+	{
+		try {
+			Session session1 = Session.getDefaultInstance(properties,  
+					new javax.mail.Authenticator() {
+				protected PasswordAuthentication 
+				getPasswordAuthentication() {
+					return new 
+							PasswordAuthentication(from, password);
+				}
+			}
+					);
+
+
+			Message message = new MimeMessage(session1);
+			/*
+			 * message.setFrom(new InternetAddress(from));
+			 * message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+			 * message.setSubject(subject);
+			 */
+			/* message.setText(body); */
+			message.setFrom(new InternetAddress("pdhruv1109@gmail.com"));
+			System.out.println(email);
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+			message.setSubject("Remainder for Review of thesis");
+			message.setText("Your Thesis Review is Pending, So please visit your dashboard and review the thesis");
+			Transport.send(message);	
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 }
