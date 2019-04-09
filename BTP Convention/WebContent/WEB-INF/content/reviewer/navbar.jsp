@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+	<img src="${pageContext.request.contextPath}/photo/daiict.png" height="100">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<ul class="navbar-nav mr-5">
 			<s:url action="pending-reviews" var="pendingReviews_url"></s:url>

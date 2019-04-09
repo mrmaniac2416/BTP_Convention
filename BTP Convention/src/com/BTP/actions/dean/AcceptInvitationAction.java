@@ -14,8 +14,7 @@ public class AcceptInvitationAction extends ActionSupport{
 	public String execute()
 	{
 		System.out.println("Hello");
-		deanService.acceptInvitation(token);
-		return SUCCESS;
+		return deanService.acceptInvitation(token);
 	}
 	
 
