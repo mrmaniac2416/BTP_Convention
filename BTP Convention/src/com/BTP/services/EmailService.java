@@ -25,8 +25,9 @@ import com.BTP.JPA.*;
 
 public class EmailService {
 	
-	private String from="pdhruv1109@gmail.com";
-	private String password="ms1234ms";
+	private deanaccountdetails deanaccountdetails=this.fetchDeanEmailDetails();
+	private String from=deanaccountdetails.getEmail();
+	private String password=deanaccountdetails.getPassword();
 	static Properties properties = new Properties();
 	static {
 		properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -48,6 +49,7 @@ public class EmailService {
 					return new 
 							PasswordAuthentication(from, password);
 				}
+			
 			}
 					);
 
@@ -66,7 +68,7 @@ public class EmailService {
 			 * message.setSubject(subject);
 			 */
 			/* message.setText(body); */
-			message.setFrom(new InternetAddress("pdhruv1109@gmail.com"));
+			message.setFrom(new InternetAddress(from));
 			System.out.println(email_id);
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email_id));
 			message.setSubject("Hello");
@@ -121,7 +123,7 @@ public class EmailService {
 			Properties props = System.getProperties();
 		    props.setProperty("mail.store.protocol", "imaps");
 		    
-		    Session session = Session.getDefaultInstance(props, null);
+		    Session session = Session.getInstance(props, null);
 			
 
 			Store store = session.getStore("imaps");
@@ -296,13 +298,124 @@ public class EmailService {
 		
 	}
 	
-	public String[] fetchDeanEmailDetails()
+	public deanaccountdetails fetchDeanEmailDetails()
 	{
-		String[] deanEmailDetails=new String[2];
+		Configuration con = new Configuration().configure().addAnnotatedClass(deanaccountdetails.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		org.hibernate.Session session = sf.openSession();
+
+		Transaction tx = session.beginTransaction();
 		
-		return null;
+		Query q=session.createQuery("from deanaccountdetails");
+		
+		deanaccountdetails deanaccountdetails=(deanaccountdetails) q.uniqueResult();
 		
 		
+		tx.commit();
+		session.close();
+		sf.close();
+		
+		return deanaccountdetails;
+		
+		
+	}
+	
+	public boolean emailExists(String email)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(users.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		org.hibernate.Session session = sf.openSession();
+
+		Transaction tx = session.beginTransaction();
+		
+		boolean result=session.get(users.class,email)!=null ? true : false;
+		
+		tx.commit();
+		session.close();
+		sf.close();
+		
+		return result;
+	}
+	
+	public String sendForgotPasswordEmail(String email)
+	{
+		String from="pdhruv1109@gmail.com";
+		String password="ms1234ms";
+		String body="Click on the link below to reset your password.\n";
+		String ret = "success";
+		try {
+			Session session = Session.getDefaultInstance(properties,  
+					new javax.mail.Authenticator() {
+				protected PasswordAuthentication 
+				getPasswordAuthentication() {
+					return new 
+							PasswordAuthentication(from, password);
+				}
+			
+			}
+					);
+
+			Date date = Calendar.getInstance().getTime();  
+			DateFormat dateFormat = new SimpleDateFormat("ssyyyyhhddmm");  
+			String strDate = dateFormat.format(date);
+			Random rand = new Random(); 
+			int rand_int = rand.nextInt(10000); 
+			strDate = strDate + Integer.toString(rand_int);
+
+
+			Message message = new MimeMessage(session);
+			/*
+			 * message.setFrom(new InternetAddress(from));
+			 * message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+			 * message.setSubject(subject);
+			 */
+			/* message.setText(body); */
+			message.setFrom(new InternetAddress(from));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+			message.setSubject("Forgot Password Email");
+			message.setText(body + "   http://localhost:8080/BTP_Convention/send-token.action?token=" + strDate + "&email=" + email);
+			Transport.send(message);
+			
+		
+			
+			Date dat=new Date();
+	        
+	        Configuration con = new Configuration().configure().addAnnotatedClass(users.class);
+	        
+	        SessionFactory sf = con.buildSessionFactory();
+	        
+	        org.hibernate.Session sessionQuery = sf.openSession();
+	       
+	        Transaction tx = sessionQuery.beginTransaction();
+	        
+	        Query q = sessionQuery.createQuery("update users set token=:token where user_id=:email");
+	        q.setParameter("token", strDate);
+	        q.setParameter("email", email);
+	        System.out.println("upload mein gaya");
+	        
+	        q.executeUpdate();
+	        
+	        tx.commit();
+	        sessionQuery.close();
+	        sf.close();
+			
+			
+			
+			
+			
+		
+			
+			
+			
+		} catch(Exception e) {
+			ret = "error";
+			e.printStackTrace();
+		}
+		return ret;
 	}
 	
 	

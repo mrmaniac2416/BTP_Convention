@@ -1,12 +1,15 @@
 package com.BTP.services;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import java.util.*;
 
+import com.BTP.JPA.reviewer;
 import com.BTP.JPA.student;
 import com.BTP.JPA.users;
 import com.BTP.JPA.thesis;
@@ -129,6 +132,53 @@ public class LoginService {
 		session.close();
 		sf.close();
 		return deanProfile;
+	}
+	
+	public String checkResetToken(String token,String email)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(users.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+		
+		Transaction tx = session.beginTransaction();
+		
+		Criteria cr = session.createCriteria(users.class);
+		
+		cr.add(Restrictions.eq("user_id",email));
+		cr.add(Restrictions.eq("token",token));
+		
+		users result=(users)cr.uniqueResult();
+		
+		tx.commit();
+		session.close();
+		sf.close();
+		
+		return result!=null ? "success" : "error";
+		
+		
+	}
+	
+	
+	public void updatePassword(String password,String email)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(users.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+
+		Transaction tx = session.beginTransaction();
+		
+		users user=session.get(users.class, email);
+		user.setPasswd(password);
+		user.setToken(null);
+		session.update(user);
+		
+		tx.commit();
+		session.close();
+		sf.close();
 	}
 
 

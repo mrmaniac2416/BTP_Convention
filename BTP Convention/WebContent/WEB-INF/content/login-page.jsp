@@ -25,6 +25,30 @@
 </s:form>
 
 
+<s:url action="forgot-password" var="forgotPassword_url"/>
+
+
+
+<sj:dialog
+	id="dialog"
+	autoOpen="false"
+	modal="true"
+	title="Forgot Password"
+	height="300"
+	width="500"
+/>
+
+
+<sj:a
+	openDialog="dialog"
+	href="%{forgotPassword_url}"	
+>
+	Forgot Password?
+</sj:a>
+
+
+<%-- <a href='<s:property value = "#forgotPassword_url"/>'>
+			Forgot Password?</a> --%>
 
 
 

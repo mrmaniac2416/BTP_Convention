@@ -11,6 +11,7 @@ public class users {
 	private String user_name;
 	private String passwd;
 	private String user_type;
+	private String token;
 	
 	public String getUser_id() {
 		return user_id;
@@ -35,6 +36,12 @@ public class users {
 	}
 	public void setUser_type(String user_type) {
 		this.user_type = user_type;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 	
