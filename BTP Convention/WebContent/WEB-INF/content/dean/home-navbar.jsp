@@ -25,7 +25,7 @@
 			var="changeNotificationMailDetails_url" />
 		<ul class="navbar-nav ml-auto">
 
-			<li class="nav-item dropdown"><a
+			<li class="nav-item dropdown mr-4"><a
 				class="nav-link dropdown-toggle" class="nav-link fontColor" href="#"
 				id="navbarDropdown" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Settings </a>
@@ -53,7 +53,7 @@
 
 			<s:url namespace="/" action="logout" var="logout_url"></s:url>
 
-			<li class="nav-item"><a class="nav-link colorGreen fontColor"
+			<li class="nav-item mr-1"><a class="nav-link colorGreen fontColor"
 				href='<s:property value = "#logout_url"/>'>Logout</a></li>
 
 		</ul>
