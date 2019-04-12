@@ -53,8 +53,8 @@ function refresh(){
 <s:include value="home-navbar.jsp" />
 
 <s:form id="changeNotificationMailDetailsForm" action="change-notification-details">
-    <s:textfield key="notificationMailSubject" label="Notification mail subject" cssStyle="white-space: pre-wrap;"/>
-    <s:textarea key="notificationMailBody" label="Notificiation mail body" cssStyle="white-space: pre-wrap;"/>
+    <s:textfield key="notificationMailSubject" label="Notification mail subject" value="%{subject}" cssStyle="white-space: pre-wrap;"/>
+    <s:textarea key="notificationMailBody" label="Notificiation mail body" value="%{body}" cssStyle="white-space: pre-wrap;"/>
     
     <sj:submit value="Submit details" targets="formresult" loadingText="Saving details..." onSuccessTopics="success" onclick="refresh();" validate="true"/>
     
