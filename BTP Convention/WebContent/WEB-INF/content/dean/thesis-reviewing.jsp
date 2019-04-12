@@ -20,6 +20,13 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <sj:head jqueryui="true" />
+<script>
+$.subscribe('dialogclosetopic', function(event,ui) {
+	console.log('run topic on dialog close');
+	window.location.reload(true);
+});
+
+</script>
 <title>Accepted and Reviewing</title>
 </head>
 <body>
@@ -64,13 +71,17 @@
 					<td><s:property value="#reviewer_element" /></td>
 				</s:iterator>
 				<td><s:date name="#indianreviewers[3]" format="dd,MMMMM yyyy" /></td>
-				<s:url action="send-notification" var="sendNotification_url"
+				<s:url action="send-notification-modal" var="sendNotificationModal_url"
 					escapeAmp="false">
 					<s:param name="email">
 						<s:property value="#indianreviewers[2]" />
 					</s:param>
 				</s:url>
-				<td><a href='<s:property value = "#sendNotification_url"/>'>Send</a></td>
+				<td><%-- <a href='<s:property value = "#sendNotification_url"/>'>Send</a> --%>
+				<sj:a openDialog="myclickdialog" href='%{sendNotificationModal_url}'>
+							Send
+						</sj:a>
+				</td>
 				
 				
 			</tr>
@@ -103,19 +114,33 @@
 					<td><s:property value="#reviewer_element" /></td>
 				</s:iterator>
 				<td><s:date name="#abroadreviewers[3]" format="dd,MMMMM yyyy" /></td>
-				<s:url action="send-notification" var="sendNotification_url"
+				<s:url action="send-notification-modal" var="sendNotificationModal_url"
 					escapeAmp="false">
 					<s:param name="email">
 						<s:property value="#abroadreviewers[2]" />
 					</s:param>
 				</s:url>
-				<td><a href='<s:property value = "#sendNotification_url"/>'>Send</a></td>
+				<td><%-- <a href='<s:property value = "#sendNotificationModal_url"/>'>Send</a> --%>
+				<sj:a openDialog="myclickdialog" href='%{sendNotificationModal_url}'>
+							Send
+						</sj:a>
+				</td>
 				
 				
 			</tr>
 
 		</s:iterator>
 	</table>
+	 
+	
+	
 	</s:else>
+	
+	<sj:dialog id="myclickdialog" autoOpen="false" modal="true"
+		title="Send Notification Mail" showEffect="slide" hideEffect="slide"
+		onCloseTopics="dialogclosetopic">
+
+
+	</sj:dialog>
 </body>
 </html>

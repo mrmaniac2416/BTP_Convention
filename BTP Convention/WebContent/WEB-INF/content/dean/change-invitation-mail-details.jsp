@@ -32,7 +32,7 @@
 $.subscribe('success', function(event,data) {
 	console.log("called success");
 	
-	document.getElementById("formresult").innerHTML="Account details saved";
+	document.getElementById("formresult").innerHTML="Invitation mail details saved";
 	
 	
 });
@@ -47,14 +47,14 @@ function refresh(){
 
 
 </script>
-<title>Change account details</title>
+<title>Change invitation mail details</title>
 </head>
 <body>
 <s:include value="home-navbar.jsp" />
 
-<s:form id="changeDetailsForm" action="change-details">
-    <s:textfield key="email" label="Email"/>
-    <s:password key="password" label="Password"/>
+<s:form id="changeInvitationMailDetailsForm" action="change-invitation-details">
+    <s:textfield key="invitationMailSubject" label="Invitation mail subject" cssStyle="white-space: pre-wrap;"/>
+    <s:textarea key="invitationMailBody" label="Invitation mail body" cssStyle="white-space: pre-wrap;"/>
     
     <sj:submit value="Submit details" targets="formresult" loadingText="Saving details..." onSuccessTopics="success" onclick="refresh();" validate="true"/>
     

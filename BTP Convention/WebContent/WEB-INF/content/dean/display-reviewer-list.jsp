@@ -193,7 +193,7 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 	<br/>
 
 	<sj:dialog id="myclickdialog" autoOpen="false" modal="true"
-		title="Give Body" showEffect="slide" hideEffect="slide"
+		title="Send Invitation Mail" showEffect="slide" hideEffect="slide"
 		onCloseTopics="dialogclosetopic">
 
 
