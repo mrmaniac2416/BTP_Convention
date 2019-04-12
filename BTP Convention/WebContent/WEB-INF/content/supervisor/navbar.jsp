@@ -20,6 +20,10 @@
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#selectReviewer_url"/>'>Reviewing</a></li>
 				
+				<s:url action="thesis-review" var="thesisReview_url"></s:url>
+			<li class="nav-item margin"><a class="nav-link fontColor"
+				href='<s:property value = "#thesisReview_url"/>'>Reviews</a></li>
+				
 			<s:url action="archives-thesis" var="archivesThesis_url"></s:url>
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#archivesThesis_url"/>'>Archives</a></li>

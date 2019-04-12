@@ -71,6 +71,14 @@
 					<td><a href='<s:property value = "#review_url"/>'
 						target="_blank">View</a></td>
 				
+				
+				<s:url action="send-review-supervisor" var="sendReview_url" escapeAmp="false">
+						<s:param name="reviewerId">
+							<s:property value="#indianreviewers[2]" />
+						</s:param>
+					</s:url>
+					<td><a href='<s:property value = "#sendReview_url"/>'>Send</a></td>
+				
 			</tr>
 
 		</s:iterator>
@@ -109,6 +117,13 @@
 					</s:url>
 					<td><a href='<s:property value = "#review_url"/>'
 						target="_blank">View</a></td>
+						
+						<s:url action="send-review-supervisor" var="sendReview_url" escapeAmp="false">
+						<s:param name="reviewerId">
+							<s:property value="#abroadreviewers[2]" />
+						</s:param>
+					</s:url>
+					<td><a href='<s:property value = "#sendReview_url"/>'>Send</a></td>
 				
 				
 			</tr>

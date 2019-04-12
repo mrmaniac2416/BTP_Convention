@@ -290,4 +290,27 @@ public class DeanService {
 		sf.close();
 		return deanProfile;
 	}
+	
+	public void sendToSupervisor(int thesisId, String reviewerId)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(thesisreviewer.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+
+		Transaction tx = session.beginTransaction();
+		
+		String status="sentToSupervisor";
+		Query q = session.createQuery("update thesisreviewer set status=:status where thesisreviewerId.reviewerId=:reviewerId and thesisreviewerId.thesisId=:thesisId");
+		q.setParameter("status", status);
+		q.setParameter("thesisId", thesisId);
+		q.setParameter("reviewerId", reviewerId);
+		
+		q.executeUpdate();
+		
+		tx.commit();
+		session.close();
+		sf.close();
+	}
 }

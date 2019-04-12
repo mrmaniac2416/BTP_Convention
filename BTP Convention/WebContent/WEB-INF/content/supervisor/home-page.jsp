@@ -34,13 +34,33 @@
 				<th>Student Name</th>
 				<th>Submitted date</th>
 				<th>Status</th>
+				<th>Synopsis</th>
+				<th>Thesis</th>
 			</tr>
 
 			<s:iterator value="supervisorProfile" var="thesis">
 				<tr>
-					<s:iterator value="#thesis" var="thesis_element">
+					<s:iterator value="#thesis" var="thesis_element" begin="0" end="4">
 						<td><s:property value="#thesis_element" /></td>
 					</s:iterator>
+					
+					
+					<s:url namespace="/" action="download-synopsis" var="synopsis_url">
+				<s:param name="student_id">
+					<s:property value="#thesis[5]" />
+				</s:param>
+			</s:url>
+			<td><a href='<s:property value = "#synopsis_url"/>'
+				target="_blank"> Download</a></td>
+					
+					<s:url namespace="/" action="download-thesis" var="thesis_url">
+				<s:param name="thesis_id">
+					<s:property value="#thesis[0]" />
+				</s:param>
+			</s:url>
+			<td><a href='<s:property value = "#thesis_url"/>'
+				target="_blank"> Download</a></td>
+					
 				</tr>
 
 			</s:iterator>
