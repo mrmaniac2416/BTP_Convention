@@ -93,7 +93,8 @@ $.subscribe('error', function(event,data) {
 	<s:form id="emailForm" action="send-invitation-mail" theme="bootstrap" cssClass="form-horizontal">
 		
 		<s:hidden value="%{email}" name="email" /> 
-		<s:textarea label="Body" name="body" />
+		<s:textarea label="Body" name="body" cssStyle="white-space: pre-wrap;" value="%{body}"/>
+		<s:textfield label="Subject" name="subject" cssStyle="white-space: pre-wrap;" value="%{subject}"/>
 		<s:hidden value="%{thesisId}" name="thesisId" />
 
 

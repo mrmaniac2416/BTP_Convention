@@ -71,8 +71,8 @@ public class EmailService {
 			message.setFrom(new InternetAddress(from));
 			System.out.println(email_id);
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email_id));
-			message.setSubject("Hello");
-			message.setText(body + "   http://localhost:8080/BTP_Convention/dean/accept-invitation.action?token=" + strDate);
+			message.setSubject(subject);
+			message.setText(body + "\nPlease on the link below to accept the thesis.\n   http://localhost:8080/BTP_Convention/dean/accept-invitation.action?token=" + strDate);
 			Transport.send(message);
 			
 		
@@ -145,17 +145,72 @@ public class EmailService {
 		return true;
 	}
 	
-	public void updateDeanEmailDetails(deanaccountdetails deanaccountdetails)
+	public void updateDeanEmailDetails(String email,String password)
 	{
 		Configuration con = new Configuration().configure().addAnnotatedClass(deanaccountdetails.class);
 
 		SessionFactory sf = con.buildSessionFactory();
 
 		org.hibernate.Session session = sf.openSession();
+		deanaccountdetails deanOldAccount=this.fetchDeanEmailDetails();
 
 		Transaction tx = session.beginTransaction();
 		
-		session.update(deanaccountdetails);;
+		Query q=session.createQuery("update deanaccountdetails set email=:email,password=:password where email=:deanEmail");
+		q.setParameter("email",email);
+		q.setParameter("password",password);
+		q.setParameter("deanEmail",deanOldAccount.getEmail());
+		
+		q.executeUpdate();
+		
+		tx.commit();
+		session.close();
+		sf.close();
+	}
+	
+	
+	public void updateInvitationMailDetails(String body,String subject)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(deanaccountdetails.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		org.hibernate.Session session = sf.openSession();
+		deanaccountdetails deanOldAccount=this.fetchDeanEmailDetails();
+
+		Transaction tx = session.beginTransaction();
+		
+		Query q=session.createQuery("update deanaccountdetails set invitationMailBody=:body,invitationMailSubject=:subject where email=:deanEmail");
+		q.setParameter("body",body);
+		q.setParameter("subject",subject);
+		q.setParameter("deanEmail",deanOldAccount.getEmail());
+		
+		q.executeUpdate();
+		
+		tx.commit();
+		session.close();
+		sf.close();
+		
+		
+	}
+	
+	public void updateNotificationMailDetails(String body,String subject)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(deanaccountdetails.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		org.hibernate.Session session = sf.openSession();
+		deanaccountdetails deanOldAccount=this.fetchDeanEmailDetails();
+
+		Transaction tx = session.beginTransaction();
+		
+		Query q=session.createQuery("update deanaccountdetails set sendNotificationMailBody=:body,sendNotificationMailSubject=:subject where email=:deanEmail");
+		q.setParameter("body",body);
+		q.setParameter("subject",subject);
+		q.setParameter("deanEmail",deanOldAccount.getEmail());
+		
+		q.executeUpdate();
 		
 		tx.commit();
 		session.close();
@@ -226,7 +281,7 @@ public class EmailService {
 			 * message.setSubject(subject);
 			 */
 			/* message.setText(body); */
-			message.setFrom(new InternetAddress("pdhruv1109@gmail.com"));
+			message.setFrom(new InternetAddress(from));
 			System.out.println(email);
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 			message.setSubject(subject);
@@ -265,8 +320,9 @@ public class EmailService {
 	}
 	
 	
-	public void sendNotification(int thesisId, String email)
+	public String sendNotification(int thesisId, String email,String body,String subject)
 	{
+		String ret = "success";
 		try {
 			Session session1 = Session.getDefaultInstance(properties,  
 					new javax.mail.Authenticator() {
@@ -286,15 +342,18 @@ public class EmailService {
 			 * message.setSubject(subject);
 			 */
 			/* message.setText(body); */
-			message.setFrom(new InternetAddress("pdhruv1109@gmail.com"));
+			message.setFrom(new InternetAddress(from));
 			System.out.println(email);
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-			message.setSubject("Remainder for Review of thesis");
-			message.setText("Your Thesis Review is Pending, So please visit your dashboard and review the thesis");
+			message.setSubject(subject);
+			message.setText(body);
 			Transport.send(message);	
 		} catch(Exception e) {
+			ret="error";
 			e.printStackTrace();
 		}
+		
+		return ret;
 		
 	}
 	

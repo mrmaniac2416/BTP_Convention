@@ -32,7 +32,7 @@
 $.subscribe('success', function(event,data) {
 	console.log("called success");
 	
-	document.getElementById("formresult").innerHTML="Account details saved";
+	document.getElementById("formresult").innerHTML="Notification mail details saved";
 	
 	
 });
@@ -47,14 +47,14 @@ function refresh(){
 
 
 </script>
-<title>Change account details</title>
+<title>Change  notification mail details</title>
 </head>
 <body>
 <s:include value="home-navbar.jsp" />
 
-<s:form id="changeDetailsForm" action="change-details">
-    <s:textfield key="email" label="Email"/>
-    <s:password key="password" label="Password"/>
+<s:form id="changeNotificationMailDetailsForm" action="change-notification-details">
+    <s:textfield key="notificationMailSubject" label="Notification mail subject" cssStyle="white-space: pre-wrap;"/>
+    <s:textarea key="notificationMailBody" label="Notificiation mail body" cssStyle="white-space: pre-wrap;"/>
     
     <sj:submit value="Submit details" targets="formresult" loadingText="Saving details..." onSuccessTopics="success" onclick="refresh();" validate="true"/>
     
