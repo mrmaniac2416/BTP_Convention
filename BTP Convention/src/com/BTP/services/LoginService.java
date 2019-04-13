@@ -94,7 +94,7 @@ public class LoginService {
 
 		Transaction tx = session.beginTransaction();
 		
-		Query q = session.createQuery("select t.thesis_id,t.thesis_name,u.user_name,t.submitted_date,t.status,u.user_id from student s inner join users u on u.user_id=s.student_id inner join thesis t on t.thesis_id=s.thesis_id where s.supervisor_id=:userId and t.submitted_date >  (CURRENT_DATE-365)");
+		Query q = session.createQuery("select t.thesis_id,t.thesis_name,u.user_name,t.submitted_date,t.status,u.user_id from student s inner join users u on u.user_id=s.student_id inner join thesis t on t.thesis_id=s.thesis_id where s.supervisor_id=:userId");
 		q.setParameter("userId", userId);
 		List<Object[]> supervisorProfile = (List<Object[]>) q.list();
 		
@@ -123,7 +123,7 @@ public class LoginService {
 		Transaction tx = session.beginTransaction();
 		String status[] = {"reviewersSelected","reviewing","reviewed"};
 		List<String> list = Arrays.asList(status);
-		Query q = session.createQuery("select t.thesis_id,t.thesis_name,u.user_name,nm.user_name,t.submitted_date,t.status from student s inner join users u on u.user_id=s.student_id inner join users nm on nm.user_id=s.supervisor_id inner join thesis t on t.thesis_id=s.thesis_id where t.status IN :list and t.submitted_date >  (CURRENT_DATE-365)");
+		Query q = session.createQuery("select t.thesis_id,t.thesis_name,u.user_name,nm.user_name,t.submitted_date,t.status from student s inner join users u on u.user_id=s.student_id inner join users nm on nm.user_id=s.supervisor_id inner join thesis t on t.thesis_id=s.thesis_id where t.status IN :list");
 		q.setParameterList("list", list);
 		List<Object[]> deanProfile = (List<Object[]>) q.list();
 		

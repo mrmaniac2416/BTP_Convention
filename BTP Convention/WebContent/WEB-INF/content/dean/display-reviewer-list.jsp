@@ -61,7 +61,7 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 			<th>Contact No.</th>
 			<th>Email</th>
 			<th>Mail Sent Date</th>
-			<th>Accept</th>
+			<th>Accept/Status</th>
 		</tr>
 
 		<s:iterator value="indianReviewers" var="indianreviewers">
@@ -108,7 +108,21 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 						<a href='<s:property value = "#accept_url"/>'>Accept</a>
 					</s:if> <s:elseif
 						test="!(#indianreviewers[6].equals('revieweraccepted') || #indianreviewers[6].equals('selected'))">
-						<div>Accepted</div>
+						<div>
+						 <s:if test="#indianreviewers[6].equals('deanaccepted')">
+						 Accepted by dean
+						 </s:if>
+						 <s:elseif test="#indianreviewers[6].equals('addedToDashboard')">
+						 Reviewing
+						 </s:elseif>
+						 <s:elseif test="#indianreviewers[6].equals('reviewSent')">
+						 Review sent by reviewer
+						 </s:elseif>
+						 <s:else>
+						 Review sent to supervisor
+						 </s:else>
+						
+						</div>
 					</s:elseif> <s:elseif test="#indianreviewers[5]!=null">
 					Mail Sent</s:elseif> <s:else>
 						<b>&mdash;</b>
@@ -131,7 +145,7 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 			<th>Contact No.</th>
 			<th>Email</th>
 			<th>Mail Sent Date</th>
-			<th>Accept</th>
+			<th>Accept/Status</th>
 		</tr>
 
 		<s:iterator value="abroadReviewers" var="abroadreviewers">
@@ -180,7 +194,22 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 						<a href='<s:property value = "#accept_url"/>'>Accept</a>
 					</s:if> <s:elseif
 						test="!(#abroadreviewers[6].equals('revieweraccepted') || #abroadreviewers[6].equals('selected'))">
-						<div>Accepted</div>
+						<div>
+						
+						 <s:if test="#abroadreviewers[6].equals('deanaccepted')">
+						 Accepted by dean
+						 </s:if>
+						 <s:elseif test="#abroadreviewers[6].equals('addedToDashboard')">
+						 Reviewing
+						 </s:elseif>
+						 <s:elseif test="#abroadreviewers[6].equals('reviewSent')">
+						 Review sent by reviewer
+						 </s:elseif>
+						 <s:else>
+						 Review sent to supervisor
+						 </s:else>
+						
+						</div>
 					</s:elseif> <s:elseif test="#abroadreviewers[5]!=null">
 					Mail Sent</s:elseif> <s:else>
 						<b>&mdash;</b>
@@ -198,7 +227,6 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 
 
 	</sj:dialog>
-
 
 
 </body>

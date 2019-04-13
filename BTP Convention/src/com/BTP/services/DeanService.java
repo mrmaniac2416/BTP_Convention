@@ -315,4 +315,30 @@ public class DeanService {
 		session.close();
 		sf.close();
 	}
+	
+	public void sendToArchives(int thesisId)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(thesis.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+
+		Transaction tx = session.beginTransaction();
+		
+		String status="defended";
+		
+		thesis thesis=session.get(thesis.class,thesisId);
+		
+		thesis.setStatus(status);
+		
+		session.update(thesis);
+		
+		tx.commit();
+		session.close();
+		sf.close();
+		
+		
+		
+	}
 }
