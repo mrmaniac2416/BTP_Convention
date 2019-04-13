@@ -29,16 +29,32 @@ $.subscribe('complete', function(event,data) {
 	
 });
 
+$.subscribe('error', function(event,data) {
+	console.log("called error");
+	/* var f = document.forms['reviewer_form'];
+	for(var i=0,fLen=f.length;i<fLen;i++){
+	f.elements[i].readOnly = true;
+	 if(f.elements[i].name=="reviewer.reviewerType" || f.elements[i].id=="save_button")
+		f.elements[i].disabled=true; 
+	} */
+	document.getElementById("result").innerHTML="The link has expired.Please go to <a href=\"http://localhost:8080/BTP_Convention/login-page\"> login page </a> to reset your password"; 
+	
+	
+});
+
 </script>
+
+
 </head>
 <body>
 
 <s:form id="resetPasswordForm" action="reset-password">
 <s:hidden name="email" value="%{email}"/>
+<s:hidden name="token" value="%{token}"/>
 <s:password key="password" label="Enter your new password"></s:password>
 <s:password key="confirmPassword" label="Re-enter new password"></s:password>
 <sj:submit value="Submit" validate="true" targets="result" loadingText="Resetting password..."  
-			onSuccessTopics="complete"/>
+			onSuccessTopics="complete" onErrorTopics="error"/>
 </s:form>
 
 <div id="result"></div>

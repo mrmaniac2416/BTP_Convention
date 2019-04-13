@@ -161,7 +161,7 @@ public class LoginService {
 	}
 	
 	
-	public void updatePassword(String password,String email)
+	public String updatePassword(String password,String email,String token)
 	{
 		Configuration con = new Configuration().configure().addAnnotatedClass(users.class);
 
@@ -170,8 +170,13 @@ public class LoginService {
 		Session session = sf.openSession();
 
 		Transaction tx = session.beginTransaction();
-		
-		users user=session.get(users.class, email);
+		Criteria cr = session.createCriteria(users.class);
+		cr.add(Restrictions.eq("user_id",email));
+		cr.add(Restrictions.eq("token",token));
+		users user=(users)cr.uniqueResult();
+		if(user==null)
+			return "error";
+//		users user=session.get(users.class, email);
 		user.setPasswd(password);
 		user.setToken(null);
 		session.update(user);
@@ -179,6 +184,7 @@ public class LoginService {
 		tx.commit();
 		session.close();
 		sf.close();
+		return "success";
 	}
 
 

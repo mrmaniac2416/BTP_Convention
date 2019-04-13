@@ -20,6 +20,7 @@ public class ResetPasswordAction extends ActionSupport{
 	private String email;
 	private String password;
 	private String confirmPassword;
+	private String token;
 	LoginService loginService=new LoginService();
 	
 	public void validate()
@@ -36,8 +37,7 @@ public class ResetPasswordAction extends ActionSupport{
 	public String execute()
 	{
 		
-		this.loginService.updatePassword(password, email);
-		return SUCCESS;
+		return this.loginService.updatePassword(password, email,token);
 	}
 	
 	public String getEmail() {
@@ -61,6 +61,20 @@ public class ResetPasswordAction extends ActionSupport{
 	@RequiredStringValidator(message = "Enter password again.")
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+
+
+
+	public String getToken() {
+		return token;
+	}
+
+
+
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 }
