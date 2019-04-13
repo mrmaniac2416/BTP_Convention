@@ -71,14 +71,17 @@
 					<td><a href='<s:property value = "#review_url"/>'
 						target="_blank">View</a></td>
 				
-				
+				<s:if test="#indianreviewers[4].equals('reviewSent')">
 				<s:url action="send-review-supervisor" var="sendReview_url" escapeAmp="false">
 						<s:param name="reviewerId">
 							<s:property value="#indianreviewers[2]" />
 						</s:param>
 					</s:url>
 					<td><a href='<s:property value = "#sendReview_url"/>'>Send</a></td>
-				
+				</s:if>
+				<s:else>
+				 <td>Sent</td>
+				</s:else>
 			</tr>
 
 		</s:iterator>
@@ -117,14 +120,18 @@
 					</s:url>
 					<td><a href='<s:property value = "#review_url"/>'
 						target="_blank">View</a></td>
-						
+						<s:if test="#abroadreviewers[4].equals('reviewSent')">
 						<s:url action="send-review-supervisor" var="sendReview_url" escapeAmp="false">
 						<s:param name="reviewerId">
 							<s:property value="#abroadreviewers[2]" />
 						</s:param>
 					</s:url>
 					<td><a href='<s:property value = "#sendReview_url"/>'>Send</a></td>
-				
+				       </s:if>
+				       
+				       <s:else>
+				       <td>Sent</td>
+				       </s:else>
 				
 			</tr>
 

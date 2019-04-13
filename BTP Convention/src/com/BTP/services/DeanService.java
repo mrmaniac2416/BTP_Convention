@@ -224,15 +224,16 @@ public class DeanService {
 
 		Session session = sf.openSession();
 		String type="indian";
-		String status="reviewSent";
+		String status[]= {"reviewSent","sentToSupervisor"};
+		List<String> list = Arrays.asList(status);
 		Transaction tx = session.beginTransaction();
-		Query q = session.createQuery("select r.name,r.contact,r.reviewerId.email,rev.submissiondate from reviewer r "
+		Query q = session.createQuery("select r.name,r.contact,r.reviewerId.email,rev.submissiondate,tr.status from reviewer r "
 				+ "inner join thesisreviewer tr on r.reviewerId.email=tr.thesisreviewerId.reviewerId and r.reviewerId.supervisor_id=tr.supervisorId "
 				+ "inner join review rev on tr.thesisreviewerId.reviewerId=rev.reviewId.email_id and tr.thesisreviewerId.thesisId=rev.reviewId.thesis_id "
-				+ "where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type and tr.status=:status");
+				+ "where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type and tr.status IN :list");
 		q.setParameter("thesis_id", thesis_id);
 		q.setParameter("type", type);
-		q.setParameter("status", status);
+		q.setParameterList("list", list);
 		List<Object[]> indianReviewers = (List<Object[]>) q.list();
 		tx.commit();
 		session.close();
@@ -252,15 +253,16 @@ public class DeanService {
 
 		Session session = sf.openSession();
 		String type="abroad";
-		String status="reviewSent";
+		String status[]= {"reviewSent","sentToSupervisor"};
+		List<String> list = Arrays.asList(status);
 		Transaction tx = session.beginTransaction();
-		Query q = session.createQuery("select r.name,r.contact,r.reviewerId.email,rev.submissiondate from reviewer r "
+		Query q = session.createQuery("select r.name,r.contact,r.reviewerId.email,rev.submissiondate,tr.status from reviewer r "
 				+ "inner join thesisreviewer tr on r.reviewerId.email=tr.thesisreviewerId.reviewerId and r.reviewerId.supervisor_id=tr.supervisorId "
 				+ "inner join review rev on tr.thesisreviewerId.reviewerId=rev.reviewId.email_id and tr.thesisreviewerId.thesisId=rev.reviewId.thesis_id "
-				+ "where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type and tr.status=:status");
+				+ "where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type and tr.status IN :list");
 		q.setParameter("thesis_id", thesis_id);
 		q.setParameter("type", type);
-		q.setParameter("status", status);
+		q.setParameterList("list", list);
 		List<Object[]> indianReviewers = (List<Object[]>) q.list();
 		tx.commit();
 		session.close();
