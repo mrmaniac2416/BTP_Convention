@@ -94,8 +94,9 @@ public class LoginService {
 
 		Transaction tx = session.beginTransaction();
 		
-		Query q = session.createQuery("select t.thesis_id,t.thesis_name,u.user_name,t.submitted_date,t.status,u.user_id from student s inner join users u on u.user_id=s.student_id inner join thesis t on t.thesis_id=s.thesis_id where s.supervisor_id=:userId");
+		Query q = session.createQuery("select t.thesis_id,t.thesis_name,u.user_name,t.submitted_date,t.status,u.user_id from student s inner join users u on u.user_id=s.student_id inner join thesis t on t.thesis_id=s.thesis_id where s.supervisor_id=:userId and t.status!=:status");
 		q.setParameter("userId", userId);
+		q.setParameter("status", "defended");
 		List<Object[]> supervisorProfile = (List<Object[]>) q.list();
 		
 //		for(Object[] t: supervisorProfile)

@@ -32,7 +32,7 @@ public class ReviewerService {
 		Session session = sf.openSession();
 
 		Transaction tx = session.beginTransaction();
-		
+		String thesisStatus="defended";
 		String status="addedToDashboard";
 		
 		Query q = session.createQuery("select u.user_name,t.thesis_name,su.user_name,t.submitted_date,s.student_id,t.thesis_id from thesisreviewer tr "
@@ -40,9 +40,10 @@ public class ReviewerService {
 				+ "inner join student s on s.thesis_id=t.thesis_id "
 				+ "inner join users u on s.student_id=u.user_id "
 				+ "inner join users su on s.supervisor_id=su.user_id "
-				+ "where tr.status=:status and tr.thesisreviewerId.reviewerId=:reviewerId");
+				+ "where tr.status=:status and tr.thesisreviewerId.reviewerId=:reviewerId and t.status!=:thesisStatus");
 		q.setParameter("status", status);
 		q.setParameter("reviewerId", reviewerId);
+		q.setParameter("thesisStatus", thesisStatus);
 		
 		List<Object[]> pendingReviews=(List<Object[]>)q.list();
 		tx.commit();
@@ -61,6 +62,7 @@ public class ReviewerService {
         SessionFactory sf = con.buildSessionFactory();
         String status="reviewSent";
         String thesisStatus="reviewed";
+        String thesisPrevStatus[]= {"reviewed","reviewing"};
         Session session = sf.openSession();
         review review=new review();
         reviewPK reviewId=new reviewPK();
@@ -79,9 +81,10 @@ public class ReviewerService {
         q1.setParameter("thesisId", thesisId);
         q1.setParameter("reviewerId", reviewerId);
         q1.executeUpdate();
-        Query q2=session.createQuery("update thesis set status=:thesisStatus where thesis_id=:thesisId");
+        Query q2=session.createQuery("update thesis set status=:thesisStatus where thesis_id=:thesisId and status IN :thesisPrevStatus");
         q2.setParameter("thesisStatus", thesisStatus);
         q2.setParameter("thesisId", thesisId);
+        q2.setParameterList("thesisPrevStatus", thesisPrevStatus);
         q2.executeUpdate();
         tx.commit();
 		session.close();

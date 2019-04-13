@@ -16,47 +16,13 @@
 	<table class="txt">
 
 
-		<tr>
-			<th>Thesis Id:</th>
-			<td><s:property value="archivethesis[0]" /></td>
-		</tr>
-
-
-		<tr>
-			<th>Student Name:</th>
-			<td><s:property value="archivethesis[2]" /></td>
-		</tr>
-
-
-		<tr>
-			<th>Status:</th>
-			<td><s:property value="archivethesis[4]" /></td>
-		</tr>
-
-
-		<tr>
-			<th>Student ID:</th>
-			<td><s:property value="archivethesis[5]" /></td>
-		</tr>
-
-
-		<tr>
-			<th>Research area:</th>
-			<td><s:property value="archivethesis[6]" /></td>
-		</tr>
-
-
-		<tr>
-			<th>Synopsis date:</th>
-			<td><s:property value="archivethesis[7]" /></td>
-		</tr>
-
+		
 
 		<tr>
 			<th>Synopsis:</th>
 			<s:url namespace="/" action="download-synopsis" var="synopsis_url">
 				<s:param name="student_id">
-					<s:property value="archivethesis[5]" />
+					<s:property value="archivethesis[4]" />
 				</s:param>
 			</s:url>
 			<td><a href='<s:property value = "#synopsis_url"/>'
@@ -64,10 +30,7 @@
 		</tr>
 
 
-		<tr>
-			<th>Thesis date:</th>
-			<td><s:property value="archivethesis[3]" /></td>
-		</tr>
+		
 
 		<tr>
 			<th>Thesis:</th>
@@ -80,6 +43,52 @@
 			<td><a href='<s:property value = "#thesis_url"/>'
 				target="_blank"> Download Thesis</a></td>
 		</tr>
+
+	</table>
+	
+	<br>
+	<br>
+	
+	<h2 style="text-align: center">
+		Reviews
+	</h2>
+	
+	
+	<table class="txt">
+
+
+		<tr>
+			<th>Reviewer</th>
+			<th>Review</th>
+		</tr>
+
+		<s:iterator value="reviewers" var="reviewer">
+
+			<tr>
+				<s:iterator value="#reviewer" var="reviewer_element" begin="0"
+					end="0">
+					<td><s:property value="#reviewer_element" /></td>
+				</s:iterator>
+				<s:url namespace="/" action="download-review" var="review_url"
+					escapeAmp="false">
+					<s:param name="thesis_id">
+						<s:property value="#reviewer[1]" />
+					</s:param>
+					<s:param name="thesis_title">
+						<s:property value="#reviewer[2]" />
+					</s:param>
+					<s:param name="reviewerId">
+						<s:property value="#reviewer[3]" />
+					</s:param>
+				</s:url>
+				<td><a href='<s:property value = "#review_url"/>'
+					target="_blank"> Download</a></td>
+
+			</tr>
+
+
+
+		</s:iterator>
 
 	</table>
 

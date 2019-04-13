@@ -38,8 +38,11 @@
 					<th>Thesis ID</th>
 					<th>Thesis title</th>
 					<th>Student Name</th>
-					<th>Submitted date</th>
-					<th>Status</th>
+					<th>Thesis Submitted date</th>
+					<th>Student ID</th>
+					<th>Research Area</th>
+					<th>Synopsis date</th>
+			
 				</tr>
 
 
@@ -53,7 +56,7 @@
 							<s:param name="archivethesis" value="#archivethesis" />
 
 						</s:url>
-						<s:iterator value="#archivethesis" var="thesis_element" begin="0" end="4">
+						<s:iterator value="#archivethesis" var="thesis_element">
 
 							<td><sj:a href="%{displayArchivesThesis_url}"
 									targets="archivesThesisContent">
