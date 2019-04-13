@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
+<sj:head jqueryui="true" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/acceptThesis.css">
-<script>
-function alertUser(){
-	window.alert("Thesis has been Accepted.Click on reviewing tab to add reviewers.");
-}
-</script>
+
 </head>
 <body>
 
@@ -80,10 +78,28 @@ function alertUser(){
 
 	</table>
 	
-	<s:form action="accepted-thesis">
+	
+	<s:url action="accept-thesis-modal" var="acceptThesisModal_url"
+					escapeAmp="false">
+					<s:param name="thesisId">
+						<s:property value="thesis[0]" />
+					</s:param>
+	</s:url>
+	
+	  <sj:a openDialog="myclickdialog" href="%{acceptThesisModal_url}" button="true"
+    buttonIcon="ui-icon-newwin">
+							Accept Thesis
+						</sj:a> 
+	
+	<sj:dialog id="myclickdialog" autoOpen="false" modal="true" title="Accept Thesis" 
+             showEffect="slide" hideEffect="slide"/>
+    
+      
+	
+	<%-- <s:form action="accepted-thesis">
 	<s:hidden name="thesisId" value="%{thesis[0]}" />
 	 <input type="submit" onclick="alertUser()" class="btn btn-info" value="Accept">
-	</s:form>
+	</s:form> --%>
 
 
 </body>

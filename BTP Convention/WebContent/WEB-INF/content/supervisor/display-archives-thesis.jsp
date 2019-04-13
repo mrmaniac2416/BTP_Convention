@@ -67,7 +67,7 @@
 			<tr>
 				<s:iterator value="#reviewer" var="reviewer_element" begin="0"
 					end="0">
-					<td><s:property value="#reviewer_element" /></td>
+					<th><s:property value="#reviewer_element" />:</th>
 				</s:iterator>
 				<s:url namespace="/" action="download-review" var="review_url"
 					escapeAmp="false">
