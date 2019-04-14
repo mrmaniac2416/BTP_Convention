@@ -18,6 +18,14 @@
 </head>
 <body>
 
+<script>
+$(window).bind("pageshow", function(event) {
+    if (event.originalEvent.persisted) {
+        window.location.reload(); 
+    }
+});
+</script>
+
 <s:form id="loginForm" action="login">
 <s:textfield key="userId" label="User ID"></s:textfield>
 <s:password key="password" label="Password"></s:password>

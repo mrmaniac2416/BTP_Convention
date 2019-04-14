@@ -4,7 +4,16 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<img src="${pageContext.request.contextPath}/photo/daiict.png" height="100">
+
+	<script>
+		$(window).bind("pageshow", function(event) {
+			if (event.originalEvent.persisted) {
+				window.location.reload();
+			}
+		});
+	</script>
+	<img src="${pageContext.request.contextPath}/photo/daiict.png"
+		height="100">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<ul class="navbar-nav mr-5">
 			<s:url action="home-page" var="supervisorHomePage_url"></s:url>
@@ -19,11 +28,11 @@
 			<s:url action="select-reviewer" var="selectReviewer_url"></s:url>
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#selectReviewer_url"/>'>Reviewing</a></li>
-				
-				<s:url action="thesis-review" var="thesisReview_url"></s:url>
+
+			<s:url action="thesis-review" var="thesisReview_url"></s:url>
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#thesisReview_url"/>'>Reviews</a></li>
-				
+
 			<s:url action="archives-thesis" var="archivesThesis_url"></s:url>
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#archivesThesis_url"/>'>Archives</a></li>
