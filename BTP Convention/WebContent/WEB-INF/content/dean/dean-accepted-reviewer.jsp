@@ -21,6 +21,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <sj:head jqueryui="true" />
 <title>Accepted Reviewer</title>
+<script>
+
+$.subscribe('dialogclosetopic', function(event,ui) {
+	console.log('run topic on dialog close');
+	window.location.reload(true);
+});
+</script>
 </head>
 <body>
 <s:include value="dean-navbar.jsp" />
@@ -61,13 +68,15 @@
 					<td><s:property value="#reviewer_element" /></td>
 				</s:iterator>
 				<td><s:date name="#indianreviewers[3]" format="dd,MMMMM yyyy" /></td>
-				<s:url action="generate-user" var="generateUser_url"
+				<s:url action="generate-user-modal" var="generateUserModal_url"
 					escapeAmp="false">
 					<s:param name="email">
 						<s:property value="#indianreviewers[2]" />
 					</s:param>
 				</s:url>
-				<td><a href='<s:property value = "#generateUser_url"/>'>Generate</a></td>
+				<td><sj:a openDialog="myclickdialog" href="%{generateUserModal_url}">Generate</sj:a></td>
+				
+				
 				
 				
 			</tr>
@@ -95,18 +104,21 @@
 					<td><s:property value="#reviewer_element" /></td>
 				</s:iterator>
 				<td><s:date name="#abroadreviewers[3]" format="dd,MMMMM yyyy" /></td>
-				<s:url action="generate-user" var="generateUser_url"
+				<s:url action="generate-user-modal" var="generateUserModal_url"
 					escapeAmp="false">
 					<s:param name="email">
 						<s:property value="#abroadreviewers[2]" />
 					</s:param>
 				</s:url>
-				<td><a href='<s:property value = "#generateUser_url"/>'>Generate</a></td>
+				<td><sj:a openDialog="myclickdialog" href="%{generateUserModal_url}">Generate</sj:a></td>
 				
 				
 			</tr>
 
 		</s:iterator>
 	</table>
+	
+	<sj:dialog id="myclickdialog" autoOpen="false" modal="true" title="Send username/password for reviewer" 
+             showEffect="slide" hideEffect="slide" onCloseTopics="dialogclosetopic"/>
 </body>
 </html>

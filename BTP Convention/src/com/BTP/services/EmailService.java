@@ -217,7 +217,7 @@ public class EmailService {
 		sf.close();
 	}
 	
-	public void generateUser(int thesisId, String email)
+	public String generateUser(int thesisId, String email)
 	{
 		Configuration con = new Configuration().configure().addAnnotatedClass(users.class).addAnnotatedClass(thesisreviewer.class).addAnnotatedClass(reviewer.class).addAnnotatedClass(thesis.class);
 
@@ -316,6 +316,7 @@ public class EmailService {
 		tx.commit();
 		session.close();
 		sf.close();
+		return ret;
 		
 	}
 	
