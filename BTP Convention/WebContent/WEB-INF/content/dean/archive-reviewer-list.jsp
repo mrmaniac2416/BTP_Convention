@@ -54,6 +54,7 @@
 			<th>Contact No.</th>
 			<th>Email</th>
 			<th>Mail Sent Date</th>
+			<th> Dean Accepted Date</th>
 			<th>Accept/Status</th>
 		</tr>
 
@@ -80,6 +81,12 @@
 
 				<td><s:if test="#indianreviewers[5]!=null">
 						<s:date name="#indianreviewers[5]" format="dd,MMMMM yyyy" />
+					</s:if> <s:else>
+						<b>&mdash;</b>
+					</s:else></td>
+					
+				<td><s:if test="#indianreviewers[7]!=null">
+						<s:date name="#indianreviewers[7]" format="dd,MMMMM yyyy" />
 					</s:if> <s:else>
 						<b>&mdash;</b>
 					</s:else></td>
@@ -125,6 +132,7 @@
 			<th>Contact No.</th>
 			<th>Email</th>
 			<th>Mail Sent Date</th>
+			<th>Dean Accepted Date</th>
 			<th>Accept/Status</th>
 		</tr>
 
@@ -151,6 +159,12 @@
 
 				<td><s:if test="#abroadreviewers[5]!=null">
 						<s:date name="#abroadreviewers[5]" format="dd,MMMMM yyyy" />
+					</s:if> <s:else>
+						<b>&mdash;</b>
+					</s:else></td>
+					
+					<td><s:if test="#abroadreviewers[7]!=null">
+						<s:date name="#abroadreviewers[7]" format="dd,MMMMM yyyy" />
 					</s:if> <s:else>
 						<b>&mdash;</b>
 					</s:else></td>

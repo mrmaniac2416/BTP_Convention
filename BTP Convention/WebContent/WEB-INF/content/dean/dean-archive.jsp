@@ -50,9 +50,11 @@
 						</s:param>
 					</s:url>
 					
-					<s:iterator value="#thesis" var="thesis_element">
+					<s:iterator value="#thesis" var="thesis_element" begin="0" end="3">
 						<td><s:property value="#thesis_element" /></td>
 					</s:iterator>
+					
+					<td><s:date name="#thesis[4]" format="dd,MMMMM yyyy" /></td>
 
 
 					

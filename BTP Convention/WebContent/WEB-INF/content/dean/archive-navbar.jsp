@@ -20,7 +20,7 @@
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#archivePage_url"/>'>Archives</a></li>
 
-			<s:url action="display-reviewer-list" var="reviewerlist_url">
+			<s:url action="archive-reviewer-list" var="reviewerlist_url">
 				<s:param name="thesisId">
 					<%= session.getAttribute("thesisId")  %>
 				</s:param>

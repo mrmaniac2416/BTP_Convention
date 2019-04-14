@@ -43,7 +43,7 @@ public class DeanService {
 		Session session = sf.openSession();
 		String type="indian";
 		Transaction tx = session.beginTransaction();
-		Query q = session.createQuery("select r.name,r.affiliation,r.designation,r.contact,r.reviewerId.email,tr.sentdate,tr.status from reviewer r inner join thesisreviewer tr on r.reviewerId.email=tr.thesisreviewerId.reviewerId and r.reviewerId.supervisor_id=tr.supervisorId where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type");
+		Query q = session.createQuery("select r.name,r.affiliation,r.designation,r.contact,r.reviewerId.email,tr.sentdate,tr.status,tr.accepteddate from reviewer r inner join thesisreviewer tr on r.reviewerId.email=tr.thesisreviewerId.reviewerId and r.reviewerId.supervisor_id=tr.supervisorId where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type");
 		q.setParameter("thesis_id", thesis_id);
 		q.setParameter("type", type);
 		List<Object[]> indianReviewers = (List<Object[]>) q.list();
@@ -64,7 +64,7 @@ public class DeanService {
 		Session session = sf.openSession();
 		String type="abroad";
 		Transaction tx = session.beginTransaction();
-		Query q = session.createQuery("select r.name,r.affiliation,r.designation,r.contact,r.reviewerId.email,tr.sentdate,tr.status from reviewer r inner join thesisreviewer tr on r.reviewerId.email=tr.thesisreviewerId.reviewerId and r.reviewerId.supervisor_id=tr.supervisorId where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type");
+		Query q = session.createQuery("select r.name,r.affiliation,r.designation,r.contact,r.reviewerId.email,tr.sentdate,tr.status,tr.accepteddate from reviewer r inner join thesisreviewer tr on r.reviewerId.email=tr.thesisreviewerId.reviewerId and r.reviewerId.supervisor_id=tr.supervisorId where tr.thesisreviewerId.thesisId=:thesis_id and r.reviewerType=:type");
 		q.setParameter("thesis_id", thesis_id);
 		q.setParameter("type", type);
 		List<Object[]> abroadReviewers = (List<Object[]>) q.list();
