@@ -29,13 +29,7 @@
 				href='<s:property value = "#reviewerlist_url"/>'>Reviewer List</a></li>
 
 
-			<s:url action="dean-accepted-reviewer" var="acceptedReviewer_url"></s:url>
-			<li class="nav-item margin"><a class="nav-link fontColor"
-				href='<s:property value = "#acceptedReviewer_url"/>'>Accepted
-					Reviewers</a></li>
-
-
-			<s:url action="display-reviewed" var="displayReviewed_url"></s:url>
+			<s:url action="archive-reviewed" var="displayReviewed_url"></s:url>
 			<li class="nav-item margin"><a class="nav-link fontColor"
 				href='<s:property value = "#displayReviewed_url"/>'>Reviewed</a></li>
 

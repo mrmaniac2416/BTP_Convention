@@ -3,6 +3,8 @@ package com.BTP.actions.dean;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.convention.annotation.Action;
+
 import com.BTP.services.DeanService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -23,7 +25,16 @@ public class DisplayReviewedAction extends ActionSupport{
 		setAbroadReviewers(deanService.fetchReviewedAbroadReviewers(thesisId));
 		return SUCCESS;
 	}
-
+	
+	@Action("archive-reviewed")
+	public String archiveExecute()
+	{
+		int thesisId=(int)session.get("thesisId");
+		setThesisDetails(deanService.ThesisDetails(thesisId));
+		setIndianReviewers(deanService.fetchReviewedIndianReviewers(thesisId));
+		setAbroadReviewers(deanService.fetchReviewedAbroadReviewers(thesisId));
+		return SUCCESS;
+	}
 	
 	
 	
