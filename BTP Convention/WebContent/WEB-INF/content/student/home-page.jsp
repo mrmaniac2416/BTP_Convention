@@ -25,9 +25,17 @@
 </head>
 <body>
 
+<script>
+$(window).bind("pageshow", function(event) {
+    if (event.originalEvent.persisted) {
+        window.location.reload(); 
+    }
+});
+</script>
+
 	
 	<s:include value="student-navbar.jsp" />
-	<table>
+	<table style="max-width: 45%">
 	<tr>
 	<th>Student ID:</th> <td>${studentProfile.get(0)}</td>
 	</tr>
@@ -80,7 +88,7 @@
 			<tr>
 			<s:form action="submit-thesis" method="post"
 				enctype="multipart/form-data">
-				<s:textfield key="thesisName" label="Thesis Name:" />
+				<s:textfield key="thesisName" label="Thesis Name" />
 				<s:file name="file" label="Select a file to upload" />
 				<s:submit value="submit Thesis" />
 				<s:hidden name="userId" value="%{studentProfile.get(0)}" />
@@ -89,10 +97,7 @@
 		</s:if>
 
 	</s:if>
-
-
-
-	<br>
+	
 	<s:else>
 		<tr>
 			<th>Thesis</th>

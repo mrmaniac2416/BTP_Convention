@@ -4,6 +4,14 @@
 <!DOCTYPE html>
 <html>
 <body>
+	<script>
+		$(window).bind("pageshow", function(event) {
+			if (event.originalEvent.persisted) {
+				window.location.reload();
+			}
+		});
+	</script>
+	
 	<img src="${pageContext.request.contextPath}/photo/daiict.png" height="100">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<ul class="navbar-nav mr-5">
