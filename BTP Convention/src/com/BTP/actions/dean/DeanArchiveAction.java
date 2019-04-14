@@ -13,7 +13,7 @@ public class DeanArchiveAction extends ActionSupport{
     
     public String execute()
     {
-    	setArchiveThesis(deanService.ArchiveThesis());
+    	setArchiveThesis(deanService.archiveThesis());
     	return SUCCESS;
     }
 

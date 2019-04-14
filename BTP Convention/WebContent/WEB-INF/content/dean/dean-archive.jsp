@@ -37,7 +37,6 @@
 				<th>Student Name</th>
 				<th>Supervisor</th>
 				<th>Submitted date</th>
-				<th>Status</th>
 				<th>Reviewer List</th>
 			</tr>
 
