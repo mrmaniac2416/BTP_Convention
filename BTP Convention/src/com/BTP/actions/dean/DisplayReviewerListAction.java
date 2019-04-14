@@ -3,6 +3,7 @@ package com.BTP.actions.dean;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -22,6 +23,16 @@ public class DisplayReviewerListAction extends ActionSupport implements SessionA
 	{
 		
 		System.out.println(thesisId);
+		sessionMap.put("thesisId",thesisId);
+		setThesisDetails(deanService.ThesisDetails(thesisId));
+		setIndianReviewers(deanService.fetchIndianReviewers(thesisId));
+		setAbroadReviewers(deanService.fetchAbroadReviewers(thesisId));
+		return SUCCESS;
+	}
+	
+	@Action("archive-reviewer-list")
+	public String archiveExecute()
+	{
 		sessionMap.put("thesisId",thesisId);
 		setThesisDetails(deanService.ThesisDetails(thesisId));
 		setIndianReviewers(deanService.fetchIndianReviewers(thesisId));

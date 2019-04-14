@@ -45,7 +45,7 @@
 				<tr>
 					
 					
-					<s:url action="display-reviewer-list" var="reviewer_url" escapeAmp="false">
+					<s:url action="archive-reviewer-list" var="reviewer_url" escapeAmp="false">
 						<s:param name="thesisId">
 							<s:property value="#thesis[0]" />
 						</s:param>
