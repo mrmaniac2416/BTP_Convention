@@ -35,7 +35,7 @@
 		<ul class="navbar-nav ml-auto">
 
 			<li class="nav-item dropdown mr-4"><a
-				class="nav-link dropdown-toggle" class="nav-link fontColor" href="#"
+				class="nav-link dropdown-toggle fontColor" href="#"
 				id="navbarDropdown" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Settings </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -54,11 +54,6 @@
 
 				</div>
 				</li>
-
-			<%-- <s:url action="change-account-details" var="changeAccountDetails_url"></s:url>
-			<li class="nav-item margin"><a class="nav-link fontColor"
-				href='<s:property value = "#changeAccountDetails_url"/>'>Change
-					Email/Password</a></li> --%>
 
 			<s:url namespace="/" action="logout" var="logout_url"></s:url>
 

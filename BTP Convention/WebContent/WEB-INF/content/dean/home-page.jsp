@@ -41,8 +41,9 @@ function closeDialog(){
 	<s:if test="deanProfile.isEmpty()">
 		<div class="noUpdateMesage">No new updates to show!</div>
 	</s:if>
-	<s:else>
-		<table>
+	
+		<table style="margin-top: 1%">
+		<s:else>
 			<tr>
 				<th>Thesis ID</th>
 				<th>Thesis title</th>
@@ -53,7 +54,6 @@ function closeDialog(){
 				<th>Reviewer List</th>
 				<th>Defended</th>
 			</tr>
-
 			<s:iterator value="deanProfile" var="thesis">
 				<tr>
 
@@ -105,9 +105,10 @@ function closeDialog(){
 	</sj:dialog>
 
 			</s:iterator>
+			</s:else>
 		</table>
             
-	</s:else>
+	
 	
 	
 </body>
