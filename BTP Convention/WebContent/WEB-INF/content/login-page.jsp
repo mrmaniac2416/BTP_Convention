@@ -9,8 +9,6 @@
 <title>Login Page</title>
 <s:head />
 <sj:head jqueryui="true" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/login-page.css">
 <script language="JavaScript"
 	src="${pageContext.request.contextPath}/struts/utils.js"
 	type="text/javascript"></script>
@@ -19,14 +17,6 @@
 	type="text/javascript"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
 </head>
 <body>
 
