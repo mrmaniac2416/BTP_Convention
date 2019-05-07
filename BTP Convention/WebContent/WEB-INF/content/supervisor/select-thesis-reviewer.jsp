@@ -488,7 +488,7 @@
 		
 		
 		<s:hidden name="thesis_id" value="%{thesis_id}" />
-		<sj:submit value="Submit" validate="true" targets="errorShowing" validateFunction="bootstrapValidation" onCompleteTopics="refresh"></sj:submit>
+		<sj:submit cssClass="butn" value="Submit" validate="true" targets="errorShowing" validateFunction="bootstrapValidation" onCompleteTopics="refresh"></sj:submit>
 		
 
 	</s:form>
