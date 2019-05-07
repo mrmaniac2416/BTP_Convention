@@ -28,14 +28,7 @@ public class thesis {
 	private Date submitted_date;
 	private String status;
 	private byte[] thesis_data;
-	@Type(type = "com.BTP.util.StringArrayUserType")
-	private String[] abroad_reviewer_email_id;
-	@Type(type = "com.BTP.util.StringArrayUserType")
-	private String[] indian_reviewer_email_id;
-	@Type(type = "com.BTP.util.StringArrayUserType")
-	private String[] accepted_indian_reviewer_email_id;
-	@Type(type = "com.BTP.util.StringArrayUserType")
-	private String[] accepted_abroad_reviewer_email_id;
+	
 	public int getThesis_id() {
 		return thesis_id;
 	}
@@ -66,30 +59,7 @@ public class thesis {
 	public void setThesis_data(byte[] thesis_data) {
 		this.thesis_data = thesis_data;
 	}
-	public String[] getAbroad_reviewer_email_id() {
-		return abroad_reviewer_email_id;
-	}
-	public void setAbroad_reviewer_email_id(String[] abroad_reviewer_email_id) {
-		this.abroad_reviewer_email_id = abroad_reviewer_email_id;
-	}
-	public String[] getIndian_reviewer_email_id() {
-		return indian_reviewer_email_id;
-	}
-	public void setIndian_reviewer_email_id(String[] indian_reviewer_email_id) {
-		this.indian_reviewer_email_id = indian_reviewer_email_id;
-	}
-	public String[] getAccepted_indian_reviewer_email_id() {
-		return accepted_indian_reviewer_email_id;
-	}
-	public void setAccepted_indian_reviewer_email_id(String[] accepted_indian_reviewer_email_id) {
-		this.accepted_indian_reviewer_email_id = accepted_indian_reviewer_email_id;
-	}
-	public String[] getAccepted_abroad_reviewer_email_id() {
-		return accepted_abroad_reviewer_email_id;
-	}
-	public void setAccepted_abroad_reviewer_email_id(String[] accepted_abroad_reviewer_email_id) {
-		this.accepted_abroad_reviewer_email_id = accepted_abroad_reviewer_email_id;
-	}
+	
 	public static String getThesisSequenceName() {
 		return THESIS_SEQUENCE_NAME;
 	}

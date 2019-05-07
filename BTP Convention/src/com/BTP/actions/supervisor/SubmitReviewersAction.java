@@ -90,8 +90,6 @@ public class SubmitReviewersAction extends ActionSupport{
 	{
 		String userId=(String)session.get("userId");
 		this.selectReviewersService.submitReviewers(thesis_id, indianEmails,abroadEmails, userId);
-		this.selectReviewersService.submitIndianReviewers(thesis_id, indianEmails);
-		this.selectReviewersService.submitAbroadReviewers(thesis_id, abroadEmails);
 	}
 
 

@@ -37,60 +37,60 @@ public class SelectReviewerService {
 		return acceptedThesis;
 	}
 	
-	public void submitIndianReviewers(int thesis_id,String []reviewersEmail)
-	{
-
-		Configuration con = new Configuration().configure().addAnnotatedClass(thesis.class);
-
-		SessionFactory sf = con.buildSessionFactory();
-
-		Session session = sf.openSession();
-		
-		Transaction tx = session.beginTransaction();
-		String status="reviewersSelected";
-	    Query q = session.createQuery("update thesis set indian_reviewer_email_id=:reviewersEmail, status=:status where thesis_id=:thesis_id");
-        q.setParameter("reviewersEmail", reviewersEmail);
-        q.setParameter("status", status);
-        q.setParameter("thesis_id", thesis_id);
-        
-        
-        q.executeUpdate();
-        
-        tx.commit();
-        session.close();
-        sf.close();
-				
-		
-		
-	}
-	
-	public void submitAbroadReviewers(int thesis_id,String []reviewersEmail)
-	{
-
-		Configuration con = new Configuration().configure().addAnnotatedClass(thesis.class);
-
-		SessionFactory sf = con.buildSessionFactory();
-
-		Session session = sf.openSession();
-		
-		Transaction tx = session.beginTransaction();
-		String status="reviewersSelected";
-	    Query q = session.createQuery("update thesis set abroad_reviewer_email_id=:reviewersEmail, status=:status where thesis_id=:thesis_id");
-        q.setParameter("reviewersEmail", reviewersEmail);
-        q.setParameter("status", status);
-        q.setParameter("thesis_id", thesis_id);
-        
-        System.out.println("upload mein gaya");
-        
-        q.executeUpdate();
-        
-        tx.commit();
-        session.close();
-        sf.close();
-				
-		
-		
-	}
+//	public void submitIndianReviewers(int thesis_id,String []reviewersEmail)
+//	{
+//
+//		Configuration con = new Configuration().configure().addAnnotatedClass(thesis.class);
+//
+//		SessionFactory sf = con.buildSessionFactory();
+//
+//		Session session = sf.openSession();
+//		
+//		Transaction tx = session.beginTransaction();
+//		String status="reviewersSelected";
+//	    Query q = session.createQuery("update thesis set indian_reviewer_email_id=:reviewersEmail, status=:status where thesis_id=:thesis_id");
+//        q.setParameter("reviewersEmail", reviewersEmail);
+//        q.setParameter("status", status);
+//        q.setParameter("thesis_id", thesis_id);
+//        
+//        
+//        q.executeUpdate();
+//        
+//        tx.commit();
+//        session.close();
+//        sf.close();
+//				
+//		
+//		
+//	}
+//	
+//	public void submitAbroadReviewers(int thesis_id,String []reviewersEmail)
+//	{
+//
+//		Configuration con = new Configuration().configure().addAnnotatedClass(thesis.class);
+//
+//		SessionFactory sf = con.buildSessionFactory();
+//
+//		Session session = sf.openSession();
+//		
+//		Transaction tx = session.beginTransaction();
+//		String status="reviewersSelected";
+//	    Query q = session.createQuery("update thesis set abroad_reviewer_email_id=:reviewersEmail, status=:status where thesis_id=:thesis_id");
+//        q.setParameter("reviewersEmail", reviewersEmail);
+//        q.setParameter("status", status);
+//        q.setParameter("thesis_id", thesis_id);
+//        
+//        System.out.println("upload mein gaya");
+//        
+//        q.executeUpdate();
+//        
+//        tx.commit();
+//        session.close();
+//        sf.close();
+//				
+//		
+//		
+//	}
 	
 	
 	public void submitReviewers(int thesisId,String []indianReviewers,String []abroadReviewers,String supervisorId)
