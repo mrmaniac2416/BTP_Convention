@@ -138,7 +138,8 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 	
 	<sj:dialog id="myclickdialog" autoOpen="false" modal="true"
 		title="Send Notification Mail" showEffect="slide" hideEffect="slide"
-		onCloseTopics="dialogclosetopic">
+		onCloseTopics="dialogclosetopic"
+		height="400" width="800">
 
 
 	</sj:dialog>

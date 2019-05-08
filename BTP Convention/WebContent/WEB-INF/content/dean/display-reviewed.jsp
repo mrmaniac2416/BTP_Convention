@@ -40,6 +40,10 @@
 	<br />
 
 	<h2>Indian Reviewer</h2>
+	 <s:if test="indianReviewers.isEmpty()">
+		<div>No new updates to show!</div>
+	</s:if>
+	<s:else>
 	<table>
 		<tr>
 			<th>Name</th>
@@ -86,9 +90,15 @@
 
 		</s:iterator>
 	</table>
+	</s:else>
 	<br />
 	<br />
 	<h2>Abroad Reviewer</h2>
+	
+	<s:if test="abroadReviewers.isEmpty()">
+		<div>No new updates to show!</div>
+	</s:if>
+	<s:else>
 	
 	<table>
 		<tr>
@@ -137,5 +147,6 @@
 
 		</s:iterator>
 	</table>
+	</s:else>
 </body>
 </html>

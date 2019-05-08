@@ -31,7 +31,9 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 </head>
 <body>
 <s:include value="dean-navbar.jsp" />
-
+    
+    
+   
 	<table>
 		<tr>
 			<th>Thesis title</th>
@@ -52,6 +54,10 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 	<br />
 
 	<h2>Indian Reviewer</h2>
+	 <s:if test="indianReviewers.isEmpty()">
+		<div>No new updates to show!</div>
+	</s:if>
+	<s:else>
 	<table>
 		<tr>
 			<th>Name</th>
@@ -83,10 +89,16 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 
 		</s:iterator>
 	</table>
-
+    </s:else>
 	<br />
 	<br />
+	
+	
 	<h2>Abroad Reviewer</h2>
+	<s:if test="abroadReviewers.isEmpty()">
+		<div>No new updates to show!</div>
+	</s:if>
+	<s:else>
 	
 	<table>
 		<tr>
@@ -117,7 +129,7 @@ $.subscribe('dialogclosetopic', function(event,ui) {
 
 		</s:iterator>
 	</table>
-	
+	</s:else>
 	<sj:dialog id="myclickdialog" autoOpen="false" modal="true" title="Send username/password for reviewer" 
              showEffect="slide" hideEffect="slide" onCloseTopics="dialogclosetopic"/>
 </body>

@@ -133,7 +133,7 @@
 </sj:a>
 
 					<sj:dialog id="signupDialog" autoOpen="false" modal="true"
-						title="Sign Up" height="300" width="500" />
+						title="Sign Up" height="600" width="800" />
 
 
 				</div>

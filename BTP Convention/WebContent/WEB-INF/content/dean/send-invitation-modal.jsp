@@ -94,7 +94,9 @@ $.subscribe('error', function(event,data) {
 		
 		<s:hidden value="%{email}" name="email" /> 
 		<s:textfield label="Subject" name="subject" cssStyle="white-space: pre-wrap;" value="%{subject}"/>
-		<s:textarea label="Body" name="body" cssStyle="white-space: pre-wrap;" value="%{body}"/>
+		<s:textarea label="Body" name="body" cssStyle="white-space: pre-wrap;" value="%{body}"
+		cols="65" rows="10"
+		/>
 		
 		<s:hidden value="%{thesisId}" name="thesisId" />
 
