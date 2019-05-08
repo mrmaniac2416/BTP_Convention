@@ -17,7 +17,7 @@ public class student {
 	private byte[] synopsis;
 	@Temporal(TemporalType.DATE)
 	private Date synopsis_date;
-	private int thesis_id;
+	private Integer thesis_id;
 	
 	public String getStudent_id() {
 		return student_id;
@@ -44,12 +44,7 @@ public class student {
 	public void setSynopsis_date(Date synopsis_date) {
 		this.synopsis_date = synopsis_date;
 	}
-	public int getThesis_id() {
-		return thesis_id;
-	}
-	public void setThesis_id(int thesis_id) {
-		this.thesis_id = thesis_id;
-	}
+	
 	
 	public void setSynopsis(byte[] synopsis) {
 		this.synopsis = synopsis;
@@ -57,5 +52,11 @@ public class student {
 	
 	public byte[] getSynopsis() {
 		return synopsis;
+	}
+	public Integer getThesis_id() {
+		return thesis_id;
+	}
+	public void setThesis_id(Integer thesis_id) {
+		this.thesis_id = thesis_id;
 	}
 }

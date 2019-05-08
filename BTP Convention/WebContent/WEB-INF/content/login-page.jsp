@@ -10,6 +10,7 @@
 <title>Login Page</title>
 <s:head />
 <sj:head jqueryui="true" />
+<sb:head includeScripts="true"/>
 <script language="JavaScript"
 	src="${pageContext.request.contextPath}/struts/utils.js"
 	type="text/javascript"></script>
@@ -63,7 +64,7 @@
 		<s:actionerror />
 	</s:if>
 
-  
+
 
 
 
@@ -107,18 +108,39 @@
 
 
 
-					<sj:dialog id="dialog" autoOpen="false" modal="true"
+					<sj:dialog id="forgotPasswordDialog" autoOpen="false" modal="true"
 						title="Forgot Password" height="300" width="500" />
 
 
-					<sj:a openDialog="dialog" href="%{forgotPassword_url}" cssClass="fontcolor">
+					<sj:a openDialog="forgotPasswordDialog"
+						href="%{forgotPassword_url}" cssClass="fontcolor">
 	Forgot Password?
 </sj:a>
+				</div>
+
+				<div class="d-flex justify-content-center links">
+
+					<s:url action="sign-up" var="signUp_url" />
+
+
+
+
+
+
+					<sj:a openDialog="signupDialog" href="%{signUp_url}"
+						cssClass="fontcolor">
+	Sign up as student
+</sj:a>
+
+					<sj:dialog id="signupDialog" autoOpen="false" modal="true"
+						title="Sign Up" height="300" width="500" />
+
+
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
+
 
 </body>
 </html>

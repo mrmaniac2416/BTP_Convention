@@ -5,12 +5,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import java.util.*;
 
 import com.BTP.JPA.reviewer;
 import com.BTP.JPA.student;
+import com.BTP.JPA.tempstudent;
 import com.BTP.JPA.users;
 import com.BTP.JPA.thesis;
 
@@ -160,6 +163,107 @@ public class LoginService {
 		
 		
 	}
+	
+	public String checkSignupToken(String token,String email)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(tempstudent.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+		
+		Transaction tx = session.beginTransaction();
+		
+		Criteria cr = session.createCriteria(tempstudent.class);
+		
+		cr.add(Restrictions.eq("email",email));
+		cr.add(Restrictions.eq("token",token));
+		
+		tempstudent result=(tempstudent)cr.uniqueResult();
+		
+		tx.commit();
+		session.close();
+		sf.close();
+		
+		return result!=null ? "success" : "error";
+		
+		
+	}
+	
+	public void createStudentAccount(String email)
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(tempstudent.class).addAnnotatedClass(users.class).addAnnotatedClass(student.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+		
+		Transaction tx = session.beginTransaction();
+		
+		Criteria cr = session.createCriteria(tempstudent.class);
+		
+		cr.add(Restrictions.eq("email",email));
+		
+		tempstudent result=(tempstudent)cr.uniqueResult();
+		
+		
+		
+		users user=new users();
+		
+		user.setUser_id(result.getEmail());
+		user.setPasswd(result.getPassword());
+		user.setUser_name(result.getName());
+		user.setUser_type("student");
+		
+		student student=new student();
+		
+		student.setResearch_area(result.getResearch_area());
+		student.setStudent_id(result.getEmail());
+		student.setSupervisor_id(result.getSupervisor_id());
+		student.setThesis_id(null);
+		
+		session.save(user);
+		session.save(student);
+		session.delete(result);
+		
+		tx.commit();
+		session.close();
+		sf.close();
+		
+		
+		
+	}
+	
+	
+	
+	public List<users> getSupervisors()
+	{
+		Configuration con = new Configuration().configure().addAnnotatedClass(users.class);
+
+		SessionFactory sf = con.buildSessionFactory();
+
+		Session session = sf.openSession();
+		
+		Transaction tx = session.beginTransaction();
+		
+		Criteria cr = session.createCriteria(users.class);
+		
+		cr.add(Restrictions.eq("user_type","supervisor"));
+//		ProjectionList projList = Projections.projectionList();
+//		projList.add(Projections.property("user_name"));
+//		cr.setProjection(projList);
+		
+		List<users> results=(List<users>)cr.list();
+		
+		tx.commit();
+		session.close();
+		sf.close();
+		
+		return results;
+	}
+	
+	
+	
 	
 	
 	public String updatePassword(String password,String email,String token)

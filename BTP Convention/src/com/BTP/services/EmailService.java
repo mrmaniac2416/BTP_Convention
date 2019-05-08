@@ -477,6 +477,90 @@ public class EmailService {
 		}
 		return ret;
 	}
+
+	
+	public String sendSignUpEmail(String email,String user_password,String research_area,String supervisor_id,String name)
+	{
+		String from="pdhruv1109@gmail.com";
+		String password="ms1234ms";
+		String body="Click on the link below to activate your account.\n";
+		String ret = "success";
+		try {
+			Session session = Session.getDefaultInstance(properties,  
+					new javax.mail.Authenticator() {
+				protected PasswordAuthentication 
+				getPasswordAuthentication() {
+					return new 
+							PasswordAuthentication(from, password);
+				}
+			
+			}
+					);
+
+			Date date = Calendar.getInstance().getTime();  
+			DateFormat dateFormat = new SimpleDateFormat("ssyyyyhhddmm");  
+			String strDate = dateFormat.format(date);
+			Random rand = new Random(); 
+			int rand_int = rand.nextInt(10000); 
+			strDate = strDate + Integer.toString(rand_int);
+
+
+			Message message = new MimeMessage(session);
+			/*
+			 * message.setFrom(new InternetAddress(from));
+			 * message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+			 * message.setSubject(subject);
+			 */
+			/* message.setText(body); */
+			message.setFrom(new InternetAddress(from));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+			message.setSubject("Account activation email");
+			message.setText(body + "   http://localhost:8080/BTP_Convention/verify-signup-link.action?token=" + strDate + "&email=" + email);
+			Transport.send(message);
+			
+		
+			
+			Date dat=new Date();
+	        
+	        Configuration con = new Configuration().configure().addAnnotatedClass(tempstudent.class);
+	        
+	        SessionFactory sf = con.buildSessionFactory();
+	        
+	        org.hibernate.Session sessionQuery = sf.openSession();
+	       
+	        Transaction tx = sessionQuery.beginTransaction();
+	        
+	        tempstudent tempstudent=new tempstudent();
+	        tempstudent.setEmail(email);
+	        tempstudent.setName(name);
+	        tempstudent.setPassword(user_password);
+	        tempstudent.setResearch_area(research_area);
+	        tempstudent.setSupervisor_id(supervisor_id);
+	        tempstudent.setToken(strDate);
+	        
+	        sessionQuery.saveOrUpdate(tempstudent);
+	        
+	        
+	        
+	        
+	        tx.commit();
+	        sessionQuery.close();
+	        sf.close();
+			
+			
+			
+			
+			
+		
+			
+			
+			
+		} catch(Exception e) {
+			ret = "error";
+			e.printStackTrace();
+		}
+		return ret;
+	}
 	
 	
 }
