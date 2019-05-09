@@ -8,6 +8,7 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.EmailValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -48,6 +49,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	}
 	
 	@RequiredStringValidator(message = "Enter your User ID.")
+	@EmailValidator(message = "Enter a valid E-mail address." )
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
